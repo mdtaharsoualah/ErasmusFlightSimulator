@@ -1,5 +1,54 @@
 #include "P3d.h"
 
+bool P3d::MbedReadConnect(int COM, int BAUD)
+{
+	if (mbedRead.Open(COM, BAUD))
+		return true;
+	return false;
+}
+
+std::string P3d::MbedRead()
+{
+	if (!mbedRead.IsOpened())
+		return false;
+	std::stringstream ss;
+	char buffer;
+	while (mbedRead.ReadDataWaiting()) {
+		mbedRead.ReadData(&buffer, 1);
+		if (buffer == '|')
+			break;
+		ss << buffer;
+	}
+	return ss.str();
+}
+
+bool P3d::MbedWrite(int Id)
+{
+	if (!mbedRead.IsOpened())
+		return false;
+	std::stringstream ss;
+	if (Queue.QueuePrintData(Id) != "Nothing") {
+
+	}
+	
+}
+
+bool P3d::MbedWriteConnect(int COM, int BAUD)
+{
+	if (mbedWrite.Open(COM, BAUD))
+		return true;
+	return false;
+}
+
+bool P3d::MbedReadAvailable()
+{
+	if (!mbedRead.IsOpened())
+		return false;
+	if (mbedRead.ReadDataWaiting())
+			return true;
+	return false;
+}
+
 bool P3d::P3dConnect()
 {
 	if (SUCCEEDED(SimConnect_Open(&hSimConnect, "TEST", NULL, 0, 0, 0)))
@@ -36,6 +85,7 @@ void P3d::P3dConfig()
 		hr = SimConnect_AddToDataDefinition(hSimConnect, MyDef[i].Id, MyDef[i].Name.c_str(), MyDef[i].Type.c_str());
 	}
 	//hr = SimConnect_AddToDataDefinition(hSimConnect, DEF_THROTTLE, "GENERAL ENG THROTTLE LEVER POSITION:1", "percent");
+	
 	hr = SimConnect_SubscribeToSystemEvent(hSimConnect, EVENT_SIM_START, "6Hz");
 
 }
@@ -97,13 +147,7 @@ void P3d::Process(SIMCONNECT_RECV * pData, DWORD cbData)
 			//hr = SimConnect_RequestDataOnSimObjectType(hSimConnect, DEF_ALTITUDE, DEF_ALTITUDE, 0, SIMCONNECT_SIMOBJECT_TYPE_USER);
 			//hr = SimConnect_RequestDataOnSimObjectType(hSimConnect, DEF_THROTTLE, DEF_THROTTLE, 0, SIMCONNECT_SIMOBJECT_TYPE_USER);
 			
-			Queue.QueueReset();
-			GeneralDefine* tmp = NULL;
-			do {
-				Queue.QueueNext(&tmp);
-				if(tmp!=NULL)
-					hr = SimConnect_RequestDataOnSimObjectType(hSimConnect, tmp->Id, tmp->Id, 0, SIMCONNECT_SIMOBJECT_TYPE_USER);
-			} while (tmp != NULL);
+			P3dRequestData();
 		}
 
 		default:
@@ -148,4 +192,15 @@ void P3d::SetThrottle(double value)
 
 void P3d::P3dConfig(QtParameter* qt) {
 	QtParametre = *qt;
+}
+
+
+void P3d::P3dRequestData() {
+	Queue.QueueReset();
+	GeneralDefine* tmp = NULL;
+	do {
+		Queue.QueueNext(&tmp);
+		if (tmp != NULL)
+			SimConnect_RequestDataOnSimObjectType(hSimConnect, tmp->Id, tmp->Id, 0, SIMCONNECT_SIMOBJECT_TYPE_USER);
+	} while (tmp != NULL);
 }

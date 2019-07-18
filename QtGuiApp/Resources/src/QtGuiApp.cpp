@@ -19,13 +19,17 @@ QtGuiApp::QtGuiApp(QWidget *parent)
 	p3d.P3dConfig(&qt);
 	p3d.P3dConnect();
 	p3d.P3dConfig();
+	p3d.MbedReadConnect(5, 115200);
 	QTimer *timer = new QTimer(this);
 	connect(timer, SIGNAL(timeout()), this, SLOT(printData()));
-	timer->start(150);
+	timer->start(5);
 }
 
 void QtGuiApp::printData()
 {
+	if (p3d.MbedReadAvailable())
+		on_MbedReadButton_clicked();
+	//p3d.P3dRequestData();
 	p3d.P3dStart();
 	//p3d.P3dPrintData('2');
 	//ui.textEditFirst->setText(QString::fromStdString(p3d.Queue.QueuePrintData(DEF_ALTITUDE)));
@@ -62,3 +66,7 @@ void QtGuiApp::on_ControlThrottle_valueChanged(int value)
 	p3d.SetThrottle((double)value);
 }
 
+void QtGuiApp::on_MbedReadButton_clicked() {
+	QString text = ui.TextEdit->toPlainText();
+	ui.TextEdit->setText(text + QString::fromStdString(p3d.MbedRead()));
+}

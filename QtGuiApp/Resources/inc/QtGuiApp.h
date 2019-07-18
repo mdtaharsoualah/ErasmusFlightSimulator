@@ -6,6 +6,8 @@
 #include "P3d.h"
 #include "QueueClass.h"
 
+
+
 class QtGuiApp : public QMainWindow
 {
 	Q_OBJECT
@@ -17,6 +19,7 @@ private slots:
 	void on_CheckAltitude_stateChanged(int arg1);
 	void on_CheckThrottle_stateChanged(int arg1);
 	void on_ControlThrottle_valueChanged(int value);
+	void on_MbedReadButton_clicked();
 private:
 	Ui::QtGuiAppClass ui;
 	int i = 0;

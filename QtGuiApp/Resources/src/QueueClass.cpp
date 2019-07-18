@@ -66,7 +66,7 @@ std::string QueueClass::QueuePrintData(int Id)
 		QueueNext(&Data);
 		if (Data->Id == Id) {
 			std::stringstream sstm;
-			sstm << "\nId" << Data->Id << "; Name " << Data->Name << "; Type " << Data->Type << ";";
+			sstm << "Id" << Data->Id << "; Name " << Data->Name << "; Type " << Data->Type << ";";
 			return sstm.str();
 		}	
 	}

@@ -72,7 +72,7 @@
     <QtMoc>
       <OutputFile>.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</OutputFile>
       <ExecutionDescription>Moc'ing %(Identity)...</ExecutionDescription>
-      <IncludePath>.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets;%(AdditionalIncludeDirectories)</IncludePath>
+      <IncludePath>.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets</IncludePath>
       <Define>UNICODE;_UNICODE;WIN32;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;QT_DLL;QT_CORE_LIB;QT_GUI_LIB;QT_WIDGETS_LIB;%(PreprocessorDefinitions)</Define>
     </QtMoc>
     <QtUic>
@@ -103,7 +103,7 @@
     <QtMoc>
       <OutputFile>.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</OutputFile>
       <ExecutionDescription>Moc'ing %(Identity)...</ExecutionDescription>
-      <IncludePath>.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets;%(AdditionalIncludeDirectories)</IncludePath>
+      <IncludePath>.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets</IncludePath>
       <Define>UNICODE;_UNICODE;WIN32;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;QT_DLL;QT_NO_DEBUG;NDEBUG;QT_CORE_LIB;QT_GUI_LIB;QT_WIDGETS_LIB;%(PreprocessorDefinitions)</Define>
     </QtMoc>
     <QtUic>
@@ -117,23 +117,23 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="QtGuiApp.cpp" />
     <ClCompile Include="Resources\src\P3d.cpp" />
+    <ClCompile Include="Resources\src\QtGuiApp.cpp" />
     <ClCompile Include="Resources\src\QueueClass.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <QtMoc Include="QtGuiApp.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <QtUic Include="QtGuiApp.ui" />
-  </ItemGroup>
-  <ItemGroup>
-    <QtRcc Include="QtGuiApp.qrc" />
+    <ClCompile Include="Resources\src\Serial.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Resources\inc\P3d.h" />
+    <QtMoc Include="Resources\inc\QtGuiApp.h" />
     <ClInclude Include="Resources\inc\QueueClass.h" />
+    <ClInclude Include="Resources\inc\Serial.h" />
     <ClInclude Include="Resources\inc\SimConnect.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtRcc Include="Resources\QtGuiApp.qrc" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtUic Include="Resources\QtGuiApp.ui" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

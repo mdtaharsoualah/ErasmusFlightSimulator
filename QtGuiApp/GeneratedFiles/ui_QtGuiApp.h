@@ -16,10 +16,12 @@
 #include <QtWidgets/QLCDNumber>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
+#include <QtWidgets/QPushButton>
 #include <QtWidgets/QSlider>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QTextEdit>
 #include <QtWidgets/QToolBar>
+#include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -28,14 +30,16 @@ class Ui_QtGuiAppClass
 {
 public:
     QWidget *centralWidget;
+    QVBoxLayout *verticalLayout;
     QGroupBox *groupBox;
     QLCDNumber *LcdAltitude;
     QCheckBox *CheckAltitude;
-    QTextEdit *TextEdit;
     QGroupBox *groupBox_2;
     QLCDNumber *LcdThrottle;
     QCheckBox *CheckThrottle;
     QSlider *ControlThrottle;
+    QPushButton *MbedReadButton;
+    QTextEdit *TextEdit;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -48,21 +52,23 @@ public:
         QtGuiAppClass->resize(620, 400);
         centralWidget = new QWidget(QtGuiAppClass);
         centralWidget->setObjectName(QString::fromUtf8("centralWidget"));
+        verticalLayout = new QVBoxLayout(centralWidget);
+        verticalLayout->setSpacing(6);
+        verticalLayout->setContentsMargins(11, 11, 11, 11);
+        verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         groupBox = new QGroupBox(centralWidget);
         groupBox->setObjectName(QString::fromUtf8("groupBox"));
-        groupBox->setGeometry(QRect(10, 10, 600, 60));
         LcdAltitude = new QLCDNumber(groupBox);
         LcdAltitude->setObjectName(QString::fromUtf8("LcdAltitude"));
         LcdAltitude->setGeometry(QRect(270, 20, 320, 30));
         CheckAltitude = new QCheckBox(groupBox);
         CheckAltitude->setObjectName(QString::fromUtf8("CheckAltitude"));
         CheckAltitude->setGeometry(QRect(10, 25, 200, 20));
-        TextEdit = new QTextEdit(centralWidget);
-        TextEdit->setObjectName(QString::fromUtf8("TextEdit"));
-        TextEdit->setGeometry(QRect(10, 180, 600, 160));
+
+        verticalLayout->addWidget(groupBox);
+
         groupBox_2 = new QGroupBox(centralWidget);
         groupBox_2->setObjectName(QString::fromUtf8("groupBox_2"));
-        groupBox_2->setGeometry(QRect(10, 80, 600, 90));
         LcdThrottle = new QLCDNumber(groupBox_2);
         LcdThrottle->setObjectName(QString::fromUtf8("LcdThrottle"));
         LcdThrottle->setGeometry(QRect(270, 20, 320, 30));
@@ -75,6 +81,20 @@ public:
         ControlThrottle->setMaximum(100);
         ControlThrottle->setSingleStep(1);
         ControlThrottle->setOrientation(Qt::Horizontal);
+
+        verticalLayout->addWidget(groupBox_2);
+
+        MbedReadButton = new QPushButton(centralWidget);
+        MbedReadButton->setObjectName(QString::fromUtf8("MbedReadButton"));
+
+        verticalLayout->addWidget(MbedReadButton);
+
+        TextEdit = new QTextEdit(centralWidget);
+        TextEdit->setObjectName(QString::fromUtf8("TextEdit"));
+        TextEdit->setMaximumSize(QSize(16777215, 150));
+
+        verticalLayout->addWidget(TextEdit);
+
         QtGuiAppClass->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(QtGuiAppClass);
         menuBar->setObjectName(QString::fromUtf8("menuBar"));
@@ -99,6 +119,7 @@ public:
         CheckAltitude->setText(QCoreApplication::translate("QtGuiAppClass", "Altitude", nullptr));
         groupBox_2->setTitle(QCoreApplication::translate("QtGuiAppClass", "Throttle", nullptr));
         CheckThrottle->setText(QCoreApplication::translate("QtGuiAppClass", "Throttle", nullptr));
+        MbedReadButton->setText(QCoreApplication::translate("QtGuiAppClass", "Mbed Read", nullptr));
     } // retranslateUi
 
 };
