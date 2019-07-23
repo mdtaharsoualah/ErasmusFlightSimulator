@@ -60,6 +60,7 @@
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <BrowseInformation>true</BrowseInformation>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -67,7 +68,7 @@
       <AdditionalLibraryDirectories>$(QTDIR)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>qtmaind.lib;Qt5Cored.lib;Qt5Guid.lib;Qt5Widgetsd.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalOptions>.\Resources\lib\SimConnectDebug.lib %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>.\Resources\lib\SimConnectDebug.lib .\Resources\lib\USBCAN64.lib %(AdditionalOptions)</AdditionalOptions>
     </Link>
     <QtMoc>
       <OutputFile>.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</OutputFile>
@@ -83,6 +84,9 @@
       <ExecutionDescription>Rcc'ing %(Identity)...</ExecutionDescription>
       <OutputFile>.\GeneratedFiles\qrc_%(Filename).cpp</OutputFile>
     </QtRcc>
+    <Bscmake>
+      <PreserveSbr>true</PreserveSbr>
+    </Bscmake>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -116,17 +120,20 @@
     </QtRcc>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Convert.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Resources\src\P3d.cpp" />
     <ClCompile Include="Resources\src\QtGuiApp.cpp" />
     <ClCompile Include="Resources\src\QueueClass.cpp" />
-    <ClCompile Include="Resources\src\Serial.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Convert.h" />
     <ClInclude Include="Resources\inc\P3d.h" />
+    <ClInclude Include="Resources\inc\Usbcan32.h" />
+    <ClInclude Include="Resources\inc\UsbCanLs.h" />
+    <ClInclude Include="Resources\inc\UsbCanUp.h" />
     <QtMoc Include="Resources\inc\QtGuiApp.h" />
     <ClInclude Include="Resources\inc\QueueClass.h" />
-    <ClInclude Include="Resources\inc\Serial.h" />
     <ClInclude Include="Resources\inc\SimConnect.h" />
   </ItemGroup>
   <ItemGroup>

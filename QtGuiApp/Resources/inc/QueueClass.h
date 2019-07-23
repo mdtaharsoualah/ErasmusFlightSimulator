@@ -29,13 +29,16 @@ struct GeneralDefine
 enum DEFINE_ENUM
 {
 	DEF_ALTITUDE = 1,
-	DEF_THROTTLE = 2
+	DEF_CAP = 2,
+	DEF_VSpeed = 3,
+	DEF_HSpeed = 4,
+	DEF_THROTTLE = 5
 };
 
 /*
 	Array Definition of all types of data
 */
-static GeneralDefine MyDef[] = { {DEF_ALTITUDE,"Plane Altitude","feet"},{DEF_THROTTLE,"GENERAL ENG THROTTLE LEVER POSITION:1","percent"} };
+static GeneralDefine MyDef[] = { {DEF_ALTITUDE,"Plane Altitude","feet"}, {DEF_CAP,"PLANE HEADING DEGREES MAGNETIC","Radians"}, {DEF_VSpeed,"VERTICAL SPEED", "Feet per second"}, {DEF_HSpeed,"AIRSPEED TRUE","Knots"}, {DEF_THROTTLE,"GENERAL ENG THROTTLE LEVER POSITION:1","percent"} };
 
 /*
 	Define of queue struct

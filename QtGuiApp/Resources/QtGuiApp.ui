@@ -19,99 +19,227 @@
   <widget class="QWidget" name="centralWidget">
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
-     <widget class="QGroupBox" name="groupBox">
-      <property name="title">
-       <string>Altitude</string>
+     <widget class="QTabWidget" name="tabWidget">
+      <property name="currentIndex">
+       <number>0</number>
       </property>
-      <widget class="QLCDNumber" name="LcdAltitude">
-       <property name="geometry">
-        <rect>
-         <x>270</x>
-         <y>20</y>
-         <width>320</width>
-         <height>30</height>
-        </rect>
-       </property>
+      <widget class="QWidget" name="tab">
+       <attribute name="title">
+        <string>Tab 1</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_2">
+        <item>
+         <widget class="QGroupBox" name="groupBox">
+          <property name="title">
+           <string>Altitude</string>
+          </property>
+          <widget class="QLCDNumber" name="LcdAltitude">
+           <property name="geometry">
+            <rect>
+             <x>270</x>
+             <y>20</y>
+             <width>320</width>
+             <height>30</height>
+            </rect>
+           </property>
+          </widget>
+          <widget class="QCheckBox" name="CheckAltitude">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>25</y>
+             <width>200</width>
+             <height>20</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>Altitude</string>
+           </property>
+          </widget>
+         </widget>
+        </item>
+        <item>
+         <widget class="QGroupBox" name="groupBox_3">
+          <property name="title">
+           <string>Cap</string>
+          </property>
+          <widget class="QLCDNumber" name="LcdCap">
+           <property name="geometry">
+            <rect>
+             <x>270</x>
+             <y>20</y>
+             <width>320</width>
+             <height>30</height>
+            </rect>
+           </property>
+          </widget>
+          <widget class="QCheckBox" name="CheckCap">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>25</y>
+             <width>200</width>
+             <height>20</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>Cap</string>
+           </property>
+          </widget>
+         </widget>
+        </item>
+        <item>
+         <widget class="QGroupBox" name="groupBox_4">
+          <property name="title">
+           <string>V-Speed</string>
+          </property>
+          <widget class="QLCDNumber" name="LcdVSpeed">
+           <property name="geometry">
+            <rect>
+             <x>270</x>
+             <y>20</y>
+             <width>320</width>
+             <height>30</height>
+            </rect>
+           </property>
+          </widget>
+          <widget class="QCheckBox" name="CheckVSpeed">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>25</y>
+             <width>200</width>
+             <height>20</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>V Speed</string>
+           </property>
+          </widget>
+         </widget>
+        </item>
+        <item>
+         <widget class="QGroupBox" name="groupBox_5">
+          <property name="title">
+           <string>H-Speed</string>
+          </property>
+          <widget class="QLCDNumber" name="LcdHSpeed">
+           <property name="geometry">
+            <rect>
+             <x>270</x>
+             <y>20</y>
+             <width>320</width>
+             <height>30</height>
+            </rect>
+           </property>
+          </widget>
+          <widget class="QCheckBox" name="CheckHSpeed">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>25</y>
+             <width>200</width>
+             <height>20</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>H Speed</string>
+           </property>
+          </widget>
+         </widget>
+        </item>
+       </layout>
       </widget>
-      <widget class="QCheckBox" name="CheckAltitude">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>25</y>
-         <width>200</width>
-         <height>20</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Altitude</string>
-       </property>
+      <widget class="QWidget" name="tab_2">
+       <attribute name="title">
+        <string>Tab 2</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_3">
+        <item>
+         <widget class="QGroupBox" name="groupBox_2">
+          <property name="title">
+           <string>Throttle</string>
+          </property>
+          <widget class="QLCDNumber" name="LcdThrottle">
+           <property name="geometry">
+            <rect>
+             <x>270</x>
+             <y>20</y>
+             <width>320</width>
+             <height>30</height>
+            </rect>
+           </property>
+          </widget>
+          <widget class="QCheckBox" name="CheckThrottle">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>25</y>
+             <width>200</width>
+             <height>20</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>Throttle</string>
+           </property>
+          </widget>
+          <widget class="QSlider" name="ControlThrottle">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>60</y>
+             <width>580</width>
+             <height>25</height>
+            </rect>
+           </property>
+           <property name="maximum">
+            <number>100</number>
+           </property>
+           <property name="singleStep">
+            <number>1</number>
+           </property>
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+          </widget>
+         </widget>
+        </item>
+       </layout>
       </widget>
-     </widget>
-    </item>
-    <item>
-     <widget class="QGroupBox" name="groupBox_2">
-      <property name="title">
-       <string>Throttle</string>
-      </property>
-      <widget class="QLCDNumber" name="LcdThrottle">
-       <property name="geometry">
-        <rect>
-         <x>270</x>
-         <y>20</y>
-         <width>320</width>
-         <height>30</height>
-        </rect>
-       </property>
+      <widget class="QWidget" name="tab_3">
+       <attribute name="title">
+        <string>Page</string>
+       </attribute>
+       <widget class="QPushButton" name="MbedReadButton">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>10</y>
+          <width>602</width>
+          <height>23</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Mbed Read</string>
+        </property>
+       </widget>
+       <widget class="QTextEdit" name="TextEdit">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>40</y>
+          <width>602</width>
+          <height>150</height>
+         </rect>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>150</height>
+         </size>
+        </property>
+       </widget>
       </widget>
-      <widget class="QCheckBox" name="CheckThrottle">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>25</y>
-         <width>200</width>
-         <height>20</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Throttle</string>
-       </property>
-      </widget>
-      <widget class="QSlider" name="ControlThrottle">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>60</y>
-         <width>580</width>
-         <height>25</height>
-        </rect>
-       </property>
-       <property name="maximum">
-        <number>100</number>
-       </property>
-       <property name="singleStep">
-        <number>1</number>
-       </property>
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-      </widget>
-     </widget>
-    </item>
-    <item>
-     <widget class="QPushButton" name="MbedReadButton">
-      <property name="text">
-       <string>Mbed Read</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QTextEdit" name="TextEdit">
-      <property name="maximumSize">
-       <size>
-        <width>16777215</width>
-        <height>150</height>
-       </size>
-      </property>
      </widget>
     </item>
    </layout>

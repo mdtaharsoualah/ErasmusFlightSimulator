@@ -6,7 +6,6 @@
 #include <strsafe.h>
 #include "QueueClass.h"
 
-#include "Serial.h"
 
 #include <sstream>
 
@@ -17,6 +16,8 @@
 #include <qlcdnumber.h>
 #include<QDebug>
 
+#include "Convert.h"
+
 struct QtParameter
 {
 	//Affichage
@@ -24,6 +25,15 @@ struct QtParameter
 	//Altitude
 	QCheckBox* CheckAltitude;
 	QLCDNumber* LcdAltitude;
+	//Cap
+	QCheckBox* CheckCap;
+	QLCDNumber* LcdCap;
+	//VSpeed
+	QCheckBox* CheckVSpeed;
+	QLCDNumber* LcdVSpeed;
+	//HSpeed
+	QCheckBox* CheckHSpeed;
+	QLCDNumber* LcdHSpeed;
 	//Throttle
 	QCheckBox* CheckThrottle;
 	QLCDNumber* LcdThrottle;
@@ -44,25 +54,13 @@ enum EVENT_ID {
 
 
 
-struct structData
-{
-	double altitude;
-	double throttlePercent;
-};
+
 
 class P3d
 {
 public:
 
-	bool MbedReadConnect(int COM, int BAUD);
 
-	std::string MbedRead();
-	
-	bool MbedWrite(int Id);
-
-	bool MbedWriteConnect(int COM, int BAUD);
-
-	bool MbedReadAvailable();
 
 	bool P3dConnect();
 	void P3dDisconnect();
@@ -79,6 +77,9 @@ public:
 
 	void Process(SIMCONNECT_RECV *pData, DWORD cbData);
 	void P3dPrintAltitude(double value);
+	void P3dPrintCap(double value);
+	void P3dPrintVSpeed(double value);
+	void P3dPrintHSpeed(double value);
 	void P3dPrintThrottle(double value);
 	void SetThrottle(double);
 
@@ -91,6 +92,6 @@ private:
 	HANDLE hSimConnect = NULL;
 	QtParameter QtParametre;
 	double throttlePercent = 0;
+	UsbCan usbcan;
 
-	CSerial mbedRead, mbedWrite;
 };

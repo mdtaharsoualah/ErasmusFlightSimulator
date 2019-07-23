@@ -12,6 +12,15 @@ QtGuiApp::QtGuiApp(QWidget *parent)
 	qt.CheckAltitude = ui.CheckAltitude;
 	qt.LcdAltitude = ui.LcdAltitude;
 
+	qt.CheckCap = ui.CheckCap;
+	qt.LcdCap = ui.LcdCap;
+
+	qt.CheckVSpeed = ui.CheckVSpeed;
+	qt.LcdVSpeed = ui.LcdVSpeed;
+
+	qt.CheckHSpeed = ui.CheckHSpeed;
+	qt.LcdHSpeed = ui.LcdHSpeed;
+
 	qt.CheckThrottle = ui.CheckThrottle;
 	qt.LcdThrottle = ui.LcdThrottle;
 	qt.ControlThrottle = ui.ControlThrottle;
@@ -19,7 +28,6 @@ QtGuiApp::QtGuiApp(QWidget *parent)
 	p3d.P3dConfig(&qt);
 	p3d.P3dConnect();
 	p3d.P3dConfig();
-	p3d.MbedReadConnect(5, 115200);
 	QTimer *timer = new QTimer(this);
 	connect(timer, SIGNAL(timeout()), this, SLOT(printData()));
 	timer->start(5);
@@ -27,8 +35,7 @@ QtGuiApp::QtGuiApp(QWidget *parent)
 
 void QtGuiApp::printData()
 {
-	if (p3d.MbedReadAvailable())
-		on_MbedReadButton_clicked();
+
 	//p3d.P3dRequestData();
 	p3d.P3dStart();
 	//p3d.P3dPrintData('2');
@@ -45,6 +52,43 @@ void QtGuiApp::on_CheckAltitude_stateChanged(int arg1)
 	else {
 		p3d.Queue.QueueDelateElement(DEF_ALTITUDE);
 		ui.LcdAltitude->setEnabled(false);
+	}
+}
+
+
+void QtGuiApp::on_CheckCap_stateChanged(int arg1)
+{
+	if (arg1) {
+		p3d.Queue.QueueAddElement(DEF_CAP);
+		ui.LcdCap->setEnabled(true);
+	}
+	else {
+		p3d.Queue.QueueDelateElement(DEF_CAP);
+		ui.LcdCap->setEnabled(false);
+	}
+}
+
+void QtGuiApp::on_CheckVSpeed_stateChanged(int arg1)
+{
+	if (arg1) {
+		p3d.Queue.QueueAddElement(DEF_VSpeed);
+		ui.LcdVSpeed->setEnabled(true);
+	}
+	else {
+		p3d.Queue.QueueDelateElement(DEF_VSpeed);
+		ui.LcdVSpeed->setEnabled(false);
+	}
+}
+
+void QtGuiApp::on_CheckHSpeed_stateChanged(int arg1)
+{
+	if (arg1) {
+		p3d.Queue.QueueAddElement(DEF_HSpeed);
+		ui.LcdHSpeed->setEnabled(true);
+	}
+	else {
+		p3d.Queue.QueueDelateElement(DEF_HSpeed);
+		ui.LcdHSpeed->setEnabled(false);
 	}
 }
 
@@ -67,6 +111,4 @@ void QtGuiApp::on_ControlThrottle_valueChanged(int value)
 }
 
 void QtGuiApp::on_MbedReadButton_clicked() {
-	QString text = ui.TextEdit->toPlainText();
-	ui.TextEdit->setText(text + QString::fromStdString(p3d.MbedRead()));
 }

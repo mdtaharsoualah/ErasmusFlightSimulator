@@ -42,7 +42,7 @@
     <ClCompile Include="Resources\src\QtGuiApp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Resources\src\Serial.cpp">
+    <ClCompile Include="Convert.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -56,7 +56,16 @@
     <ClInclude Include="Resources\inc\P3d.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Resources\inc\Serial.h">
+    <ClInclude Include="Resources\inc\Usbcan32.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources\inc\UsbCanLs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources\inc\UsbCanUp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Convert.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
