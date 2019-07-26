@@ -42,6 +42,8 @@ public:
 
 	void ResetData();
 
+	static void UcanCallbackFktEx(tUcanHandle UcanHandle_p, DWORD	dwEvent_p, BYTE	bChannel_p, void*pArg_p);
+
 private:
 	UCANRET bRet;
 	tUcanHandle UcanHandle;

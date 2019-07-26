@@ -1,7 +1,7 @@
 /****************************************************************************
 
   (c) SYSTEC electronic GmbH, D-08468 Heinsdorfergrund, Am Windrad 2
-	  www.systec-electronic.com
+      www.systec-electronic.com
 
   Project:      USB-CANmodul
 
@@ -9,16 +9,16 @@
 
   -------------------------------------------------------------------------
 
-				$RCSfile:$
+                $RCSfile:$
 
-				$Author: R.Dietzsch $
+                $Author: R.Dietzsch $
 
-				$Revision: 1.1 $  $Date: 2003/03/18 $
+                $Revision: 1.1 $  $Date: 2003/03/18 $
 
-				$State: $
+                $State: $
 
-				Build Environment:
-					MSVC 5.0 and MSVC 6.0
+                Build Environment:
+                    MSVC 5.0 and MSVC 6.0
 
   -------------------------------------------------------------------------
 
@@ -26,11 +26,11 @@
 
   2003/03/17 r.d.:  Parameter m_dwSerialNr in tUcanHardwareInfo included.
   2003/03/18 r.d.:  New Function UcanInitCanEx() for additional init parameters.
-					UcanGetVersion() returns standard version format.
+                    UcanGetVersion() returns standard version format.
   2005/10/12 r.d.:  Several new functions included for Multiport CAN-to-USB 3004006
   2006/06/06 r.d.:  - Support of USB-CANmodul1 "Basic" 3204000 or USB-CANmodul2 "Advanced" 3204002
-					- New member variable m_dwProductCode in struct tUcanHardwareInfoEx to find out the hardware type.
-					- New member variables m_wNrOfRxBufferEntries and m_wNrOfTxBufferEntries in struct tUcanInitCanParam to change number of buffer entries.
+                    - New member variable m_dwProductCode in struct tUcanHardwareInfoEx to find out the hardware type.
+                    - New member variables m_wNrOfRxBufferEntries and m_wNrOfTxBufferEntries in struct tUcanInitCanParam to change number of buffer entries.
 
 ****************************************************************************/
 
@@ -48,43 +48,43 @@ extern "C"
 
 #if defined (WIN32) || defined (LINUX) || defined (__linux__)
 
-	// obsolate define
-#ifndef STDCALL
-#define STDCALL __stdcall
-#endif
+    // obsolate define
+    #ifndef STDCALL
+    #define STDCALL __stdcall
+    #endif
 
-// new define
-#ifndef PUBLIC
-#define PUBLIC __stdcall
-#endif
+    // new define
+    #ifndef PUBLIC
+    #define PUBLIC __stdcall
+    #endif
 
 #else
 
-	// obsolate define
-#ifndef STDCALL
-#define STDCALL far pascal
-#endif
+    // obsolate define
+    #ifndef STDCALL
+    #define STDCALL far pascal
+    #endif
 
-// new define
-#ifndef PUBLIC
-#define PUBLIC far pascal
-#endif
+    // new define
+    #ifndef PUBLIC
+    #define PUBLIC far pascal
+    #endif
 
 #endif
 
 #if !defined (_TCHAR_DEFINED)
-#if defined (__linux__)
-#define _TCHAR_DEFINED
-#ifdef UNICODE
-	typedef wchar_t     _TCHAR;
-#define _T(x)       L##x
-#else
-	typedef char        _TCHAR;
-#define _T(x)       x
-#endif
-#else
-#include <tchar.h>
-#endif
+    #if defined (__linux__)
+        #define _TCHAR_DEFINED
+        #ifdef UNICODE
+            typedef wchar_t     _TCHAR;
+            #define _T(x)       L##x
+        #else
+            typedef char        _TCHAR;
+            #define _T(x)       x
+        #endif
+    #else
+        #include <tchar.h>
+    #endif
 #endif
 
 
@@ -180,19 +180,19 @@ extern "C"
 
 #if !defined (_WIN32_WCE)
 
-	// maximum number of modules, that are supported (can not be changed!)
-#define USBCAN_MAX_MODULES                  64
+    // maximum number of modules, that are supported (can not be changed!)
+    #define USBCAN_MAX_MODULES                  64
 
-// maximum number of applications, that can make use of this DLL (can not be changed!)
-#define USBCAN_MAX_INSTANCES                64
+    // maximum number of applications, that can make use of this DLL (can not be changed!)
+    #define USBCAN_MAX_INSTANCES                64
 
 #else
 
-	// maximum number of modules, that are supported (can not be changed!)
-#define USBCAN_MAX_MODULES                  9
+    // maximum number of modules, that are supported (can not be changed!)
+    #define USBCAN_MAX_MODULES                  9
 
-// maximum number of applications, that can make use of this DLL (can not be changed!)
-#define USBCAN_MAX_INSTANCES                9
+    // maximum number of applications, that can make use of this DLL (can not be changed!)
+    #define USBCAN_MAX_INSTANCES                9
 
 #endif
 
@@ -222,8 +222,8 @@ extern "C"
 // - 307,69 bit/sec, sample point 84,62% =  0x1901
 
 #define USBCAN_BAUD_USE_BTREX               0x0000              // uses predefined extended values of baudrate for
-																// Multiport 3004006, USB-CANmodul1 3204000 or USB-CANmodul2 3204002
-																// (do not use for GW-001/002)
+                                                                // Multiport 3004006, USB-CANmodul1 3204000 or USB-CANmodul2 3204002
+                                                                // (do not use for GW-001/002)
 #define USBCAN_BAUD_AUTO                    0xFFFF              // automatic baudrate detection (not implemented in this version)
 
 // pre-defined baudrate values for Multiport 3004006, USB-CANmodul1 3204000 or USB-CANmodul2 3204002 (use function UcanInitCanEx or UcanSetBaudrateEx)
@@ -363,7 +363,7 @@ extern "C"
 #define USBCAN_WARN_FW_TXMSGLOST            0x87                // (not implemented yet)
 #define USBCAN_WARN_NULL_PTR                0x90                // pointer to address is NULL (function will not work correctly)
 #define USBCAN_WARN_TXLIMIT                 0x91                // function UcanWriteCanMsgEx() was called for sending more CAN messages than one
-																//      But not all of them could be sent because the buffer is full.
+                                                                //      But not all of them could be sent because the buffer is full.
 //                                                              //      Variable pointed by pdwCount_p received the number of succeddfully sent CAN messages.
 #define USBCAN_WARN_BUSY                    0x92                // place holder (only for internaly use)
 
@@ -377,8 +377,8 @@ extern "C"
 
 #define USBCAN_CHECK_TX_OK(ret) \
     ((ret == USBCAN_SUCCESSFUL) || (ret > USBCAN_WARNING))      // checks if function UcanWriteCanMsg..() successfuly wrote CAN message(s)
-																//      While using UcanWriteCanMsgEx() the number of sent CAN messages can be less than
-																//      the numer of CAN messages which shold be sent. (see also USBCAN_WARN_TXLIMIT)
+                                                                //      While using UcanWriteCanMsgEx() the number of sent CAN messages can be less than
+                                                                //      the numer of CAN messages which shold be sent. (see also USBCAN_WARN_TXLIMIT)
 #define USBCAN_CHECK_TX_SUCCESS(ret) \
     (ret == USBCAN_SUCCESSFUL)                                  // checks if function UcanWriteCanMsgEx() successfuly wrote all CAN message(s)
 
@@ -422,7 +422,7 @@ extern "C"
 #define USBCAN_CANERR_REGTEST               0x0100              // Register test of the SJA1000 failed
 #define USBCAN_CANERR_MEMTEST               0x0200              // Memory test failed
 #define USBCAN_CANERR_TXMSGLOST             0x0400              // transmit CAN message was automatically deleted by firmware
-																// (because transmit timeout run over)
+                                                                // (because transmit timeout run over)
 
 // USB error messages (is returned with UcanGetStatus..() )
 #define USBCAN_USBERR_OK                    0x0000              // no error
@@ -461,7 +461,7 @@ extern "C"
 #define USBCAN_RESET_NO_RXBUFFER_SYS        0x00000400          // no RX message buffer reset at kernel driver level
 #define USBCAN_RESET_NO_RXBUFFER_FW         0x00000800          // no RX message buffer reset at firmware level
 #define USBCAN_RESET_FIRMWARE               0xFFFFFFFF          // buffers, counters and CANCRTL will be reseted indirectly during firmware reset
-																//      (means automatically disconnect from USB port in 500ms)
+                                                                //      (means automatically disconnect from USB port in 500ms)
 
 // combinations of flags for UcanResetCanEx()
 //      NOTE: for combinations use OR (example: USBCAN_RESET_NO_COUNTER_ALL | USBCAN_RESET_NO_BUFFER_ALL)
@@ -652,9 +652,9 @@ extern "C"
 // the following flags can be cobined
 #define USBCAN_CYCLIC_FLAG_START            0x80000000L     // global enable of transmission of cyclic CAN messages
 #define USBCAN_CYCLIC_FLAG_SEQUMODE         0x40000000L     // list of cyclcic CAN messages will be processed in
-															// sequential mode (otherwise in parallel mode)
+                                                            // sequential mode (otherwise in parallel mode)
 #define USBCAN_CYCLIC_FLAG_NOECHO           0x00010000L     // each sent CAN message of the list will be sent back
-															// to the host
+                                                            // to the host
 
 // each CAN message from the list can be enabled or disabled separatly
 #define USBCAN_CYCLIC_FLAG_LOCK_0           0x00000001L     // if some of these bits are set, then the according
@@ -702,17 +702,17 @@ extern "C"
 
 // Typedef for the USB-CAN Handle
 #ifndef UCHANDLE_DEFINED
-#define UCHANDLE_DEFINED
-	typedef BYTE tUcanHandle;
+    #define UCHANDLE_DEFINED
+    typedef BYTE tUcanHandle;
 #endif
 
-	// for further use
+// for further use
 #define UCANRET         BYTE
 #define UCANBYTE        BYTE
 #define UCANWORD        WORD
 #define UCANDWORD       DWORD
 
-	typedef BYTE tUcanMode;                     // definitions of CAN modes
+typedef BYTE tUcanMode;                     // definitions of CAN modes
 
 #define kUcanModeNormal         0x00        // normal mode (send and reciceive)
 #define kUcanModeListenOnly     0x01        // listen only mode (only reciceive)
@@ -722,7 +722,7 @@ extern "C"
 
 
 // version types for function UcanGetVersionEx()
-	typedef DWORD tUcanVersionType;
+typedef DWORD tUcanVersionType;
 
 #define kVerTypeUserLib         0x00000001L // version of the library
 #define kVerTypeUserDll         0x00000001L // version of USBCAN32.DLL (for Win2k, WinXP or higher) USBCANCE.DLL (for WinCE)
@@ -738,866 +738,865 @@ extern "C"
 #define kVerTypeSysL21          0x0000000BL // version of USBCANL21.SYS                          (loader for USB-CANmodul2 G4)
 #define kVerTypeSysL22          0x0000000CL // version of USBCANL22.SYS                          (loader for USB-CANmodul1 G4)
 #define kVerTypeSysL23          0x0000000DL // version of USBCANL23.SYS                          (loader for USB-CANmodul8/16 G4)
-#define kVerTypeSysLex          0x0000000EL // version of USBCANLEX.SYS                          (loader for all USB-CANmodul types of G4)
 
 
-	// Typedef for the Callback function
-	typedef void (PUBLIC *tCallbackFkt) (tUcanHandle UcanHandle_p, BYTE bEvent_p);
-	typedef void (PUBLIC *tCallbackFktEx) (tUcanHandle UcanHandle_p, DWORD dwEvent_p, BYTE bChannel_p, void* pArg_p);
+// Typedef for the Callback function
+typedef void (PUBLIC *tCallbackFkt) (tUcanHandle UcanHandle_p, BYTE bEvent_p);
+typedef void (PUBLIC *tCallbackFktEx) (tUcanHandle UcanHandle_p, DWORD dwEvent_p, BYTE bChannel_p, void* pArg_p);
 
-	// Typedef for the Connection-Control function
-	typedef void (PUBLIC *tConnectControlFkt) (BYTE bEvent_p, DWORD dwParam_p);
-	typedef void (PUBLIC *tConnectControlFktEx) (DWORD dwEvent_p, DWORD dwParam_p, void* pArg_p);
+// Typedef for the Connection-Control function
+typedef void (PUBLIC *tConnectControlFkt) (BYTE bEvent_p, DWORD dwParam_p);
+typedef void (PUBLIC *tConnectControlFktEx) (DWORD dwEvent_p, DWORD dwParam_p, void* pArg_p);
 
-	// Structure for the CAN message (suitable for CAN messages according to spec. CAN2.0B)
-	typedef struct _tCanMsgStruct
-	{
-		DWORD   m_dwID;                         // CAN Identifier
-		BYTE    m_bFF;                          // CAN Frame format (BIT7=1: 29BitID / BIT6=1: RTR-Frame / BIT5=1: Tx echo)
-		BYTE    m_bDLC;                         // CAN Data Length Code
-		BYTE    m_bData[8];                     // CAN Data
-		DWORD   m_dwTime;                       // Time in ms
+// Structure for the CAN message (suitable for CAN messages according to spec. CAN2.0B)
+typedef struct _tCanMsgStruct
+{
+    DWORD   m_dwID;                         // CAN Identifier
+    BYTE    m_bFF;                          // CAN Frame format (BIT7=1: 29BitID / BIT6=1: RTR-Frame / BIT5=1: Tx echo)
+    BYTE    m_bDLC;                         // CAN Data Length Code
+    BYTE    m_bData[8];                     // CAN Data
+    DWORD   m_dwTime;                       // Time in ms
 
-		// NOTE:
-		//
-		// Value of m_dwTime only is valid for received CAN messages. It is ignored for
-		// CAN messages to send.
-		//
-		// Value m_dwTime will be received from Hardware. Thus it is
-		// important to know that only 24 bits of the value are valid.
-		// It means that the timer value will be reset to zero each
-		// 2^24 milliseconds = 4,66 hours. If you need to calculate
-		// a time difference you should use the macro USBCAN_CALC_TIMEDIFF().
-		//
-		// Since driver version V4.11 the time stamp parameter is corrected to 32 bits.
-		// ( but the marco USBCAN_CALC_TIMEDIFF() does work too in this version )
+    // NOTE:
+    //
+    // Value of m_dwTime only is valid for received CAN messages. It is ignored for
+    // CAN messages to send.
+    //
+    // Value m_dwTime will be received from Hardware. Thus it is
+    // important to know that only 24 bits of the value are valid.
+    // It means that the timer value will be reset to zero each
+    // 2^24 milliseconds = 4,66 hours. If you need to calculate
+    // a time difference you should use the macro USBCAN_CALC_TIMEDIFF().
+    //
+    // Since driver version V4.11 the time stamp parameter is corrected to 32 bits.
+    // ( but the marco USBCAN_CALC_TIMEDIFF() does work too in this version )
 
-	} tCanMsgStruct;
+} tCanMsgStruct;
 
-	//#define USBCAN_CALC_TIMEDIFF(old_time,new_time) \
-	//    ((new_time) >= (old_time)) ?                \
-	//            ((new_time) - (old_time)) :         \
-	//        -1* ((old_time) - (new_time))
+//#define USBCAN_CALC_TIMEDIFF(old_time,new_time) \
+//    ((new_time) >= (old_time)) ?                \
+//            ((new_time) - (old_time)) :         \
+//        -1* ((old_time) - (new_time))
 #define USBCAN_CALC_TIMEDIFF(old_time,new_time)     ((new_time) - (old_time))
 
 // Structure with the stati (Function: UcanGetStatus() or UcanGetStatusEx() )
-	typedef struct _tStatusStruct
-	{
-		WORD        m_wCanStatus;                   // current CAN status
-		WORD        m_wUsbStatus;                   // current USB status
+typedef struct _tStatusStruct
+{
+    WORD        m_wCanStatus;                   // current CAN status
+    WORD        m_wUsbStatus;                   // current USB status
 
-	} tStatusStruct;
+} tStatusStruct;
 
-	// Structure with init parameters for function UcanInitCanEx() and UcanInitCanEx2()
-	typedef struct _tUcanInitCanParam
-	{
-		DWORD       m_dwSize;                       // [IN] size of this structure
-		BYTE        m_bMode;                        // [IN] slecets the mode of CAN controller (see kUcanMode...)
+// Structure with init parameters for function UcanInitCanEx() and UcanInitCanEx2()
+typedef struct _tUcanInitCanParam
+{
+    DWORD       m_dwSize;                       // [IN] size of this structure
+    BYTE        m_bMode;                        // [IN] slecets the mode of CAN controller (see kUcanMode...)
 
-		// Baudrate Registers for GW-001 or GW-002
-		BYTE        m_bBTR0;                        // [IN] Bus Timing Register 0 (SJA1000 - use high byte USBCAN_BAUD_...)
-		BYTE        m_bBTR1;                        // [IN] Bus Timing Register 1 (SJA1000 - use low  byte USBCAN_BAUD_...)
+    // Baudrate Registers for GW-001 or GW-002
+    BYTE        m_bBTR0;                        // [IN] Bus Timing Register 0 (SJA1000 - use high byte USBCAN_BAUD_...)
+    BYTE        m_bBTR1;                        // [IN] Bus Timing Register 1 (SJA1000 - use low  byte USBCAN_BAUD_...)
 
-		BYTE        m_bOCR;                         // [IN] Output Controll Register of SJA1000 (should be 0x1A)
-		DWORD       m_dwAMR;                        // [IN] Acceptance Mask Register (SJA1000)
-		DWORD       m_dwACR;                        // [IN] Acceptance Code Register (SJA1000)
+    BYTE        m_bOCR;                         // [IN] Output Controll Register of SJA1000 (should be 0x1A)
+    DWORD       m_dwAMR;                        // [IN] Acceptance Mask Register (SJA1000)
+    DWORD       m_dwACR;                        // [IN] Acceptance Code Register (SJA1000)
 
-		// since version V3.00 - is ignored from function UcanInitCanEx() and until m_dwSize < 20
-		DWORD       m_dwBaudrate;                   // [IN] Baudrate Register for Multiport 3004006, USB-CANmodul1 3204000 or USB-CANmodul2 3204002
-													//      (use USBCAN_BAUDEX_...)
+    // since version V3.00 - is ignored from function UcanInitCanEx() and until m_dwSize < 20
+    DWORD       m_dwBaudrate;                   // [IN] Baudrate Register for Multiport 3004006, USB-CANmodul1 3204000 or USB-CANmodul2 3204002
+                                                //      (use USBCAN_BAUDEX_...)
 
-		// since version V3.05 - is ignored unltil m_dwSize < 24
-		WORD        m_wNrOfRxBufferEntries;         // [IN] number of receive buffer entries (default is 4096)
-		WORD        m_wNrOfTxBufferEntries;         // [IN] number of transmit buffer entries (default is 4096)
+    // since version V3.05 - is ignored unltil m_dwSize < 24
+    WORD        m_wNrOfRxBufferEntries;         // [IN] number of receive buffer entries (default is 4096)
+    WORD        m_wNrOfTxBufferEntries;         // [IN] number of transmit buffer entries (default is 4096)
 
-	} tUcanInitCanParam;
+} tUcanInitCanParam;
 
-	// Structure with the hardware properties of a USB-CANmodul (Function: UcanGetHardwareInf())
-	typedef struct _tUcanHardwareInfo
-	{
-		BYTE        m_bDeviceNr;                    // [OUT] device number of the USB-CANmodul
-		tUcanHandle m_UcanHandle;                   // [OUT] USB-CAN-Handle assigned by the library
-		DWORD       m_dwReserved;                   // [OUT] reserved
+// Structure with the hardware properties of a USB-CANmodul (Function: UcanGetHardwareInf())
+typedef struct _tUcanHardwareInfo
+{
+    BYTE        m_bDeviceNr;                    // [OUT] device number of the USB-CANmodul
+    tUcanHandle m_UcanHandle;                   // [OUT] USB-CAN-Handle assigned by the library
+    DWORD       m_dwReserved;                   // [OUT] reserved
 
-		// values only for CAN channel 0
-		BYTE        m_bBTR0;                        // [OUT] Bus Timing Register 0 (SJA1000)
-		BYTE        m_bBTR1;                        // [OUT] Bus Timing Register 1 (SJA1000)
-		BYTE        m_bOCR;                         // [OUT] Output Control Register (SJA1000)
-		DWORD       m_dwAMR;                        // [OUT] Acceptance Mask Register (SJA1000)
-		DWORD       m_dwACR;                        // [OUT] Acceptance Code Register (SJA1000)
+    // values only for CAN channel 0
+    BYTE        m_bBTR0;                        // [OUT] Bus Timing Register 0 (SJA1000)
+    BYTE        m_bBTR1;                        // [OUT] Bus Timing Register 1 (SJA1000)
+    BYTE        m_bOCR;                         // [OUT] Output Control Register (SJA1000)
+    DWORD       m_dwAMR;                        // [OUT] Acceptance Mask Register (SJA1000)
+    DWORD       m_dwACR;                        // [OUT] Acceptance Code Register (SJA1000)
 
-		// new values since 17.03.03 Version V2.16
-		BYTE        m_bMode;                        // [OUT] mode of CAN controller (see kUcanMode...)
-		DWORD       m_dwSerialNr;                   // [OUT] serial number from USB-CANmodul
+    // new values since 17.03.03 Version V2.16
+    BYTE        m_bMode;                        // [OUT] mode of CAN controller (see kUcanMode...)
+    DWORD       m_dwSerialNr;                   // [OUT] serial number from USB-CANmodul
 
-	} tUcanHardwareInfo;
+} tUcanHardwareInfo;
 
-	typedef struct _tUcanHardwareInfoEx
-	{
-		DWORD       m_dwSize;                       // [IN]  size of this structure
-		tUcanHandle m_UcanHandle;                   // [OUT] USB-CAN-Handle assigned by the DLL
-		BYTE        m_bDeviceNr;                    // [OUT] device number of the USB-CANmodul
-		DWORD       m_dwSerialNr;                   // [OUT] serial number from USB-CANmodul
-		DWORD       m_dwFwVersionEx;                // [OUT] version of firmware
-		DWORD       m_dwProductCode;                // [OUT] product code (for differentiate between different hardware modules)
-													//       see constants USBCAN_PRODCODE_...
+typedef struct _tUcanHardwareInfoEx
+{
+    DWORD       m_dwSize;                       // [IN]  size of this structure
+    tUcanHandle m_UcanHandle;                   // [OUT] USB-CAN-Handle assigned by the DLL
+    BYTE        m_bDeviceNr;                    // [OUT] device number of the USB-CANmodul
+    DWORD       m_dwSerialNr;                   // [OUT] serial number from USB-CANmodul
+    DWORD       m_dwFwVersionEx;                // [OUT] version of firmware
+    DWORD       m_dwProductCode;                // [OUT] product code (for differentiate between different hardware modules)
+                                                //       see constants USBCAN_PRODCODE_...
 
-		DWORD       m_adwUniqueId[4];               // [OUT] unique ID (available since V5.01) !!! m_dwSize must be >= USBCAN_HWINFO_SIZE_V2
-		DWORD       m_dwFlags;                      // [OUT] additional flags
-	}
-	tUcanHardwareInfoEx;
+    DWORD       m_adwUniqueId[4];               // [OUT] unique ID (available since V5.01) !!! m_dwSize must be >= USBCAN_HWINFO_SIZE_V2
+    DWORD       m_dwFlags;                      // [OUT] additional flags
+}
+tUcanHardwareInfoEx;
 #define USBCAN_HWINFO_SIZE_V1           0x12    // size without m_adwDeviceId[]
 #define USBCAN_HWINFO_SIZE_V2           0x22    // size with m_adwDeviceId[]
 #define USBCAN_HWINFO_SIZE_V3           0x26    // size with m_adwDeviceId[] and m_dwFlags
 
-	typedef struct _tUcanHardwareInitInfo
-	{
-		DWORD           m_dwSize;                   // [IN]  size of this structure
-		BOOL            m_fDoInitialize;            // [IN]  specifies if the found module should be initialized by the DLL
-		tUcanHandle*    m_pUcanHandle;              // [IN]  pointer to variable receiving the USB-CAN-Handle
-		tCallbackFktEx  m_fpCallbackFktEx;          // [IN]  pointer to callback function
-		void*           m_pCallbackArg;             // [IN]  pointer to user defined parameter for callback function
-		BOOL            m_fTryNext;                 // [IN]  specifies if a further module should be found
-	}
-	tUcanHardwareInitInfo;
+typedef struct _tUcanHardwareInitInfo
+{
+    DWORD           m_dwSize;                   // [IN]  size of this structure
+    BOOL            m_fDoInitialize;            // [IN]  specifies if the found module should be initialized by the DLL
+    tUcanHandle*    m_pUcanHandle;              // [IN]  pointer to variable receiving the USB-CAN-Handle
+    tCallbackFktEx  m_fpCallbackFktEx;          // [IN]  pointer to callback function
+    void*           m_pCallbackArg;             // [IN]  pointer to user defined parameter for callback function
+    BOOL            m_fTryNext;                 // [IN]  specifies if a further module should be found
+}
+tUcanHardwareInitInfo;
 
-	typedef void (PUBLIC *tUcanEnumCallback) (
-		DWORD                  dwIndex_p,           // [IN]  gives a sequential number of the enumerated module
-		BOOL                   fIsUsed_p,           // [IN]  set to TRUE if the module is used by another application
-		tUcanHardwareInfoEx*   pHwInfoEx_p,         // [IN]  pointer to the hardware info structure identifying the enumerated module
-		tUcanHardwareInitInfo* pInitInfo_p,         // [IN]  pointer to an init structure for initializing the module
-		void*                  pArg_p);             // [IN]  user argument which was overhand with UcanEnumerateHardware()
+typedef void (PUBLIC *tUcanEnumCallback) (
+    DWORD                  dwIndex_p,           // [IN]  gives a sequential number of the enumerated module
+    BOOL                   fIsUsed_p,           // [IN]  set to TRUE if the module is used by another application
+    tUcanHardwareInfoEx*   pHwInfoEx_p,         // [IN]  pointer to the hardware info structure identifying the enumerated module
+    tUcanHardwareInitInfo* pInitInfo_p,         // [IN]  pointer to an init structure for initializing the module
+    void*                  pArg_p);             // [IN]  user argument which was overhand with UcanEnumerateHardware()
 
-	typedef struct _tUcanChannelInfo
-	{
-		DWORD       m_dwSize;                       // [IN]  size of this structure
-		BYTE        m_bMode;                        // [OUT] slecets the mode of CAN controller (see kUcanMode...)
-		BYTE        m_bBTR0;                        // [OUT] Bus Timing Register 0 (SJA1000 - use high byte USBCAN_BAUD_...)
-		BYTE        m_bBTR1;                        // [OUT] Bus Timing Register 1 (SJA1000 - use low  byte USBCAN_BAUD_...)
-		BYTE        m_bOCR;                         // [OUT] Output Controll Register of SJA1000 (should be 0x1A)
-		DWORD       m_dwAMR;                        // [OUT] Acceptance Mask Register (SJA1000)
-		DWORD       m_dwACR;                        // [OUT] Acceptance Code Register (SJA1000)
-		DWORD       m_dwBaudrate;                   // [OUT] Baudrate Register for Multiport 3004006, USB-CANmodul1 3204000 or USB-CANmodul2 3204002 (use USBCAN_BAUDEX_...)
-		BOOL        m_fCanIsInit;                   // [OUT] is TRUE if CAN interface was initialized, otherwise FALSE
-		WORD        m_wCanStatus;                   // [OUT] CAN status (same as received from function UcanGetStatus..())
+typedef struct _tUcanChannelInfo
+{
+    DWORD       m_dwSize;                       // [IN]  size of this structure
+    BYTE        m_bMode;                        // [OUT] slecets the mode of CAN controller (see kUcanMode...)
+    BYTE        m_bBTR0;                        // [OUT] Bus Timing Register 0 (SJA1000 - use high byte USBCAN_BAUD_...)
+    BYTE        m_bBTR1;                        // [OUT] Bus Timing Register 1 (SJA1000 - use low  byte USBCAN_BAUD_...)
+    BYTE        m_bOCR;                         // [OUT] Output Controll Register of SJA1000 (should be 0x1A)
+    DWORD       m_dwAMR;                        // [OUT] Acceptance Mask Register (SJA1000)
+    DWORD       m_dwACR;                        // [OUT] Acceptance Code Register (SJA1000)
+    DWORD       m_dwBaudrate;                   // [OUT] Baudrate Register for Multiport 3004006, USB-CANmodul1 3204000 or USB-CANmodul2 3204002 (use USBCAN_BAUDEX_...)
+    BOOL        m_fCanIsInit;                   // [OUT] is TRUE if CAN interface was initialized, otherwise FALSE
+    WORD        m_wCanStatus;                   // [OUT] CAN status (same as received from function UcanGetStatus..())
 
-	} tUcanChannelInfo;
+} tUcanChannelInfo;
 
-	// structure with transfered packet information
-	typedef struct _tUcanMsgCountInfo
-	{
-		WORD        m_wSentMsgCount;                // counter of sent CAN messages
-		WORD        m_wRecvdMsgCount;               // counter of received CAN messages
+// structure with transfered packet information
+typedef struct _tUcanMsgCountInfo
+{
+    WORD        m_wSentMsgCount;                // counter of sent CAN messages
+    WORD        m_wRecvdMsgCount;               // counter of received CAN messages
 
-	} tUcanMsgCountInfo;
+} tUcanMsgCountInfo;
 
-	typedef struct _tUcanMsgCountInfoEx
-	{
-		DWORD       m_dwSentMsgCount;               // counter of sent CAN messages
-		DWORD       m_dwRecvdMsgCount;              // counter of received CAN messages
+typedef struct _tUcanMsgCountInfoEx
+{
+    DWORD       m_dwSentMsgCount;               // counter of sent CAN messages
+    DWORD       m_dwRecvdMsgCount;              // counter of received CAN messages
 
-	} tUcanMsgCountInfoEx;
+} tUcanMsgCountInfoEx;
 
-	typedef struct _tUcanRtcStatus
-	{
-		DWORD       m_dwSize;                       // [IN]  size of this structure
-		BYTE        m_bSeconds;                     // [OUT]
-		BYTE        m_bMinutes;                     // [OUT]
-		BYTE        m_bHours;                       // [OUT]
-		BYTE        m_bDays;                        // [OUT]
-		BYTE        m_bWeekdays;                    // [OUT]
-		BYTE        m_bMonthsCentury;               // [OUT]
-		BYTE        m_bYears;                       // [OUT]
-	}
-	tUcanRtcStatus;
+typedef struct _tUcanRtcStatus
+{
+    DWORD       m_dwSize;                       // [IN]  size of this structure
+    BYTE        m_bSeconds;                     // [OUT]
+    BYTE        m_bMinutes;                     // [OUT]
+    BYTE        m_bHours;                       // [OUT]
+    BYTE        m_bDays;                        // [OUT]
+    BYTE        m_bWeekdays;                    // [OUT]
+    BYTE        m_bMonthsCentury;               // [OUT]
+    BYTE        m_bYears;                       // [OUT]
+}
+tUcanRtcStatus;
 
-	typedef struct _tUcanSdCardStatus
-	{
-		DWORD       m_dwSize;                       // [IN]  size of this structure
-		DWORD       m_dwFlags;                      // [OUT] (SD card set or not set)
-		DWORD       m_dwTotalSize;                  // [OUT] (in 1024 bytes)
-		DWORD       m_dwFreeSize;                   // [OUT] (in 1024 bytes)
-	}
-	tUcanSdCardStatus;
+typedef struct _tUcanSdCardStatus
+{
+    DWORD       m_dwSize;                       // [IN]  size of this structure
+    DWORD       m_dwFlags;                      // [OUT] (SD card set or not set)
+    DWORD       m_dwTotalSize;                  // [OUT] (in 1024 bytes)
+    DWORD       m_dwFreeSize;                   // [OUT] (in 1024 bytes)
+}
+tUcanSdCardStatus;
 
 #if !defined (_WIN32_WCE)
 #pragma pack(pop)
 #endif
 
 
-	//---------------------------------------------------------------------------
-	// function prototypes
-	//---------------------------------------------------------------------------
-
-
-	//---------------------------------------------------------------------------
-	//
-	// Function:    UcanSetDebugMode()
-	//
-	// Description: sets a new debug mode
-	//
-	// Parameters:  dwDbgLevel_p        = debug level (bit format)
-	//              pszFilePathName_p   = file path to debug log file
-	//              dwFlags_p           = 0x00000000 no file append mode
-	//                                    0x00000001 file append mode
-	//
-	// Return:      BOOL    = FALSE if logfile not created otherwise TRUE
-	//
-	//---------------------------------------------------------------------------
-
-	BOOL PUBLIC UcanSetDebugMode(DWORD dwDbgLevel_p, _TCHAR* pszFilePathName_p, DWORD dwFlags_p);
-
-
-	//---------------------------------------------------------------------------
-	//
-	// Function:    UcanGetVersion()
-	//
-	// Description: returns software version of USBCAN32.DLL
-	//
-	// NOTE: This function is obsolete. Pleas use UcanGetVersionEx() instead of.
-	//
-	// Parameters:  none
-	//
-	// Returns:     software version
-	//                  format: Bits 0-7:   least significant version number (binary)
-	//                          Bits 8-15:  most significant version number (binary)
-	//                          Bits 16-30: reserved
-	//                          Bit 31:     1 = customer specific version
-	//
-	//---------------------------------------------------------------------------
-
-	DWORD PUBLIC UcanGetVersion(void);
-
-
-	//---------------------------------------------------------------------------
-	//
-	// Function:    UcanGetVersionEx()
-	//
-	// Description: returns software version of different software modules
-	//
-	// Parameters:  VerType_p   = [IN] which version should be returned
-	//                                 kVerTypeUserDll returnes Version of USBCAN32.DLL
-	//                                 (see tUcanVersionType for more information)
-	//
-	// Returns:     software version
-	//
-	//                  format: Bit 0-7:    Version     (use USBCAN_MAJOR_VER() )
-	//                          Bit 8-15:   Revision    (use USBCAN_MINOR_VER() )
-	//                          Bit 16-31:  Release     (use USBCAN_RELEASE_VER() )
-	//
-	// NOTE: If returned version is zero, then value of VerType_p
-	//       is unknown or not supported or the file version could not be read.
-	//
-	//---------------------------------------------------------------------------
-
-	DWORD PUBLIC UcanGetVersionEx(tUcanVersionType VerType_p);
-
-
-	//---------------------------------------------------------------------------
-	//
-	// Function:    UcanGetFwVersion()
-	//
-	// Description: returns version of the firmware within USB-CANmodul
-	//
-	// Parameters:  UcanHandle_p    = [IN] USBCAN handle
-	//
-	// Return:      DWORD           = version in extended format (see UcanGetVersionEx)
-	//
-	//---------------------------------------------------------------------------
-
-	DWORD PUBLIC UcanGetFwVersion(tUcanHandle UcanHandle_p);
-
-
-	//---------------------------------------------------------------------------
-	//
-	// Function:    UcanInitHwConnectControl(), UcanInitHwConnectControlEx
-	//
-	// Description: Initializes the Hardware-Connection-Control function
-	//
-	// Parameters:  fpConnectControlFkt_p   = [IN] address to Hardware-Connection-Control function
-	//
-	//              fpConnectControlFktEx_p = [IN] address of the new Hardware-Connection-Control function
-	//                                             NULL: no Callback function is used
-	//              pCallbackArg_p          = [IN] additional user defined parameter for callback function
-	//
-	// NOTE:        Do not set function pointer of type tConnectControlFkt to fpConnectControlFktEx_p and
-	//              do not set function pointer of type tConnectControlFktEx to fpConnectControlFkt_p !
-	//
-	// Return:      result of the function (see USBCAN_ERR_...)
-	//
-	//---------------------------------------------------------------------------
-
-	UCANRET PUBLIC UcanInitHwConnectControl(tConnectControlFkt fpConnectControlFkt_p);
-	UCANRET PUBLIC UcanInitHwConnectControlEx(tConnectControlFktEx fpConnectControlFktEx_p, void* pCallbackArg_p);
-
-
-	//---------------------------------------------------------------------------
-	//
-	// Function:    UcanDeinitHwConnectControl()
-	//
-	// Description: Deinitializes the Hardware-Connection-Control function
-	//
-	// Parameters:  none
-	//
-	// Return:      result of the function (see USBCAN_ERR_...)
-	//
-	//---------------------------------------------------------------------------
-
-	UCANRET PUBLIC UcanDeinitHwConnectControl(void);
-
-
-	//---------------------------------------------------------------------------
-	//
-	// Function:    UcanEnumerateHardware()
-	//
-	// Description: Enumerates connected USB-CANmoduls
-	//
-	// Parameters:  fpCallback_p        = [IN]  callback handler which is called for each found module
-	//              pCallbackArg_p      = [IN]  user argument which is overhand to the callback handler with each call
-	//              fEnumUsedDevs_p     = [IN]  if set to TRUE modules are enumerated too which are used by other applications
-	//              bDeviceNrLow_p      = [IN]  lower value of the device number which should be enumerated
-	//              bDeviceNrHigh_p     = [IN]  higher value of the device number which should be enumerated
-	//              dwSerialNrLow_p     = [IN]  lower value of the serial number which should be enumerated
-	//              dwSerialNrHigh_p    = [IN]  higher value of the serial number which should be enumerated
-	//              dwProductCodeLow_p  = [IN]  lower value of the product code which should be enumerated
-	//              dwProductCodeHigh_p = [IN]  higher value of the product code which should be enumerated
-	//
-	// Return:      DWORD               = number of enumerated modules
-	//
-	//---------------------------------------------------------------------------
-
-	DWORD PUBLIC UcanEnumerateHardware(tUcanEnumCallback fpCallback_p, void* pCallbackArg_p,
-		BOOL  fEnumUsedDevs_p,                                  // if TRUE used modules are enumerated too
-		BYTE  bDeviceNrLow_p, BYTE  bDeviceNrHigh_p,        // filter parameter for device number
-		DWORD dwSerialNrLow_p, DWORD dwSerialNrHigh_p,       // filter parameter for serial number
-		DWORD dwProductCodeLow_p, DWORD dwProductCodeHigh_p);   // filter parameter for product code
-
-
-	//---------------------------------------------------------------------------
-	//
-	// Function:    UcanInitHardware(), UcanInitHardwareEx(), UcanInitHardwareEx2()
-	//
-	// Description: Initializes a USB-CANmodul with the device number X or serial number Y
-	//
-	// Parameters:  pUcanHandle_p       = [OUT] address pointing to the variable for the USB-CAN-Handle
-	//                                          should not be NULL!
-	//              bDeviceNr_p         = [IN]  device number of the USB-CANmodul
-	//                                          valid values: 0 through 254
-	//                                          USBCAN_ANY_MODULE: the first module that is found will be used
-	//              dwSerialNr_p        = [IN]  serial number of the USB-CANmodul
-	//              fpCallbackFkt_p     = [IN]  address of the Callback function
-	//                                          NULL: no Callback function is used
-	//              fpCallbackFktEx_p   = [IN]  address of the new callback function
-	//                                          NULL: no Callback function is used
-	//              pCallbackArg_p      = [IN]  additional user defined parameter for callback function
-	//
-	// NOTE:        Do not set function pointer of type tCallbackFkt to fpCallbackFktEx_p and
-	//              do not set function pointer of type tCallbackFktEx to fpCallbackFkt_p !
-	//
-	// Return:      result of the function (see USBCAN_ERR_...)
-	//
-	//---------------------------------------------------------------------------
-
-	UCANRET PUBLIC UcanInitHardware(tUcanHandle* pUcanHandle_p, BYTE bDeviceNr_p, tCallbackFkt fpCallbackFkt_p);
-	UCANRET PUBLIC UcanInitHardwareEx(tUcanHandle* pUcanHandle_p, BYTE bDeviceNr_p, tCallbackFktEx fpCallbackFktEx_p, void* pCallbackArg_p);
-	UCANRET PUBLIC UcanInitHardwareEx2(tUcanHandle* pUcanHandle_p, DWORD dwSerialNr_p, tCallbackFktEx fpCallbackFktEx_p, void* pCallbackArg_p);
-
-
-	//---------------------------------------------------------------------------
-	//
-	// Function:    UcanSetDeviceNr()
-	//
-	// Description: Sets a new device number to the USB-CANmodul.
-	//
-	// Parameters:  UcanHandle_p    = [IN]  USB-CAN-Handle
-	//                                      Handle, which is returned by the function UcanInitHardware..()
-	//              bDeviceNr_p     = [IN]  new device nr
-	//
-	// Return:      result of the function (see USBCAN_ERR_...)
-	//
-	//---------------------------------------------------------------------------
-
-	UCANRET PUBLIC UcanSetDeviceNr(tUcanHandle UcanHandle_p, BYTE bDeviceNr_p);
-
-
-	//---------------------------------------------------------------------------
-	//
-	// Function:    UcanGetModuleTime()
-	//
-	// Description: Returns the current time stamp of USB-CANmodul.
-	//              NOTE: Some milliseconds are pased if function returnes.
-	//
-	// Parameters:  UcanHandle_p    = [IN]  USB-CAN-Handle
-	//                                      Handle, which is returned by the function UcanInitHardware..()
-	//              pdwTime_p       = [OUT] pointer to DWORD receiving time stamp
-	//                                      can not be NULL
-	//
-	// Return:      result of the function (see USBCAN_ERR_...)
-	//
-	//---------------------------------------------------------------------------
-
-	UCANRET PUBLIC UcanGetModuleTime(tUcanHandle UcanHandle_p, DWORD* pdwTime_p);
-
-
-	//---------------------------------------------------------------------------
-	//
-	// Function:    UcanGetHardwareInfo(), UcanGetHardwareInfoEx2()
-	//
-	// Description: Returns the hardware information of an initialized USB-CANmodul
-	//
-	// Parameters:  UcanHandle_p    = [IN]  USB-CAN-Handle
-	//                                      Handle, which is returned by the function UcanInitHardware..()
-	//              pHwInfo_p       = [OUT] pointer to hardware info structure
-	//                                      can not be NULL
-	//
-	//              pCanInfoCh0_p   = [OUT] pointer to CAN channel 0 info structure
-	//              pCanInfoCh1_p   = [OUT] pointer to CAN channel 1 info structure
-	//                                      pCanInfoCh0_p and pCanInfoCh1_p can be NULL
-	//
-	// Return:      result of the function (see USBCAN_ERR_...)
-	//
-	//---------------------------------------------------------------------------
-
-	UCANRET PUBLIC UcanGetHardwareInfo(tUcanHandle UcanHandle_p, tUcanHardwareInfo* pHwInfo_p);
-	UCANRET PUBLIC UcanGetHardwareInfoEx2(tUcanHandle UcanHandle_p, tUcanHardwareInfoEx* pHwInfo_p, tUcanChannelInfo* pCanInfoCh0_p, tUcanChannelInfo* pCanInfoCh1_p);
-
-
-	//---------------------------------------------------------------------------
-	//
-	// Function:    UcanInitCan(), UcanInitCanEx(), UcanInitCanEx2()
-	//
-	// Description: Initializes the CAN interface on the USB-CANmodul
-	//
-	// Parameters:  UcanHandle_p    = [IN]  USB-CAN-Handle
-	//                                      Handle, which is returned by the function UcanInitHardware..()
-	//              bBTR0_p         = [IN]  Baudrate Register 0 (SJA1000)
-	//              bBTR1_p         = [IN]  Baudrate Register 1 (SJA1000)
-	//              dwAMR_p         = [IN]  Acceptance Filter Mask (SJA1000)
-	//              dwACR_p         = [IN]  Acceptance Filter Code (SJA1000)
-	//
-	//              pInitCanParam_p = [IN]  pointer to init parameter structure
-	//              bChannel_p      = [IN]  CAN channel (USBCAN_CHANNEL_CH0 or USBCAN_CHANNEL_CH1)
-	//
-	// Return:      result of the function (see USBCAN_ERR_...)
-	//
-	//---------------------------------------------------------------------------
-
-	UCANRET PUBLIC UcanInitCan(tUcanHandle UcanHandle_p, BYTE bBTR0_p, BYTE bBTR1_p, DWORD dwAMR_p, DWORD dwACR_p);
-	UCANRET PUBLIC UcanInitCanEx(tUcanHandle UcanHandle_p, tUcanInitCanParam* pInitCanParam_p);
-	UCANRET PUBLIC UcanInitCanEx2(tUcanHandle UcanHandle_p, BYTE bChannel_p, tUcanInitCanParam* pInitCanParam_p);
-
-
-	//---------------------------------------------------------------------------
-	//
-	// Function:    UcanSetBaudrate(), UcanSetBaudrateEx()
-	//
-	// Description: Modifies the baudrate settings of the USB-CANmodul
-	//
-	// Parameters:  UcanHandle_p    = [IN]  USB-CAN-Handle
-	//                                      Handle, which is returned by the function UcanInitHardware..()
-	//              bBTR0_p         = [IN]  Baudrate Register 0 (GW-001/002 - Multiport 3004006,
-	//                                      USB-CANmodul1 3204000 or USB-CANmodul2 3204002 only standard values)
-	//              bBTR1_p         = [IN]  Baudrate Register 1 (GW-001/002 - Multiport 3004006,
-	//                                      USB-CANmodul1 3204000 or USB-CANmodul2 3204002 only standard values)
-	//
-	//              bChannel_p      = [IN]  CAN channel (USBCAN_CHANNEL_CH0 or USBCAN_CHANNEL_CH1)
-	//              dwBaudrate_p    = [IN]  Baudrate Register of Multiport 3004006, USB-CANmodul1 3204000 or USB-CANmodul2 3204002
-	//
-	// Return:      result of the function (see USBCAN_ERR_...)
-	//
-	//---------------------------------------------------------------------------
-
-	UCANRET PUBLIC UcanSetBaudrate(tUcanHandle UcanHandle_p, BYTE bBTR0_p, BYTE bBTR1_p);
-	UCANRET PUBLIC UcanSetBaudrateEx(tUcanHandle UcanHandle_p, BYTE bChannel_p, BYTE bBTR0_p, BYTE bBTR1_p, DWORD dwBaudrate_p);
-
-
-	//---------------------------------------------------------------------------
-	//
-	// Function:    UcanSetAcceptance(), UcanSetAcceptanceEx()
-	//
-	// Description: Modifies the Acceptance Filter settings of the USB-CANmodul
-	//
-	// Parameters:  UcanHandle_p    = [IN]  USB-CAN-Handle
-	//                                      Handle, which is returned by the function UcanInitHardware..()
-	//              dwAMR_p         = [IN]  Acceptance Filter Mask (SJA1000)
-	//              dwACR_p         = [IN]  Acceptance Filter Code (SJA1000)
-	//
-	//              bChannel_p      = [IN]  CAN channel (USBCAN_CHANNEL_CH0 or USBCAN_CHANNEL_CH1)
-	//
-	// Return:      result of the function (see USBCAN_ERR_...)
-	//
-	//---------------------------------------------------------------------------
-
-	UCANRET PUBLIC UcanSetAcceptance(tUcanHandle UcanHandle_p, DWORD dwAMR_p, DWORD dwACR_p);
-	UCANRET PUBLIC UcanSetAcceptanceEx(tUcanHandle UcanHandle_p, BYTE bChannel_p, DWORD dwAMR_p, DWORD dwACR_p);
-
-
-	//---------------------------------------------------------------------------
-	//
-	// Function:    UcanResetCan(), UcanResetCanEx()
-	//
-	// Description: Resets the CAN interface (Hardware-Reset, empty buffer, ...)
-	//
-	// Parameters:  UcanHandle_p    = [IN]  USB-CAN-Handle
-	//                                      Handle, which is returned by the function UcanInitHardware..()
-	//
-	//              bChannel_p      = [IN]  CAN channel (USBCAN_CHANNEL_CH0 or USBCAN_CHANNEL_CH1)
-	//              dwResetFlags_p  = [IN]  flags defines what should be reseted
-	//                                      (see USBCAN_RESET_...)
-	//
-	// Return:      result of the function (see USBCAN_ERR_...)
-	//
-	//---------------------------------------------------------------------------
-
-	UCANRET PUBLIC UcanResetCan(tUcanHandle UcanHandle_p);
-	UCANRET PUBLIC UcanResetCanEx(tUcanHandle UcanHandle_p, BYTE bChannel_p, DWORD dwResetFlags_p);
-
-
-	//---------------------------------------------------------------------------
-	//
-	// Function:    UcanReadCanMsg(), UcanReadCanMsgEx()
-	//
-	// Description: Reads one or more CAN messages
-	//
-	// Parameters:  UcanHandle_p    = [IN]  USB-CAN-Handle
-	//                                      Handle, which is returned by the function UcanInitHardware..()
-	//              pCanMsg_p       = [OUT] pointer to the CAN message structure
-	//
-	//              pbChannel_p     = [IN/OUT] pointer CAN channel (USBCAN_CHANNEL_CH0 or USBCAN_CHANNEL_CH1, USBCAN_CHANNEL_ANY)
-	//                                         pointer must not be NULL
-	//                                         if INPUT is USBCAN_CHANNEL_ANY the OUTPUT will be the read CAN channel
-	//              pdwCount_p      = [IN/OUT] pointer to number of received CAN messages
-	//                                         if NULL only one CAN message will be read
-	//                                         INPUT:  *pdwCount_p contains max number of CAN messages which should be read
-	//                                         OUTPUT: *pdwCount_p contains real number of CAN messages was read
-	//
-	// Return:      result of the function (see USBCAN_ERR_...)
-	//
-	//---------------------------------------------------------------------------
-
-	UCANRET PUBLIC UcanReadCanMsg(tUcanHandle UcanHandle_p, tCanMsgStruct* pCanMsg_p);
-	UCANRET PUBLIC UcanReadCanMsgEx(tUcanHandle UcanHandle_p, BYTE* pbChannel_p, tCanMsgStruct* pCanMsg_p, DWORD* pdwCount_p);
-
-
-	//---------------------------------------------------------------------------
-	//
-	// Function:    UcanWriteCanMsg(), UcanWriteCanMsgEx()
-	//
-	// Description: Sends one or more CAN messages
-	//
-	// Parameters:  UcanHandle_p    = [IN]  USB-CAN-Handle
-	//                                      Handle, which is returned by the function UcanInitHardware..()
-	//              pCanMsg_p       = [IN]  pointer to the CAN message structure
-	//
-	//              bChannel_p      = [IN]  CAN channel (USBCAN_CHANNEL_CH0 or USBCAN_CHANNEL_CH1)
-	//              pdwCount_p      = [IN/OUT] pointer to number of CAN messages to write
-	//                                         if NULL only one CAN message will be written
-	//                                         INPUT:  *pdwCount_p contains number of CAN messages which should be written
-	//                                         OUTPUT: *pdwCount_p contains real number of CAN messages was written
-	//
-	// Return:      result of the function (see USBCAN_ERR_...)
-	//
-	//---------------------------------------------------------------------------
-
-	UCANRET PUBLIC UcanWriteCanMsg(tUcanHandle UcanHandle_p, tCanMsgStruct* pCanMsg_p);
-	UCANRET PUBLIC UcanWriteCanMsgEx(tUcanHandle UcanHandle_p, BYTE bChannel_p, tCanMsgStruct* pCanMsg_p, DWORD* pdwCount_p);
-
-
-	//---------------------------------------------------------------------------
-	//
-	// Function:    UcanGetStatus(), UcanGetStatusEx()
-	//
-	// Description: Returns the state of the USB-CANmodul
-	//
-	// Parameters:  UcanHandle_p    = [IN]  USB-CAN-Handle
-	//                                      Handle, which is returned by the function UcanInitHardware..()
-	//              pStatus_p       = [OUT] pointer to Status structure
-	//
-	//              bChannel_p      = [IN]  CAN channel (USBCAN_CHANNEL_CH0 or USBCAN_CHANNEL_CH1)
-	//
-	// Return:      result of the function (see USBCAN_ERR_...)
-	//
-	//---------------------------------------------------------------------------
-
-	UCANRET PUBLIC UcanGetStatus(tUcanHandle UcanHandle_p, tStatusStruct* pStatus_p);
-	UCANRET PUBLIC UcanGetStatusEx(tUcanHandle UcanHandle_p, BYTE bChannel_p, tStatusStruct* pStatus_p);
-
-
-	//---------------------------------------------------------------------------
-	//
-	// Function:    UcanGetMsgCountInfo(), UcanGetMsgCountInfoEx()
-	//
-	// Description: Reads the packet information from USB-CANmodul (counter of
-	//              received and sent CAN messages).
-	//
-	// Parameters:  UcanHandle_p    = [IN]  USB-CAN-Handle
-	//                                      Handle, which is returned by the function UcanInitHardware..()
-	//              pMsgCountInfo_p = [OUT] pointer to message counter information structure
-	//
-	//              bChannel_p      = [IN]  CAN channel (USBCAN_CHANNEL_CH0 or USBCAN_CHANNEL_CH1)
-	//
-	// Return:      result of the function (see USBCAN_ERR_...)
-	//
-	//---------------------------------------------------------------------------
-
-	UCANRET PUBLIC UcanGetMsgCountInfo(tUcanHandle UcanHandle_p, tUcanMsgCountInfo* pMsgCountInfo_p);
-	UCANRET PUBLIC UcanGetMsgCountInfoEx(tUcanHandle UcanHandle_p, BYTE bChannel_p, tUcanMsgCountInfo* pMsgCountInfo_p);
-	UCANRET PUBLIC UcanGetMsgCountInfoEx2(tUcanHandle UcanHandle_p, BYTE bChannel_p, tUcanMsgCountInfoEx* pMsgCountInfo_p);
-
-
-	//---------------------------------------------------------------------------
-	//
-	// Function:    UcanDeinitCan(), UcanDeinitCanEx()
-	//
-	// Description: Shuts down the CAN interface on the USB-CANmodul
-	//
-	// Parameters:  UcanHandle_p    = [IN]  USB-CAN-Handle
-	//                                      Handle, which is returned by the function UcanInitHardware..()
-	//
-	//              bChannel_p      = [IN]  CAN channel (USBCAN_CHANNEL_CH0 or USBCAN_CHANNEL_CH1)
-	//
-	// Return:      result of the function (see USBCAN_ERR_...)
-	//
-	//---------------------------------------------------------------------------
-
-	UCANRET PUBLIC UcanDeinitCan(tUcanHandle UcanHandle_p);
-	UCANRET PUBLIC UcanDeinitCanEx(tUcanHandle UcanHandle_p, BYTE bChannel_p);
-
-
-	//---------------------------------------------------------------------------
-	//
-	// Function:    UcanDeinitHardware()
-	//
-	// Description: Deinitializes a USB-CANmodul
-	//
-	// Parameters:  UcanHandle_p    = [IN]  USB-CAN-Handle
-	//                                      Handle, which is returned by the function UcanInitHardware..()
-	//
-	// Return:      result of the function (see USBCAN_ERR_...)
-	//
-	//---------------------------------------------------------------------------
-
-	UCANRET PUBLIC UcanDeinitHardware(tUcanHandle UcanHandle_p);
-
-
-	//---------------------------------------------------------------------------
-	//
-	// Callback functions
-	//
-	//---------------------------------------------------------------------------
-
-	//---------------------------------------------------------------------------
-	//
-	// Function:    UcanCallbackFkt(), UcanCallbackFktEx()
-	//
-	// Description: Is called from the USBCAN32.DLL if a working event occured.
-	//
-	// Parameters:  UcanHandle_p        = [IN]  USB-CAN-Handle
-	//                                      Handle, which is returned by the function UcanInitHardware..()
-	//              bEvent_p/dwEvent_p  = [IN]  event
-	//                  USBCAN_EVENT_INITHW
-	//                  USBCAN_EVENT_INITCAN
-	//                  USBCAN_EVENT_RECEIVE
-	//                  USBCAN_EVENT_STATUS
-	//                  USBCAN_EVENT_DEINITCAN
-	//                  USBCAN_EVENT_DEINITHW
-	//
-	//              bChannel_p      = [IN]  CAN channel (USBCAN_CHANNEL_CH0 or USBCAN_CHANNEL_CH1, USBCAN_CHANNEL_ANY)
-	//              pArg_p          = [IN]  additional parameter
-	//                                      Parameter which was defined with UcanInitHardwareEx()
-	//
-	// Returns:     none
-	//
-	//---------------------------------------------------------------------------
-
-	void PUBLIC UcanCallbackFkt(tUcanHandle UcanHandle_p, BYTE bEvent_p);
-	void PUBLIC UcanCallbackFktEx(tUcanHandle UcanHandle_p, DWORD dwEvent_p, BYTE bChannel_p, void* pArg_p);
-
-
-	//---------------------------------------------------------------------------
-	//
-	// Function:    UcanConnectControlFkt(), UcanConnectControlFktEx()
-	//
-	// Description: Is called from the USBCAN32.DLL if a plug & play event occured.
-	//
-	// Parameters:  bEvent_p/dwEvent_p    = [IN]  event
-	//                  USBCAN_EVENT_CONNECT
-	//                  USBCAN_EVENT_DISCONNECT
-	//                  USBCAN_EVENT_FATALDISCON
-	//              dwParam_p   = [IN]  additional parameter (depends on bEvent_p)
-	//                  USBCAN_EVENT_CONNECT:       always 0
-	//                  USBCAN_EVENT_DISCONNECT.    always 0
-	//                  USBCAN_EVENT_FATALDISCON:   USB-CAN-Handle of the disconnected module
-	//
-	//              pArg_p      = [IN]  additional parameter
-	//                                  Parameter which was defined with UcanInitHardwareEx()
-	//
-	// Returns:     none
-	//
-	//---------------------------------------------------------------------------
-
-	void PUBLIC UcanConnectControlFkt(BYTE bEvent_p, DWORD dwParam_p);
-	void PUBLIC UcanConnectControlFktEx(DWORD dwEvent_p, DWORD dwParam_p, void* pArg_p);
-
-
-	//---------------------------------------------------------------------------
-	//
-	// automatic transmission of cyclic CAN messages by the device firmware
-	//
-	//              Only available for Multiport CAN-to-USB, USB-CANmodulX
-	//              (NOT for GW-001 and GW-002 !!!).
-	//
-	//---------------------------------------------------------------------------
-
-	//---------------------------------------------------------------------------
-	//
-	// Function:    UcanDefineCyclicCanMsg()
-	//
-	// Description: defines a list of CAN messages for automatic transmission
-	// NOTE:        when this function is called an older list will be deleted
-	//
-	// Parameters:  UcanHandle_p    = [IN]  USB-CAN-Handle
-	//                                      Handle, which is returned by the function UcanInitHardware..()
-	//              bChannel_p      = [IN]  CAN channel (USBCAN_CHANNEL_CH0 or USBCAN_CHANNEL_CH1)
-	//              pCanMsgList_p   = [IN]  pointer to the CAN message list (must be an array)
-	//              dwCount_p       = [IN]  number of CAN messages within the list
-	//                                          if zero an older list will only be deleted
-	//
-	// Return:      result of the function (see USBCAN_ERR_...)
-	//
-	//---------------------------------------------------------------------------
-
-	UCANRET PUBLIC UcanDefineCyclicCanMsg(tUcanHandle UcanHandle_p,
-		BYTE bChannel_p, tCanMsgStruct* pCanMsgList_p, DWORD dwCount_p);
-
-
-	//---------------------------------------------------------------------------
-	//
-	// Function:    UcanReadCyclicCanMsg()
-	//
-	// Description: reads the list of CAN messages for automatically sending back
-	//
-	// Parameters:  UcanHandle_p    = [IN]  USB-CAN-Handle
-	//                                      Handle, which is returned by the function UcanInitHardware..()
-	//              bChannel_p      = [IN]  CAN channel (USBCAN_CHANNEL_CH0 or USBCAN_CHANNEL_CH1)
-	//              pCanMsgList_p   = [OUT] pointer to receive the CAN message list (must be an array)
-	//              pdwCount_p      = [OUT] pointer to a 32 bit variables for receiving the number of
-	//                                      CAN messages within the list
-	//
-	// Return:      result of the function (see USBCAN_ERR_...)
-	//
-	//---------------------------------------------------------------------------
-
-	UCANRET PUBLIC UcanReadCyclicCanMsg(tUcanHandle UcanHandle_p,
-		BYTE bChannel_p, tCanMsgStruct* pCanMsgList_p, DWORD* pdwCount_p);
-
-
-	//---------------------------------------------------------------------------
-	//
-	// Function:    UcanEnableCyclicCanMsg()
-	//
-	// Description: enables or disables the automatically sending
-	//
-	// Parameters:  UcanHandle_p    = [IN]  USB-CAN-Handle
-	//                                      Handle, which is returned by the function UcanInitHardware..()
-	//              bChannel_p      = [IN]  CAN channel (USBCAN_CHANNEL_CH0 or USBCAN_CHANNEL_CH1)
-	//              dwFlags_p       = [IN]  this flags specifies which CAN messages should be
-	//                                      activated, specifies the processing mode oth the list
-	//                                      (sequential or parallel), enables or disables the TxEcho
-	//                                      for this CAN messages
-	//                                      (see constants USBCAN_CYCLIC_FLAG_...)
-	//
-	// Return:      result of the function (see USBCAN_ERR_...)
-	//
-	//---------------------------------------------------------------------------
-
-	UCANRET PUBLIC UcanEnableCyclicCanMsg(tUcanHandle UcanHandle_p,
-		BYTE bChannel_p, DWORD dwFlags_p);
-
-
-	// for the future:
-	//UCANRET PUBLIC UcanSaveCyclicCanMsg (tUcanHandle UcanHandle_p,
-	//    BYTE bChannel_p, tUcanInitCanParam* pInitCanParam_p, DWORD dwFlags_p);
-
-
-	//---------------------------------------------------------------------------
-	//
-	// Function:    UcanGetMsgPending()
-	//
-	// Description: returns the number of pending CAN messages
-	//
-	// Parameters:  UcanHandle_p        = [IN]  USB-CAN-Handle
-	//                                          Handle, which is returned by the function UcanInitHardware..()
-	//              bChannel_p          = [IN]  CAN channel (USBCAN_CHANNEL_CH0, USBCAN_CHANNEL_CH1 or USBCAN_CHANNEL_ANY)
-	//                                          If USBCAN_CHANNEL_ANY is set then the number of borth channels will be
-	//                                          added as long as they are initialized.
-	//              dwFlags_p           = [IN]  this flags specifies which buffers shoulb be checked
-	//                                          (see constants USBCAN_PENDING_FLAG_...)
-	//              pdwPendingCount_p   = [OUT] pointer to a 32 bit variable which receives the number of pending messages
-	//
-	// Return:      result of the function (see USBCAN_ERR_...)
-	//
-	//---------------------------------------------------------------------------
-
-	UCANRET PUBLIC UcanGetMsgPending(tUcanHandle UcanHandle_p,
-		BYTE bChannel_p, DWORD dwFlags_p, DWORD* pdwPendingCount_p);
-
-
-
-	//---------------------------------------------------------------------------
-	//
-	// Function:    UcanGetCanErrorCounter()
-	//
-	// Description: reads the current value of the error counters within the CAN controller
-	//
-	//              Only available for Multiport CAN-to-USB, USB-CANmodulX
-	//              (NOT for GW-001 and GW-002 !!!).
-	//
-	// Parameters:  UcanHandle_p        = [IN]  USB-CAN-Handle
-	//                                          Handle, which is returned by the function UcanInitHardware..()
-	//              bChannel_p          = [IN]  CAN channel (USBCAN_CHANNEL_CH0 or USBCAN_CHANNEL_CH1)
-	//              pdwTxErrorCounter_p = [OUT] pointer to a 32 bit variable which receives the TX error counter
-	//              pdwRxErrorCounter_p = [OUT] pointer to a 32 bit variable which receives the RX error counter
-	//
-	// Return:      result of the function (see USBCAN_ERR_...)
-	//
-	//---------------------------------------------------------------------------
-
-	UCANRET PUBLIC UcanGetCanErrorCounter(tUcanHandle UcanHandle_p,
-		BYTE bChannel_p, DWORD* pdwTxErrorCounter_p, DWORD* pdwRxErrorCounter_p);
-
-
-	//---------------------------------------------------------------------------
-	//
-	// Function:    UcanSetTxTimeout()
-	//
-	// Description: sets the transmission timeout
-	//
-	// Note: When a transmission timeout is set the firmware tries to send
-	// a message within this timeout. If it could not be sent the firmware sets
-	// the "auto delete" state. Within this state all transmit CAN messages for
-	// this channel will be deleted automatically for not blocking the other
-	// channel. When firmware does delete a transmit CAN message then a new
-	// error status will be set: USBCAN_CANERR_TXMSGLOST (red LED is blinking).
-	//
-	// This function can also be used for USB-CANmodul2, 8 or 16 (multiport).
-	//
-	// Parameters:  UcanHandle_p    = [IN]  USB-CAN-Handle
-	//              bChannel_p      = [IN]  CAN channel (USBCAN_CHANNEL_CH0 or USBCAN_CHANNEL_CH1)
-	//              dwTxTimeout_p   = [IN]  transmit timeout in milleseconds
-	//                                      (value 0 swithes off the "auto delete" featuere = default setting)
-	//
-	// Return:      result of the function (see USBCAN_ERR_...)
-	//
-	//---------------------------------------------------------------------------
-
-	UCANRET PUBLIC UcanSetTxTimeout(tUcanHandle UcanHandle_p,
-		BYTE bChannel_p, DWORD dwTxTimeout_p);
-
-
-	// future functions
-	UCANRET PUBLIC UcanGetRtcStatus(tUcanHandle UcanHandle_p, tUcanRtcStatus* pRtcStatus_p);
-	UCANRET PUBLIC UcanGetSdCardStatus(tUcanHandle UcanHandle_p, tUcanSdCardStatus* pSdCardStatus_p);
+//---------------------------------------------------------------------------
+// function prototypes
+//---------------------------------------------------------------------------
+
+
+//---------------------------------------------------------------------------
+//
+// Function:    UcanSetDebugMode()
+//
+// Description: sets a new debug mode
+//
+// Parameters:  dwDbgLevel_p        = debug level (bit format)
+//              pszFilePathName_p   = file path to debug log file
+//              dwFlags_p           = 0x00000000 no file append mode
+//                                    0x00000001 file append mode
+//
+// Return:      BOOL    = FALSE if logfile not created otherwise TRUE
+//
+//---------------------------------------------------------------------------
+
+BOOL PUBLIC UcanSetDebugMode (DWORD dwDbgLevel_p, _TCHAR* pszFilePathName_p, DWORD dwFlags_p);
+
+
+//---------------------------------------------------------------------------
+//
+// Function:    UcanGetVersion()
+//
+// Description: returns software version of USBCAN32.DLL
+//
+// NOTE: This function is obsolete. Pleas use UcanGetVersionEx() instead of.
+//
+// Parameters:  none
+//
+// Returns:     software version
+//                  format: Bits 0-7:   least significant version number (binary)
+//                          Bits 8-15:  most significant version number (binary)
+//                          Bits 16-30: reserved
+//                          Bit 31:     1 = customer specific version
+//
+//---------------------------------------------------------------------------
+
+DWORD PUBLIC UcanGetVersion (void);
+
+
+//---------------------------------------------------------------------------
+//
+// Function:    UcanGetVersionEx()
+//
+// Description: returns software version of different software modules
+//
+// Parameters:  VerType_p   = [IN] which version should be returned
+//                                 kVerTypeUserDll returnes Version of USBCAN32.DLL
+//                                 (see tUcanVersionType for more information)
+//
+// Returns:     software version
+//
+//                  format: Bit 0-7:    Version     (use USBCAN_MAJOR_VER() )
+//                          Bit 8-15:   Revision    (use USBCAN_MINOR_VER() )
+//                          Bit 16-31:  Release     (use USBCAN_RELEASE_VER() )
+//
+// NOTE: If returned version is zero, then value of VerType_p
+//       is unknown or not supported or the file version could not be read.
+//
+//---------------------------------------------------------------------------
+
+DWORD PUBLIC UcanGetVersionEx (tUcanVersionType VerType_p);
+
+
+//---------------------------------------------------------------------------
+//
+// Function:    UcanGetFwVersion()
+//
+// Description: returns version of the firmware within USB-CANmodul
+//
+// Parameters:  UcanHandle_p    = [IN] USBCAN handle
+//
+// Return:      DWORD           = version in extended format (see UcanGetVersionEx)
+//
+//---------------------------------------------------------------------------
+
+DWORD PUBLIC UcanGetFwVersion (tUcanHandle UcanHandle_p);
+
+
+//---------------------------------------------------------------------------
+//
+// Function:    UcanInitHwConnectControl(), UcanInitHwConnectControlEx
+//
+// Description: Initializes the Hardware-Connection-Control function
+//
+// Parameters:  fpConnectControlFkt_p   = [IN] address to Hardware-Connection-Control function
+//
+//              fpConnectControlFktEx_p = [IN] address of the new Hardware-Connection-Control function
+//                                             NULL: no Callback function is used
+//              pCallbackArg_p          = [IN] additional user defined parameter for callback function
+//
+// NOTE:        Do not set function pointer of type tConnectControlFkt to fpConnectControlFktEx_p and
+//              do not set function pointer of type tConnectControlFktEx to fpConnectControlFkt_p !
+//
+// Return:      result of the function (see USBCAN_ERR_...)
+//
+//---------------------------------------------------------------------------
+
+UCANRET PUBLIC UcanInitHwConnectControl (tConnectControlFkt fpConnectControlFkt_p);
+UCANRET PUBLIC UcanInitHwConnectControlEx (tConnectControlFktEx fpConnectControlFktEx_p, void* pCallbackArg_p);
+
+
+//---------------------------------------------------------------------------
+//
+// Function:    UcanDeinitHwConnectControl()
+//
+// Description: Deinitializes the Hardware-Connection-Control function
+//
+// Parameters:  none
+//
+// Return:      result of the function (see USBCAN_ERR_...)
+//
+//---------------------------------------------------------------------------
+
+UCANRET PUBLIC UcanDeinitHwConnectControl (void);
+
+
+//---------------------------------------------------------------------------
+//
+// Function:    UcanEnumerateHardware()
+//
+// Description: Enumerates connected USB-CANmoduls
+//
+// Parameters:  fpCallback_p        = [IN]  callback handler which is called for each found module
+//              pCallbackArg_p      = [IN]  user argument which is overhand to the callback handler with each call
+//              fEnumUsedDevs_p     = [IN]  if set to TRUE modules are enumerated too which are used by other applications
+//              bDeviceNrLow_p      = [IN]  lower value of the device number which should be enumerated
+//              bDeviceNrHigh_p     = [IN]  higher value of the device number which should be enumerated
+//              dwSerialNrLow_p     = [IN]  lower value of the serial number which should be enumerated
+//              dwSerialNrHigh_p    = [IN]  higher value of the serial number which should be enumerated
+//              dwProductCodeLow_p  = [IN]  lower value of the product code which should be enumerated
+//              dwProductCodeHigh_p = [IN]  higher value of the product code which should be enumerated
+//
+// Return:      DWORD               = number of enumerated modules
+//
+//---------------------------------------------------------------------------
+
+DWORD PUBLIC UcanEnumerateHardware (tUcanEnumCallback fpCallback_p, void* pCallbackArg_p,
+    BOOL  fEnumUsedDevs_p,                                  // if TRUE used modules are enumerated too
+    BYTE  bDeviceNrLow_p,     BYTE  bDeviceNrHigh_p,        // filter parameter for device number
+    DWORD dwSerialNrLow_p,    DWORD dwSerialNrHigh_p,       // filter parameter for serial number
+    DWORD dwProductCodeLow_p, DWORD dwProductCodeHigh_p);   // filter parameter for product code
+
+
+//---------------------------------------------------------------------------
+//
+// Function:    UcanInitHardware(), UcanInitHardwareEx(), UcanInitHardwareEx2()
+//
+// Description: Initializes a USB-CANmodul with the device number X or serial number Y
+//
+// Parameters:  pUcanHandle_p       = [OUT] address pointing to the variable for the USB-CAN-Handle
+//                                          should not be NULL!
+//              bDeviceNr_p         = [IN]  device number of the USB-CANmodul
+//                                          valid values: 0 through 254
+//                                          USBCAN_ANY_MODULE: the first module that is found will be used
+//              dwSerialNr_p        = [IN]  serial number of the USB-CANmodul
+//              fpCallbackFkt_p     = [IN]  address of the Callback function
+//                                          NULL: no Callback function is used
+//              fpCallbackFktEx_p   = [IN]  address of the new callback function
+//                                          NULL: no Callback function is used
+//              pCallbackArg_p      = [IN]  additional user defined parameter for callback function
+//
+// NOTE:        Do not set function pointer of type tCallbackFkt to fpCallbackFktEx_p and
+//              do not set function pointer of type tCallbackFktEx to fpCallbackFkt_p !
+//
+// Return:      result of the function (see USBCAN_ERR_...)
+//
+//---------------------------------------------------------------------------
+
+UCANRET PUBLIC UcanInitHardware (tUcanHandle* pUcanHandle_p, BYTE bDeviceNr_p, tCallbackFkt fpCallbackFkt_p);
+UCANRET PUBLIC UcanInitHardwareEx (tUcanHandle* pUcanHandle_p, BYTE bDeviceNr_p, tCallbackFktEx fpCallbackFktEx_p, void* pCallbackArg_p);
+UCANRET PUBLIC UcanInitHardwareEx2 (tUcanHandle* pUcanHandle_p, DWORD dwSerialNr_p, tCallbackFktEx fpCallbackFktEx_p, void* pCallbackArg_p);
+
+
+//---------------------------------------------------------------------------
+//
+// Function:    UcanSetDeviceNr()
+//
+// Description: Sets a new device number to the USB-CANmodul.
+//
+// Parameters:  UcanHandle_p    = [IN]  USB-CAN-Handle
+//                                      Handle, which is returned by the function UcanInitHardware..()
+//              bDeviceNr_p     = [IN]  new device nr
+//
+// Return:      result of the function (see USBCAN_ERR_...)
+//
+//---------------------------------------------------------------------------
+
+UCANRET PUBLIC UcanSetDeviceNr (tUcanHandle UcanHandle_p, BYTE bDeviceNr_p);
+
+
+//---------------------------------------------------------------------------
+//
+// Function:    UcanGetModuleTime()
+//
+// Description: Returns the current time stamp of USB-CANmodul.
+//              NOTE: Some milliseconds are pased if function returnes.
+//
+// Parameters:  UcanHandle_p    = [IN]  USB-CAN-Handle
+//                                      Handle, which is returned by the function UcanInitHardware..()
+//              pdwTime_p       = [OUT] pointer to DWORD receiving time stamp
+//                                      can not be NULL
+//
+// Return:      result of the function (see USBCAN_ERR_...)
+//
+//---------------------------------------------------------------------------
+
+UCANRET PUBLIC UcanGetModuleTime (tUcanHandle UcanHandle_p, DWORD* pdwTime_p);
+
+
+//---------------------------------------------------------------------------
+//
+// Function:    UcanGetHardwareInfo(), UcanGetHardwareInfoEx2()
+//
+// Description: Returns the hardware information of an initialized USB-CANmodul
+//
+// Parameters:  UcanHandle_p    = [IN]  USB-CAN-Handle
+//                                      Handle, which is returned by the function UcanInitHardware..()
+//              pHwInfo_p       = [OUT] pointer to hardware info structure
+//                                      can not be NULL
+//
+//              pCanInfoCh0_p   = [OUT] pointer to CAN channel 0 info structure
+//              pCanInfoCh1_p   = [OUT] pointer to CAN channel 1 info structure
+//                                      pCanInfoCh0_p and pCanInfoCh1_p can be NULL
+//
+// Return:      result of the function (see USBCAN_ERR_...)
+//
+//---------------------------------------------------------------------------
+
+UCANRET PUBLIC UcanGetHardwareInfo (tUcanHandle UcanHandle_p, tUcanHardwareInfo* pHwInfo_p);
+UCANRET PUBLIC UcanGetHardwareInfoEx2 (tUcanHandle UcanHandle_p, tUcanHardwareInfoEx* pHwInfo_p, tUcanChannelInfo* pCanInfoCh0_p, tUcanChannelInfo* pCanInfoCh1_p);
+
+
+//---------------------------------------------------------------------------
+//
+// Function:    UcanInitCan(), UcanInitCanEx(), UcanInitCanEx2()
+//
+// Description: Initializes the CAN interface on the USB-CANmodul
+//
+// Parameters:  UcanHandle_p    = [IN]  USB-CAN-Handle
+//                                      Handle, which is returned by the function UcanInitHardware..()
+//              bBTR0_p         = [IN]  Baudrate Register 0 (SJA1000)
+//              bBTR1_p         = [IN]  Baudrate Register 1 (SJA1000)
+//              dwAMR_p         = [IN]  Acceptance Filter Mask (SJA1000)
+//              dwACR_p         = [IN]  Acceptance Filter Code (SJA1000)
+//
+//              pInitCanParam_p = [IN]  pointer to init parameter structure
+//              bChannel_p      = [IN]  CAN channel (USBCAN_CHANNEL_CH0 or USBCAN_CHANNEL_CH1)
+//
+// Return:      result of the function (see USBCAN_ERR_...)
+//
+//---------------------------------------------------------------------------
+
+UCANRET PUBLIC UcanInitCan (tUcanHandle UcanHandle_p, BYTE bBTR0_p, BYTE bBTR1_p, DWORD dwAMR_p, DWORD dwACR_p);
+UCANRET PUBLIC UcanInitCanEx (tUcanHandle UcanHandle_p, tUcanInitCanParam* pInitCanParam_p);
+UCANRET PUBLIC UcanInitCanEx2 (tUcanHandle UcanHandle_p, BYTE bChannel_p, tUcanInitCanParam* pInitCanParam_p);
+
+
+//---------------------------------------------------------------------------
+//
+// Function:    UcanSetBaudrate(), UcanSetBaudrateEx()
+//
+// Description: Modifies the baudrate settings of the USB-CANmodul
+//
+// Parameters:  UcanHandle_p    = [IN]  USB-CAN-Handle
+//                                      Handle, which is returned by the function UcanInitHardware..()
+//              bBTR0_p         = [IN]  Baudrate Register 0 (GW-001/002 - Multiport 3004006,
+//                                      USB-CANmodul1 3204000 or USB-CANmodul2 3204002 only standard values)
+//              bBTR1_p         = [IN]  Baudrate Register 1 (GW-001/002 - Multiport 3004006,
+//                                      USB-CANmodul1 3204000 or USB-CANmodul2 3204002 only standard values)
+//
+//              bChannel_p      = [IN]  CAN channel (USBCAN_CHANNEL_CH0 or USBCAN_CHANNEL_CH1)
+//              dwBaudrate_p    = [IN]  Baudrate Register of Multiport 3004006, USB-CANmodul1 3204000 or USB-CANmodul2 3204002
+//
+// Return:      result of the function (see USBCAN_ERR_...)
+//
+//---------------------------------------------------------------------------
+
+UCANRET PUBLIC UcanSetBaudrate (tUcanHandle UcanHandle_p, BYTE bBTR0_p, BYTE bBTR1_p);
+UCANRET PUBLIC UcanSetBaudrateEx (tUcanHandle UcanHandle_p, BYTE bChannel_p, BYTE bBTR0_p, BYTE bBTR1_p, DWORD dwBaudrate_p);
+
+
+//---------------------------------------------------------------------------
+//
+// Function:    UcanSetAcceptance(), UcanSetAcceptanceEx()
+//
+// Description: Modifies the Acceptance Filter settings of the USB-CANmodul
+//
+// Parameters:  UcanHandle_p    = [IN]  USB-CAN-Handle
+//                                      Handle, which is returned by the function UcanInitHardware..()
+//              dwAMR_p         = [IN]  Acceptance Filter Mask (SJA1000)
+//              dwACR_p         = [IN]  Acceptance Filter Code (SJA1000)
+//
+//              bChannel_p      = [IN]  CAN channel (USBCAN_CHANNEL_CH0 or USBCAN_CHANNEL_CH1)
+//
+// Return:      result of the function (see USBCAN_ERR_...)
+//
+//---------------------------------------------------------------------------
+
+UCANRET PUBLIC UcanSetAcceptance (tUcanHandle UcanHandle_p, DWORD dwAMR_p, DWORD dwACR_p);
+UCANRET PUBLIC UcanSetAcceptanceEx (tUcanHandle UcanHandle_p, BYTE bChannel_p, DWORD dwAMR_p, DWORD dwACR_p);
+
+
+//---------------------------------------------------------------------------
+//
+// Function:    UcanResetCan(), UcanResetCanEx()
+//
+// Description: Resets the CAN interface (Hardware-Reset, empty buffer, ...)
+//
+// Parameters:  UcanHandle_p    = [IN]  USB-CAN-Handle
+//                                      Handle, which is returned by the function UcanInitHardware..()
+//
+//              bChannel_p      = [IN]  CAN channel (USBCAN_CHANNEL_CH0 or USBCAN_CHANNEL_CH1)
+//              dwResetFlags_p  = [IN]  flags defines what should be reseted
+//                                      (see USBCAN_RESET_...)
+//
+// Return:      result of the function (see USBCAN_ERR_...)
+//
+//---------------------------------------------------------------------------
+
+UCANRET PUBLIC UcanResetCan (tUcanHandle UcanHandle_p);
+UCANRET PUBLIC UcanResetCanEx (tUcanHandle UcanHandle_p, BYTE bChannel_p, DWORD dwResetFlags_p);
+
+
+//---------------------------------------------------------------------------
+//
+// Function:    UcanReadCanMsg(), UcanReadCanMsgEx()
+//
+// Description: Reads one or more CAN messages
+//
+// Parameters:  UcanHandle_p    = [IN]  USB-CAN-Handle
+//                                      Handle, which is returned by the function UcanInitHardware..()
+//              pCanMsg_p       = [OUT] pointer to the CAN message structure
+//
+//              pbChannel_p     = [IN/OUT] pointer CAN channel (USBCAN_CHANNEL_CH0 or USBCAN_CHANNEL_CH1, USBCAN_CHANNEL_ANY)
+//                                         pointer must not be NULL
+//                                         if INPUT is USBCAN_CHANNEL_ANY the OUTPUT will be the read CAN channel
+//              pdwCount_p      = [IN/OUT] pointer to number of received CAN messages
+//                                         if NULL only one CAN message will be read
+//                                         INPUT:  *pdwCount_p contains max number of CAN messages which should be read
+//                                         OUTPUT: *pdwCount_p contains real number of CAN messages was read
+//
+// Return:      result of the function (see USBCAN_ERR_...)
+//
+//---------------------------------------------------------------------------
+
+UCANRET PUBLIC UcanReadCanMsg (tUcanHandle UcanHandle_p, tCanMsgStruct* pCanMsg_p);
+UCANRET PUBLIC UcanReadCanMsgEx (tUcanHandle UcanHandle_p, BYTE* pbChannel_p, tCanMsgStruct* pCanMsg_p, DWORD* pdwCount_p);
+
+
+//---------------------------------------------------------------------------
+//
+// Function:    UcanWriteCanMsg(), UcanWriteCanMsgEx()
+//
+// Description: Sends one or more CAN messages
+//
+// Parameters:  UcanHandle_p    = [IN]  USB-CAN-Handle
+//                                      Handle, which is returned by the function UcanInitHardware..()
+//              pCanMsg_p       = [IN]  pointer to the CAN message structure
+//
+//              bChannel_p      = [IN]  CAN channel (USBCAN_CHANNEL_CH0 or USBCAN_CHANNEL_CH1)
+//              pdwCount_p      = [IN/OUT] pointer to number of CAN messages to write
+//                                         if NULL only one CAN message will be written
+//                                         INPUT:  *pdwCount_p contains number of CAN messages which should be written
+//                                         OUTPUT: *pdwCount_p contains real number of CAN messages was written
+//
+// Return:      result of the function (see USBCAN_ERR_...)
+//
+//---------------------------------------------------------------------------
+
+UCANRET PUBLIC UcanWriteCanMsg (tUcanHandle UcanHandle_p, tCanMsgStruct* pCanMsg_p);
+UCANRET PUBLIC UcanWriteCanMsgEx (tUcanHandle UcanHandle_p, BYTE bChannel_p, tCanMsgStruct* pCanMsg_p, DWORD* pdwCount_p);
+
+
+//---------------------------------------------------------------------------
+//
+// Function:    UcanGetStatus(), UcanGetStatusEx()
+//
+// Description: Returns the state of the USB-CANmodul
+//
+// Parameters:  UcanHandle_p    = [IN]  USB-CAN-Handle
+//                                      Handle, which is returned by the function UcanInitHardware..()
+//              pStatus_p       = [OUT] pointer to Status structure
+//
+//              bChannel_p      = [IN]  CAN channel (USBCAN_CHANNEL_CH0 or USBCAN_CHANNEL_CH1)
+//
+// Return:      result of the function (see USBCAN_ERR_...)
+//
+//---------------------------------------------------------------------------
+
+UCANRET PUBLIC UcanGetStatus (tUcanHandle UcanHandle_p, tStatusStruct* pStatus_p);
+UCANRET PUBLIC UcanGetStatusEx (tUcanHandle UcanHandle_p, BYTE bChannel_p, tStatusStruct* pStatus_p);
+
+
+//---------------------------------------------------------------------------
+//
+// Function:    UcanGetMsgCountInfo(), UcanGetMsgCountInfoEx()
+//
+// Description: Reads the packet information from USB-CANmodul (counter of
+//              received and sent CAN messages).
+//
+// Parameters:  UcanHandle_p    = [IN]  USB-CAN-Handle
+//                                      Handle, which is returned by the function UcanInitHardware..()
+//              pMsgCountInfo_p = [OUT] pointer to message counter information structure
+//
+//              bChannel_p      = [IN]  CAN channel (USBCAN_CHANNEL_CH0 or USBCAN_CHANNEL_CH1)
+//
+// Return:      result of the function (see USBCAN_ERR_...)
+//
+//---------------------------------------------------------------------------
+
+UCANRET PUBLIC UcanGetMsgCountInfo (tUcanHandle UcanHandle_p, tUcanMsgCountInfo* pMsgCountInfo_p);
+UCANRET PUBLIC UcanGetMsgCountInfoEx (tUcanHandle UcanHandle_p, BYTE bChannel_p, tUcanMsgCountInfo* pMsgCountInfo_p);
+UCANRET PUBLIC UcanGetMsgCountInfoEx2 (tUcanHandle UcanHandle_p, BYTE bChannel_p, tUcanMsgCountInfoEx* pMsgCountInfo_p);
+
+
+//---------------------------------------------------------------------------
+//
+// Function:    UcanDeinitCan(), UcanDeinitCanEx()
+//
+// Description: Shuts down the CAN interface on the USB-CANmodul
+//
+// Parameters:  UcanHandle_p    = [IN]  USB-CAN-Handle
+//                                      Handle, which is returned by the function UcanInitHardware..()
+//
+//              bChannel_p      = [IN]  CAN channel (USBCAN_CHANNEL_CH0 or USBCAN_CHANNEL_CH1)
+//
+// Return:      result of the function (see USBCAN_ERR_...)
+//
+//---------------------------------------------------------------------------
+
+UCANRET PUBLIC UcanDeinitCan (tUcanHandle UcanHandle_p);
+UCANRET PUBLIC UcanDeinitCanEx (tUcanHandle UcanHandle_p, BYTE bChannel_p);
+
+
+//---------------------------------------------------------------------------
+//
+// Function:    UcanDeinitHardware()
+//
+// Description: Deinitializes a USB-CANmodul
+//
+// Parameters:  UcanHandle_p    = [IN]  USB-CAN-Handle
+//                                      Handle, which is returned by the function UcanInitHardware..()
+//
+// Return:      result of the function (see USBCAN_ERR_...)
+//
+//---------------------------------------------------------------------------
+
+UCANRET PUBLIC UcanDeinitHardware (tUcanHandle UcanHandle_p);
+
+
+//---------------------------------------------------------------------------
+//
+// Callback functions
+//
+//---------------------------------------------------------------------------
+
+//---------------------------------------------------------------------------
+//
+// Function:    UcanCallbackFkt(), UcanCallbackFktEx()
+//
+// Description: Is called from the USBCAN32.DLL if a working event occured.
+//
+// Parameters:  UcanHandle_p        = [IN]  USB-CAN-Handle
+//                                      Handle, which is returned by the function UcanInitHardware..()
+//              bEvent_p/dwEvent_p  = [IN]  event
+//                  USBCAN_EVENT_INITHW
+//                  USBCAN_EVENT_INITCAN
+//                  USBCAN_EVENT_RECEIVE
+//                  USBCAN_EVENT_STATUS
+//                  USBCAN_EVENT_DEINITCAN
+//                  USBCAN_EVENT_DEINITHW
+//
+//              bChannel_p      = [IN]  CAN channel (USBCAN_CHANNEL_CH0 or USBCAN_CHANNEL_CH1, USBCAN_CHANNEL_ANY)
+//              pArg_p          = [IN]  additional parameter
+//                                      Parameter which was defined with UcanInitHardwareEx()
+//
+// Returns:     none
+//
+//---------------------------------------------------------------------------
+
+void PUBLIC UcanCallbackFkt (tUcanHandle UcanHandle_p, BYTE bEvent_p);
+void PUBLIC UcanCallbackFktEx (tUcanHandle UcanHandle_p, DWORD dwEvent_p, BYTE bChannel_p, void* pArg_p);
+
+
+//---------------------------------------------------------------------------
+//
+// Function:    UcanConnectControlFkt(), UcanConnectControlFktEx()
+//
+// Description: Is called from the USBCAN32.DLL if a plug & play event occured.
+//
+// Parameters:  bEvent_p/dwEvent_p    = [IN]  event
+//                  USBCAN_EVENT_CONNECT
+//                  USBCAN_EVENT_DISCONNECT
+//                  USBCAN_EVENT_FATALDISCON
+//              dwParam_p   = [IN]  additional parameter (depends on bEvent_p)
+//                  USBCAN_EVENT_CONNECT:       always 0
+//                  USBCAN_EVENT_DISCONNECT.    always 0
+//                  USBCAN_EVENT_FATALDISCON:   USB-CAN-Handle of the disconnected module
+//
+//              pArg_p      = [IN]  additional parameter
+//                                  Parameter which was defined with UcanInitHardwareEx()
+//
+// Returns:     none
+//
+//---------------------------------------------------------------------------
+
+void PUBLIC UcanConnectControlFkt (BYTE bEvent_p, DWORD dwParam_p);
+void PUBLIC UcanConnectControlFktEx (DWORD dwEvent_p, DWORD dwParam_p, void* pArg_p);
+
+
+//---------------------------------------------------------------------------
+//
+// automatic transmission of cyclic CAN messages by the device firmware
+//
+//              Only available for Multiport CAN-to-USB, USB-CANmodulX
+//              (NOT for GW-001 and GW-002 !!!).
+//
+//---------------------------------------------------------------------------
+
+//---------------------------------------------------------------------------
+//
+// Function:    UcanDefineCyclicCanMsg()
+//
+// Description: defines a list of CAN messages for automatic transmission
+// NOTE:        when this function is called an older list will be deleted
+//
+// Parameters:  UcanHandle_p    = [IN]  USB-CAN-Handle
+//                                      Handle, which is returned by the function UcanInitHardware..()
+//              bChannel_p      = [IN]  CAN channel (USBCAN_CHANNEL_CH0 or USBCAN_CHANNEL_CH1)
+//              pCanMsgList_p   = [IN]  pointer to the CAN message list (must be an array)
+//              dwCount_p       = [IN]  number of CAN messages within the list
+//                                          if zero an older list will only be deleted
+//
+// Return:      result of the function (see USBCAN_ERR_...)
+//
+//---------------------------------------------------------------------------
+
+UCANRET PUBLIC UcanDefineCyclicCanMsg (tUcanHandle UcanHandle_p,
+    BYTE bChannel_p, tCanMsgStruct* pCanMsgList_p, DWORD dwCount_p);
+
+
+//---------------------------------------------------------------------------
+//
+// Function:    UcanReadCyclicCanMsg()
+//
+// Description: reads the list of CAN messages for automatically sending back
+//
+// Parameters:  UcanHandle_p    = [IN]  USB-CAN-Handle
+//                                      Handle, which is returned by the function UcanInitHardware..()
+//              bChannel_p      = [IN]  CAN channel (USBCAN_CHANNEL_CH0 or USBCAN_CHANNEL_CH1)
+//              pCanMsgList_p   = [OUT] pointer to receive the CAN message list (must be an array)
+//              pdwCount_p      = [OUT] pointer to a 32 bit variables for receiving the number of
+//                                      CAN messages within the list
+//
+// Return:      result of the function (see USBCAN_ERR_...)
+//
+//---------------------------------------------------------------------------
+
+UCANRET PUBLIC UcanReadCyclicCanMsg (tUcanHandle UcanHandle_p,
+    BYTE bChannel_p, tCanMsgStruct* pCanMsgList_p, DWORD* pdwCount_p);
+
+
+//---------------------------------------------------------------------------
+//
+// Function:    UcanEnableCyclicCanMsg()
+//
+// Description: enables or disables the automatically sending
+//
+// Parameters:  UcanHandle_p    = [IN]  USB-CAN-Handle
+//                                      Handle, which is returned by the function UcanInitHardware..()
+//              bChannel_p      = [IN]  CAN channel (USBCAN_CHANNEL_CH0 or USBCAN_CHANNEL_CH1)
+//              dwFlags_p       = [IN]  this flags specifies which CAN messages should be
+//                                      activated, specifies the processing mode oth the list
+//                                      (sequential or parallel), enables or disables the TxEcho
+//                                      for this CAN messages
+//                                      (see constants USBCAN_CYCLIC_FLAG_...)
+//
+// Return:      result of the function (see USBCAN_ERR_...)
+//
+//---------------------------------------------------------------------------
+
+UCANRET PUBLIC UcanEnableCyclicCanMsg (tUcanHandle UcanHandle_p,
+    BYTE bChannel_p, DWORD dwFlags_p);
+
+
+// for the future:
+//UCANRET PUBLIC UcanSaveCyclicCanMsg (tUcanHandle UcanHandle_p,
+//    BYTE bChannel_p, tUcanInitCanParam* pInitCanParam_p, DWORD dwFlags_p);
+
+
+//---------------------------------------------------------------------------
+//
+// Function:    UcanGetMsgPending()
+//
+// Description: returns the number of pending CAN messages
+//
+// Parameters:  UcanHandle_p        = [IN]  USB-CAN-Handle
+//                                          Handle, which is returned by the function UcanInitHardware..()
+//              bChannel_p          = [IN]  CAN channel (USBCAN_CHANNEL_CH0, USBCAN_CHANNEL_CH1 or USBCAN_CHANNEL_ANY)
+//                                          If USBCAN_CHANNEL_ANY is set then the number of borth channels will be
+//                                          added as long as they are initialized.
+//              dwFlags_p           = [IN]  this flags specifies which buffers shoulb be checked
+//                                          (see constants USBCAN_PENDING_FLAG_...)
+//              pdwPendingCount_p   = [OUT] pointer to a 32 bit variable which receives the number of pending messages
+//
+// Return:      result of the function (see USBCAN_ERR_...)
+//
+//---------------------------------------------------------------------------
+
+UCANRET PUBLIC UcanGetMsgPending (tUcanHandle UcanHandle_p,
+    BYTE bChannel_p, DWORD dwFlags_p, DWORD* pdwPendingCount_p);
+
+
+
+//---------------------------------------------------------------------------
+//
+// Function:    UcanGetCanErrorCounter()
+//
+// Description: reads the current value of the error counters within the CAN controller
+//
+//              Only available for Multiport CAN-to-USB, USB-CANmodulX
+//              (NOT for GW-001 and GW-002 !!!).
+//
+// Parameters:  UcanHandle_p        = [IN]  USB-CAN-Handle
+//                                          Handle, which is returned by the function UcanInitHardware..()
+//              bChannel_p          = [IN]  CAN channel (USBCAN_CHANNEL_CH0 or USBCAN_CHANNEL_CH1)
+//              pdwTxErrorCounter_p = [OUT] pointer to a 32 bit variable which receives the TX error counter
+//              pdwRxErrorCounter_p = [OUT] pointer to a 32 bit variable which receives the RX error counter
+//
+// Return:      result of the function (see USBCAN_ERR_...)
+//
+//---------------------------------------------------------------------------
+
+UCANRET PUBLIC UcanGetCanErrorCounter (tUcanHandle UcanHandle_p,
+    BYTE bChannel_p, DWORD* pdwTxErrorCounter_p, DWORD* pdwRxErrorCounter_p);
+
+
+//---------------------------------------------------------------------------
+//
+// Function:    UcanSetTxTimeout()
+//
+// Description: sets the transmission timeout
+//
+// Note: When a transmission timeout is set the firmware tries to send
+// a message within this timeout. If it could not be sent the firmware sets
+// the "auto delete" state. Within this state all transmit CAN messages for
+// this channel will be deleted automatically for not blocking the other
+// channel. When firmware does delete a transmit CAN message then a new
+// error status will be set: USBCAN_CANERR_TXMSGLOST (red LED is blinking).
+//
+// This function can also be used for USB-CANmodul2, 8 or 16 (multiport).
+//
+// Parameters:  UcanHandle_p    = [IN]  USB-CAN-Handle
+//              bChannel_p      = [IN]  CAN channel (USBCAN_CHANNEL_CH0 or USBCAN_CHANNEL_CH1)
+//              dwTxTimeout_p   = [IN]  transmit timeout in milleseconds
+//                                      (value 0 swithes off the "auto delete" featuere = default setting)
+//
+// Return:      result of the function (see USBCAN_ERR_...)
+//
+//---------------------------------------------------------------------------
+
+UCANRET PUBLIC UcanSetTxTimeout (tUcanHandle UcanHandle_p,
+    BYTE bChannel_p, DWORD dwTxTimeout_p);
+
+
+// future functions
+UCANRET PUBLIC UcanGetRtcStatus (tUcanHandle UcanHandle_p, tUcanRtcStatus* pRtcStatus_p);
+UCANRET PUBLIC UcanGetSdCardStatus (tUcanHandle UcanHandle_p, tUcanSdCardStatus* pSdCardStatus_p);
 
 
 #ifdef __cplusplus

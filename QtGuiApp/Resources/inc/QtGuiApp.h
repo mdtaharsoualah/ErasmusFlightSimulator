@@ -23,6 +23,12 @@ private slots:
 	void on_CheckThrottle_stateChanged(int arg1);
 	void on_ControlThrottle_valueChanged(int value);
 	void on_MbedReadButton_clicked();
+public slots:
+	void PrintAltitude(double altitude);
+	void PrintCap(double value);
+	void PrintVSpeed(double value);
+	void PrintHSpeed(double value);
+	void PrintThrottle(double value);
 private:
 	Ui::QtGuiAppClass ui;
 	int i = 0;

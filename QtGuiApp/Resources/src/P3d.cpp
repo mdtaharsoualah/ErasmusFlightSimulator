@@ -1,6 +1,15 @@
 #include "P3d.h"
 
 
+void P3d::start() {
+	P3dConnect();
+	P3dConfig();
+	Queue.QueueAddElement(DEF_ALTITUDE);
+	QTimer *timer = new QTimer(this);
+	connect(timer, SIGNAL(timeout()), this, SLOT(P3dStart()));
+	timer->start(5);
+}
+
 bool P3d::P3dConnect()
 {
 	if (SUCCEEDED(SimConnect_Open(&hSimConnect, "TEST", NULL, 0, 0, 0)))
@@ -50,10 +59,7 @@ void CALLBACK P3d::DispatchCallback(SIMCONNECT_RECV *pData, DWORD cbData, void *
 	pThis->usbcan.CanSend1(0x55);
 }
 
-void P3d::P3dPrintData()
-{
 
-}
 
 
 void P3d::Process(SIMCONNECT_RECV * pData, DWORD cbData)
@@ -72,39 +78,39 @@ void P3d::Process(SIMCONNECT_RECV * pData, DWORD cbData)
 		{
 			DWORD ObjectID = pObjData->dwObjectID;
 			double *pS = (double*)&pObjData->dwData;
-			usbcan.SetAlt(*pS);
-			P3dPrintAltitude(*pS);
+			//usbcan.SetAlt(*pS);
+			emit P3dPrintAltitude(*pS);
 			break;
 		}
 		case DEF_CAP:
 		{
 			DWORD ObjectID = pObjData->dwObjectID;
 			double *pS = (double*)&pObjData->dwData;
-			usbcan.SetCap((*pS)*((double)180 / (double)3.14));
-			P3dPrintCap((*pS)*((double)180 / (double)3.14));
+			//usbcan.SetCap((*pS)*((double)180 / (double)3.14));
+			emit P3dPrintCap((*pS)*((double)180 / (double)3.14));
 			break;
 		}
 		case DEF_VSpeed:
 		{
 			DWORD ObjectID = pObjData->dwObjectID;
 			double *pS = (double*)&pObjData->dwData;
-			usbcan.SetVSpeed((*pS)*60.0);
-			P3dPrintVSpeed((*pS)*60.0);
+			//usbcan.SetVSpeed((*pS)*60.0);
+			emit P3dPrintVSpeed((*pS)*60.0);
 			break;
 		}
 		case DEF_HSpeed:
 		{
 			DWORD ObjectID = pObjData->dwObjectID;
 			double *pS = (double*)&pObjData->dwData;
-			usbcan.SetHSpeed(*pS);
-			P3dPrintHSpeed(*pS);
+			//usbcan.SetHSpeed(*pS);
+			emit P3dPrintHSpeed(*pS);
 			break;
 		}
 		case DEF_THROTTLE:
 		{
 			DWORD ObjectID = pObjData->dwObjectID;
 			double *pS = (double*)&pObjData->dwData;
-			P3dPrintThrottle(*pS);
+			emit P3dPrintThrottle(*pS);
 			break;
 		}
 
@@ -148,30 +154,6 @@ void P3d::Process(SIMCONNECT_RECV * pData, DWORD cbData)
 }
 
 
-void P3d::P3dPrintAltitude(double value) {
-	QtParametre.LcdAltitude->display(value);
-}
-
-void P3d::P3dPrintCap(double value) {
-	QtParametre.LcdCap->display(value);
-}
-
-void P3d::P3dPrintVSpeed(double value) {
-	QtParametre.LcdVSpeed->display(value);
-}
-
-void P3d::P3dPrintHSpeed(double value) {
-	QtParametre.LcdHSpeed->display(value);
-}
-
-void P3d::P3dPrintThrottle(double value) {
-	if (throttlePercent != value)
-		SetThrottle(throttlePercent);
-	QtParametre.LcdThrottle->display(throttlePercent);
-}
-
-
-
 
 void P3d::SetThrottle(double value)
 {
@@ -181,9 +163,6 @@ void P3d::SetThrottle(double value)
 }
 
 
-void P3d::P3dConfig(QtParameter* qt) {
-	QtParametre = *qt;
-}
 
 
 void P3d::P3dRequestData() {

@@ -1,9 +1,66 @@
 #include "Convert.h"
 
+#define WM_UCAN_RECEIVE             (WM_USER + 1)
+#define WM_UCAN_STATUS              (WM_USER + 2)
+
+
+void PUBLIC UsbCan::UcanCallbackFktEx(tUcanHandle UcanHandle_p, DWORD	dwEvent_p, BYTE	bChannel_p,	void*pArg_p)
+{
+
+
+	//----------------------------------------------------------------------------
+	// NOTE:
+	// Do not call functions of USBCAN32.DLL directly from this callback handler.
+	// Use events or windows messages to notify the event to the application.
+	//----------------------------------------------------------------------------
+
+	// check event
+	switch (dwEvent_p)
+	{
+		// hardware initialized
+	case USBCAN_EVENT_INITHW:
+		break;
+
+		// CAN interface initialized
+	case USBCAN_EVENT_INITCAN:
+		break;
+
+		// CAN message received
+	case USBCAN_EVENT_RECEIVE:
+
+		printf("Recieved!!");
+		break;
+
+		// status message received
+	case USBCAN_EVENT_STATUS:
+
+		printf("Status!!");
+		break;
+
+		// CAN interface deinitialized
+	case USBCAN_EVENT_DEINITCAN:
+		break;
+
+		// hardware deinitialized
+	case USBCAN_EVENT_DEINITHW:
+		break;
+
+		// unknown event
+	default:
+		break;
+	}
+}
+
 
 void UsbCan::UsbCanConnect() {
 	// initialize USB-CANmodul
-	bRet = UcanInitHardware(&UcanHandle, USBCAN_ANY_MODULE, NULL);
+	//bRet = UcanInitHardware(&UcanHandle, USBCAN_ANY_MODULE, NULL);
+
+	bRet = UcanInitHardwareEx(&UcanHandle, USBCAN_ANY_MODULE, NULL, NULL);
+	
+	bRet = UcanInitHardwareEx(&UcanHandle, USBCAN_ANY_MODULE, UcanCallbackFktEx, NULL);
+
+	//UcanInitHwConnectControlEx(UcanConnectControlFktEx, NULL);
 
 	bRet = UcanInitCan(UcanHandle,
 		HIBYTE(USBCAN_BAUD_250kBit), // BTR0 for 1MBit/s 

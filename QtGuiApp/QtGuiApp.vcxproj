@@ -128,7 +128,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Convert.h" />
-    <ClInclude Include="Resources\inc\P3d.h" />
+    <QtMoc Include="Resources\inc\P3d.h" />
     <ClInclude Include="Resources\inc\Usbcan32.h" />
     <ClInclude Include="Resources\inc\UsbCanLs.h" />
     <ClInclude Include="Resources\inc\UsbCanUp.h" />
