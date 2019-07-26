@@ -42,6 +42,11 @@ bool QueueClass::QueueDelateElement(int Id)
 	return true;
 }
 
+void QueueClass::ElementSearch(GeneralDefine ** Structure, int Id)
+{
+
+}
+
 void QueueClass::QueuePrintData()
 {
 	QueueReset();
