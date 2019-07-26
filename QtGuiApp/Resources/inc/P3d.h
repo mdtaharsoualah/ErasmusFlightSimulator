@@ -62,6 +62,8 @@ public:
 public slots:
 	void start();
 	void P3dStart();
+	void AddElement(int id);
+	void DelElement(int id);
 
 
 signals:

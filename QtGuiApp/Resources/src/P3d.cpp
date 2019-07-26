@@ -4,7 +4,7 @@
 void P3d::start() {
 	P3dConnect();
 	P3dConfig();
-	Queue.QueueAddElement(DEF_ALTITUDE);
+	
 	QTimer *timer = new QTimer(this);
 	connect(timer, SIGNAL(timeout()), this, SLOT(P3dStart()));
 	timer->start(5);
@@ -173,4 +173,12 @@ void P3d::P3dRequestData() {
 		if (tmp != NULL)
 			SimConnect_RequestDataOnSimObjectType(hSimConnect, tmp->Id, tmp->Id, 0, SIMCONNECT_SIMOBJECT_TYPE_USER);
 	} while (tmp != NULL);
+}
+
+void P3d::AddElement(int id) {
+	Queue.QueueAddElement(id);
+}
+
+void P3d::DelElement(int id) {
+	Queue.QueueDelateElement(id);
 }

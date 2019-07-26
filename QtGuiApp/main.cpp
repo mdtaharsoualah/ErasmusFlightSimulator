@@ -20,6 +20,8 @@ int main(int argc, char *argv[])
 	QObject::connect(p3d, SIGNAL(P3dPrintCap(double)), w, SLOT(PrintCap(double)));
 	QObject::connect(p3d, SIGNAL(P3dPrintVSpeed(double)), w, SLOT(PrintVSpeed(double)));
 	QObject::connect(p3d, SIGNAL(P3dPrintHSpeed(double)), w, SLOT(PrintHSpeed(double)));
+	QObject::connect(w, SIGNAL(AddElement(int)), p3d, SLOT(AddElement(int)));
+	QObject::connect(w, SIGNAL(DelElement(int)), p3d, SLOT(DelElement(int)));
 	thread->start();
 
 	return a.exec();

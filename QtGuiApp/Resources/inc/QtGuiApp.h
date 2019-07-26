@@ -14,6 +14,11 @@ class QtGuiApp : public QMainWindow
 
 public:
 	QtGuiApp(QWidget *parent = Q_NULLPTR);
+
+signals:
+	void AddElement(int id);
+	void DelElement(int id);
+
 private slots:
 	void printData();
 	void on_CheckAltitude_stateChanged(int arg1);
