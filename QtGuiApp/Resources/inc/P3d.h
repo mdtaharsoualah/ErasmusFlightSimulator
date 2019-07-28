@@ -7,6 +7,9 @@
 #include "QueueClass.h"
 
 
+#include <QObject>
+#include <qtimer.h>
+
 #include <sstream>
 
 #include <QString>
@@ -17,28 +20,6 @@
 #include<QDebug>
 
 #include "Convert.h"
-
-struct QtParameter
-{
-	//Affichage
-	QTextEdit* TextEdit;
-	//Altitude
-	QCheckBox* CheckAltitude;
-	QLCDNumber* LcdAltitude;
-	//Cap
-	QCheckBox* CheckCap;
-	QLCDNumber* LcdCap;
-	//VSpeed
-	QCheckBox* CheckVSpeed;
-	QLCDNumber* LcdVSpeed;
-	//HSpeed
-	QCheckBox* CheckHSpeed;
-	QLCDNumber* LcdHSpeed;
-	//Throttle
-	QCheckBox* CheckThrottle;
-	QLCDNumber* LcdThrottle;
-	QSlider* ControlThrottle;
-};
 
 
 enum GROUP_ID {
@@ -56,41 +37,44 @@ enum EVENT_ID {
 
 
 
-class P3d
-{
+class P3d : public QObject {
+	Q_OBJECT
+
 public:
 
 
 
 	bool P3dConnect();
 	void P3dDisconnect();
-	void P3dStart();
-
+	
 	void P3dConfig();
-	void P3dConfig(QtParameter*);
 
-	void P3dPrintData();
 
 
 	static void DispatchCallback(SIMCONNECT_RECV *pData, DWORD cbData, void *pContext);
-
-
 	void Process(SIMCONNECT_RECV *pData, DWORD cbData);
+	void SetThrottle(double);
+
+	void P3dRequestData();
+
+	QueueClass Queue;
+
+public slots:
+	void start();
+	void P3dStart();
+
+
+signals:
 	void P3dPrintAltitude(double value);
 	void P3dPrintCap(double value);
 	void P3dPrintVSpeed(double value);
 	void P3dPrintHSpeed(double value);
 	void P3dPrintThrottle(double value);
-	void SetThrottle(double);
 
-	void P3dRequestData();
-	
-	QueueClass Queue;
 
 private:
 	int quit = 0;
 	HANDLE hSimConnect = NULL;
-	QtParameter QtParametre;
 	double throttlePercent = 0;
 	UsbCan usbcan;
 
