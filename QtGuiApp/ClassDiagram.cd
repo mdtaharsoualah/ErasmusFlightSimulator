@@ -1,0 +1,1299 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="UsbCan" Collapsed="true">
+    <Position X="164" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAIgAAAgQAAGBAAAQEAAAACAAAgEAAAAAAAAAAA=</HashCode>
+      <FileName>Convert.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="P3d" Collapsed="true">
+    <Position X="158.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEABAAEBgABABsAgAgAAQAAAAABAAABBAAGAAEA=</HashCode>
+      <FileName>Resources\inc\P3d.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QueueClass" Collapsed="true">
+    <Position X="162.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACABAAAAAAAAIAIAAAAQAAIQAAAABABQAAAAAg=</HashCode>
+      <FileName>Resources\inc\QueueClass.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QtGuiApp" Collapsed="true">
+    <Position X="160.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAEAAAAAAAEAAgAkAAAAAAAAAAAAABIAAAAEAAAAA=</HashCode>
+      <FileName>Resources\inc\QtGuiApp.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="DataTram1" Collapsed="true">
+    <Position X="158.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAAAAAAAAAAAAAAIAIAAAAAAAAAAAgAAAAA=</HashCode>
+      <FileName>Convert.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="QtParameter" Collapsed="true">
+    <Position X="162.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIKBAAAAAAFgAAAAAAAAACIAAEAAAAAAAEAAAAAA=</HashCode>
+      <FileName>Resources\inc\P3d.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="_tCanMsgStruct" Collapsed="true">
+    <Position X="16.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAABAAAACABAAAAAAAAAAAAAAAAEQAAAA=</HashCode>
+      <FileName>Resources\inc\Usbcan32.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="_tStatusStruct" Collapsed="true">
+    <Position X="13.5" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAEAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\Usbcan32.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="_tUcanInitCanParam" Collapsed="true">
+    <Position X="5.5" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAggAAQAAAAAwAAAAIAAAAAEAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\Usbcan32.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="_tUcanHardwareInfo" Collapsed="true">
+    <Position X="13.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAgAAQACAAAwAAAgAAAAAAEAAAAAAAAAAAAkA=</HashCode>
+      <FileName>Resources\inc\Usbcan32.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="_tUcanHardwareInfoEx" Collapsed="true">
+    <Position X="9.5" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgEAACAAAAAAQCAAAAAAIgAAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Resources\inc\Usbcan32.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="_tUcanHardwareInitInfo" Collapsed="true">
+    <Position X="1.5" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAAAAACAAAAAAAAAAACgAAAAAAAACAAAIA=</HashCode>
+      <FileName>Resources\inc\Usbcan32.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="_tUcanChannelInfo" Collapsed="true">
+    <Position X="10.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgACAAAggAAQAAAAAwAAAAAAAAAAEAAAAEAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\Usbcan32.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="_tUcanMsgCountInfo" Collapsed="true">
+    <Position X="9.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAIAAAEAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\Usbcan32.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="_tUcanMsgCountInfoEx" Collapsed="true">
+    <Position X="5.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAA=</HashCode>
+      <FileName>Resources\inc\Usbcan32.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="_tUcanRtcStatus" Collapsed="true">
+    <Position X="1.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAIAAACAAAAQAAAAAEAAABQAAAAAAABAAAAAAA=</HashCode>
+      <FileName>Resources\inc\Usbcan32.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="_tUcanSdCardStatus" Collapsed="true">
+    <Position X="6.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAACCAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\Usbcan32.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="GeneralDefine" Collapsed="true">
+    <Position X="160.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\QueueClass.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="QueueDefine" Collapsed="true">
+    <Position X="164" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\QueueClass.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SIMCONNECT_DATA_LATLONALT" Collapsed="true">
+    <Position X="160.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAAAAAAAIgAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SIMCONNECT_DATA_XYZ" Collapsed="true">
+    <Position X="165.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABgAQAAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SIMCONNECT_DATA_PBH" Collapsed="true">
+    <Position X="158.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAACAAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SIMCONNECT_RECV" Collapsed="true">
+    <Position X="82" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAABAAAAgAAAAQAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SIMCONNECT_RECV_EXCEPTION" Collapsed="true">
+    <Position X="142.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAACAAAAAAAAAAAAIAAAAggAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SIMCONNECT_RECV_OPEN" Collapsed="true">
+    <Position X="149.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAIAAAAAAAAAEJAAAAAAAAAAACQAAAFAAAAAgAgA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SIMCONNECT_RECV_QUIT" Collapsed="true">
+    <Position X="7.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SIMCONNECT_RECV_EVENT_BASE" Collapsed="true">
+    <Position X="36" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAAAAAAAAAAAAAAAAAAEBAAAAAAAAABAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SIMCONNECT_RECV_EVENT" Collapsed="true">
+    <Position X="29.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SIMCONNECT_RECV_EVENT_64" Collapsed="true">
+    <Position X="23.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SIMCONNECT_RECV_EVENT_FILENAME" Collapsed="true">
+    <Position X="41.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAEAAAAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SIMCONNECT_RECV_EVENT_OBJECT_ADDREMOVE" Collapsed="true">
+    <Position X="46" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAgAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SIMCONNECT_RECV_EVENT_FRAME" Collapsed="true">
+    <Position X="48.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAgAAAAAAEAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SIMCONNECT_RECV_EVENT_MULTIPLAYER_SERVER_STARTED" Collapsed="true">
+    <Position X="25.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SIMCONNECT_RECV_EVENT_MULTIPLAYER_CLIENT_STARTED" Collapsed="true">
+    <Position X="28" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SIMCONNECT_RECV_EVENT_MULTIPLAYER_SESSION_ENDED" Collapsed="true">
+    <Position X="30.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SIMCONNECT_DATA_RACE_RESULT" Collapsed="true">
+    <Position X="160.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABgAAAAgACAAAAEEAAABIAACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SIMCONNECT_RECV_EVENT_RACE_END" Collapsed="true">
+    <Position X="52.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAgAAAAIAAAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SIMCONNECT_RECV_EVENT_RACE_LAP" Collapsed="true">
+    <Position X="55" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAIAAAEAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SIMCONNECT_RECV_EVENT_WEAPON" Collapsed="true">
+    <Position X="57.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAiARAAAAAgAAAIAAAAAAEAAAAAAAAgAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SIMCONNECT_RECV_EVENT_TEXT" Collapsed="true">
+    <Position X="14.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAEIAAAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAEAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SIMCONNECT_RECV_EVENT_TEXT_DESTROYED" Collapsed="true">
+    <Position X="19" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAEAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SIMCONNECT_DATA_OBJECT_DAMAGED_BY_WEAPON" Collapsed="true">
+    <Position X="165.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SIMCONNECT_RECV_EVENT_OBJECT_DAMAGED_BY_WEAPON" Collapsed="true">
+    <Position X="39.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAACAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SIMCONNECT_RECV_EVENT_COUNTERMEASURE" Collapsed="true">
+    <Position X="43.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAgAQAAAAACAAAAAAAAAAEAAAAAAAAgAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SIMCONNECT_RECV_ATTACHPOINT_DATA" Collapsed="true">
+    <Position X="91" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAABAAAAAAAAAEAAQACABAAAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SIMCONNECT_RECV_SIMOBJECT_DATA" Collapsed="true">
+    <Position X="99" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAAAAAAAAAAAEAAAgAAAFgAAAAIAAAAAg=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SIMCONNECT_RECV_SIMOBJECT_DATA_BYTYPE" Collapsed="true">
+    <Position X="97.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SIMCONNECT_RECV_MOBILE_SCENERY_DATA" Collapsed="true">
+    <Position X="124.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAABAAAAAAAAAAAAAAAAECAQACAAAAEAAAIAAAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SIMCONNECT_DATA_MOBILE_SCENERY_INFO" Collapsed="true">
+    <Position X="164" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SIMCONNECT_RECV_MOBILE_SCENERY_IN_RADIUS" Collapsed="true">
+    <Position X="136" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAEAAAAAAAAAAAAABAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SIMCONNECT_RECV_CLIENT_DATA" Collapsed="true">
+    <Position X="100" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SIMCONNECT_RECV_SYNCHRONOUS_BLOCK" Collapsed="true">
+    <Position X="145" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SIMCONNECT_RECV_CAMERA_6DOF" Collapsed="true">
+    <Position X="151.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAgAAEAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAOA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SIMCONNECT_RECV_CAMERA_FOV" Collapsed="true">
+    <Position X="10" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAgAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SIMCONNECT_RECV_CAMERA_SENSOR_MODE" Collapsed="true">
+    <Position X="59.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SIMCONNECT_RECV_CAMERA_WINDOW_POSITION" Collapsed="true">
+    <Position X="66.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SIMCONNECT_RECV_CAMERA_WINDOW_SIZE" Collapsed="true">
+    <Position X="70.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAAAAAAEAAAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SIMCONNECT_DATA_JOYSTICK_DEVICE_INFO" Collapsed="true">
+    <Position X="158.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEACAAAAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SIMCONNECT_RECV_JOYSTICK_DEVICE_INFO" Collapsed="true">
+    <Position X="93.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAEAAAAAAAAAAAAABAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SIMCONNECT_RECV_WEATHER_OBSERVATION" Collapsed="true">
+    <Position X="102.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SIMCONNECT_RECV_CLOUD_STATE" Collapsed="true">
+    <Position X="109" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAEAAAAAAAAAAAAAAAAAACAAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SIMCONNECT_RECV_ASSIGNED_OBJECT_ID" Collapsed="true">
+    <Position X="127" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SIMCONNECT_RECV_RESERVED_KEY" Collapsed="true">
+    <Position X="131.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SIMCONNECT_RECV_SYSTEM_STATE" Collapsed="true">
+    <Position X="138.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAAAAAAAAAAAACAAAAAEAABAAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SIMCONNECT_RECV_VERSION" Collapsed="true">
+    <Position X="140.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAIAAAAAAAAAEIAAAAAAAAAAAAQAAAFAACAAgAgA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SIMCONNECT_RECV_SCENERY_COMPLEXITY" Collapsed="true">
+    <Position X="147.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SIMCONNECT_RECV_SHADOW_FLAGS" Collapsed="true">
+    <Position X="154" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SIMCONNECT_RECV_CUSTOM_ACTION" Collapsed="true">
+    <Position X="16.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAEAAACAAAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SIMCONNECT_RECV_SESSION_DURATION" Collapsed="true">
+    <Position X="61.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SIMCONNECT_RECV_GOAL" Collapsed="true">
+    <Position X="68.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IJAIABAAAQAAAAAAAUAAAAAAAAAgAAAAAEAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SIMCONNECT_RECV_GOAL_PAIR" Collapsed="true">
+    <Position X="73" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAEAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SIMCONNECT_RECV_MISSION_OBJECTIVE" Collapsed="true">
+    <Position X="86.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AJAAABAAAQAAAAASAABAAAAAAAAgBAAAAEEAAAAAAIA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SIMCONNECT_RECV_MISSION_OBJECT_COUNT" Collapsed="true">
+    <Position X="95.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SIMCONNECT_RECV_FLIGHT_SEGMENT" Collapsed="true">
+    <Position X="104.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAABAAAAAAAAAAAAAAAAAAACAQAAAAAAIAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SIMCONNECT_RECV_PARAMETER_RANGE" Collapsed="true">
+    <Position X="111.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABQAADACAAAAAAIAABAAAAAAAAAAIACgAAAAAAAAAgA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SIMCONNECT_RECV_RECORDING_INFO" Collapsed="true">
+    <Position X="129.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAACAAAAAAAAAAAIgACAAAEAAAAAAAAAAAAAABAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SIMCONNECT_RECV_RECORDING_BOOKMARK_INFO" Collapsed="true">
+    <Position X="133.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gJAAAACAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SIMCONNECT_RECV_FLIGHT_SEGMENT_READY_FOR_GRADING" Collapsed="true">
+    <Position X="50.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SIMCONNECT_RECV_PLAYBACK_STATE_CHANGED" Collapsed="true">
+    <Position X="32.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAIAAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SIMCONNECT_RECV_RECORDER_STATE_CHANGED" Collapsed="true">
+    <Position X="34.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SIMCONNECT_RECV_EVENT_FLIGHT_ANALYSIS_DIAGRAMS" Collapsed="true">
+    <Position X="37" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SIMCONNECT_RECV_LANDING_TRIGGER_INFO" Collapsed="true">
+    <Position X="12.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAQAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SIMCONNECT_RECV_LANDING_INFO" Collapsed="true">
+    <Position X="64" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAEAAAAAAAAAIgAAAAABAAAAAAAAAEAAAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SIMCONNECT_RECV_EVENT_WEATHER_MODE" Collapsed="true">
+    <Position X="21.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SIMCONNECT_RECV_FACILITIES_LIST" Collapsed="true">
+    <Position X="79.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAEAAAAAAAAAAAAAAAgAAEAAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SIMCONNECT_DATA_FACILITY_AIRPORT" Collapsed="true">
+    <Position X="1.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAAAAAAAIgAAAAAAAAAAAAAAAgAAAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SIMCONNECT_RECV_AIRPORT_LIST" Collapsed="true">
+    <Position X="75.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SIMCONNECT_DATA_FACILITY_WAYPOINT" Collapsed="true">
+    <Position X="1.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SIMCONNECT_RECV_WAYPOINT_LIST" Collapsed="true">
+    <Position X="77.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SIMCONNECT_DATA_FACILITY_NDB" Collapsed="true">
+    <Position X="0.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SIMCONNECT_RECV_NDB_LIST" Collapsed="true">
+    <Position X="79.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SIMCONNECT_DATA_FACILITY_TACAN" Collapsed="true">
+    <Position X="2.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAEAAACAAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SIMCONNECT_RECV_TACAN_LIST" Collapsed="true">
+    <Position X="82" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SIMCONNECT_DATA_FACILITY_VOR" Collapsed="true">
+    <Position X="0.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAEACACAAAAAAAAAAAAAABAAAAAAAAAAgAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SIMCONNECT_RECV_VOR_LIST" Collapsed="true">
+    <Position X="84.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SIMCONNECT_DATA_INITPOSITION" Collapsed="true">
+    <Position X="167.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAEAAAEAAAAAIgAAAAAAAAAAAAARAACAAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SIMCONNECT_DATA_MARKERSTATE" Collapsed="true">
+    <Position X="162.25" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAIAAAAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SIMCONNECT_DATA_WAYPOINT" Collapsed="true">
+    <Position X="164" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABACAAEAAAgAAAAAIgAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SIMCONNECT_DATA_OBSERVER" Collapsed="true">
+    <Position X="167.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAEEACAAAAIAgAAAAAAAAAAAAAAACAAAAAAAAIIA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SIMCONNECT_RECV_OBSERVER_DATA" Collapsed="true">
+    <Position X="88.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAEAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SIMCONNECT_DATA_GROUND_INFO" Collapsed="true">
+    <Position X="165.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAABACgAAABAAAAAAAAAAIAAACAQQAAAAABAAAE=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SIMCONNECT_RECV_GROUND_INFO" Collapsed="true">
+    <Position X="106.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EBAAAAAEAAAEAAAAAAAAAAAAABAAAAAgAAAAAABAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SIMCONNECT_RECV_EXTERNAL_SIM_BASE" Collapsed="true">
+    <Position X="118" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAEAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SIMCONNECT_RECV_EXTERNAL_SIM_CREATE" Collapsed="true">
+    <Position X="113.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAE=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SIMCONNECT_RECV_EXTERNAL_SIM_DESTROY" Collapsed="true">
+    <Position X="115.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SIMCONNECT_RECV_EXTERNAL_SIM_SIMULATE" Collapsed="true">
+    <Position X="118" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAIAAgABABAAAAAIAAAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SIMCONNECT_RECV_EXTERNAL_SIM_LOCATION_CHANGED" Collapsed="true">
+    <Position X="120.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAQAAAAAAAAAAAAAAAAQAAAAAAAAAAQQAAAAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SIMCONNECT_RECV_EXTERNAL_SIM_EVENT" Collapsed="true">
+    <Position X="122.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAABAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SIMCONNECT_RECV_TRAFFIC_SETTINGS" Collapsed="true">
+    <Position X="156.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EBAIAAAAAAAAAIAAAAABAAAAAAgAAAAAAAAAAAQAABA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SIMCONNECT_DATA_VIDEO_STREAM_INFO" Collapsed="true">
+    <Position X="162.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAACAAAAQAAQAAAAAAAAABAIAAAAAAAAIAAEAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Typedef Name="fixed_point_t" Collapsed="true">
+    <Position X="162.25" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Convert.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="_TCHAR" Collapsed="true">
+    <Position X="158.75" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>C:\Windows Kits\10\Include\10.0.17134.0\ucrt\tchar.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="tUcanHandle" Collapsed="true">
+    <Position X="162.25" Y="12.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\Usbcan32.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="tUcanMode" Collapsed="true">
+    <Position X="164" Y="12.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\Usbcan32.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="tUcanVersionType" Collapsed="true">
+    <Position X="165.75" Y="12.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\Usbcan32.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="tCallbackFkt" Collapsed="true">
+    <Position X="164" Y="12" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\Usbcan32.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="tCallbackFktEx" Collapsed="true">
+    <Position X="165.75" Y="12" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\Usbcan32.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="tConnectControlFkt" Collapsed="true">
+    <Position X="167.5" Y="12" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\Usbcan32.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="tConnectControlFktEx" Collapsed="true">
+    <Position X="158.75" Y="12.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\Usbcan32.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="tCanMsgStruct" Collapsed="true">
+    <Position X="16.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\Usbcan32.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="tStatusStruct" Collapsed="true">
+    <Position X="13.5" Y="16.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\Usbcan32.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="tUcanInitCanParam" Collapsed="true">
+    <Position X="5.5" Y="16.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\Usbcan32.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="tUcanHardwareInfo" Collapsed="true">
+    <Position X="13.5" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\Usbcan32.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="tUcanHardwareInfoEx" Collapsed="true">
+    <Position X="9.5" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\Usbcan32.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="tUcanHardwareInitInfo" Collapsed="true">
+    <Position X="1.5" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\Usbcan32.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="tUcanEnumCallback" Collapsed="true">
+    <Position X="160.5" Y="12.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\Usbcan32.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="tUcanChannelInfo" Collapsed="true">
+    <Position X="12.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\Usbcan32.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="tUcanMsgCountInfo" Collapsed="true">
+    <Position X="9.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\Usbcan32.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="tUcanMsgCountInfoEx" Collapsed="true">
+    <Position X="5.5" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\Usbcan32.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="tUcanRtcStatus" Collapsed="true">
+    <Position X="1.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\Usbcan32.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="tUcanSdCardStatus" Collapsed="true">
+    <Position X="6.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\Usbcan32.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="SIMCONNECT_OBJECT_ID" Collapsed="true">
+    <Position X="164" Y="11.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="QWORD" Collapsed="true">
+    <Position X="164" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="SIMCONNECT_EVENT_SUBSCRIPTION_FLAG" Collapsed="true">
+    <Position X="165.75" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="SIMCONNECT_VOR_FLAGS" Collapsed="true">
+    <Position X="160.5" Y="12" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="SIMCONNECT_WAYPOINT_FLAGS" Collapsed="true">
+    <Position X="162.25" Y="12" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="SIMCONNECT_EVENT_FLAG" Collapsed="true">
+    <Position X="164" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="SIMCONNECT_DATA_REQUEST_FLAG" Collapsed="true">
+    <Position X="158.75" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="SIMCONNECT_DATA_SET_FLAG" Collapsed="true">
+    <Position X="162.25" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="SIMCONNECT_CREATE_CLIENT_DATA_FLAG" Collapsed="true">
+    <Position X="165.75" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="SIMCONNECT_CLIENT_DATA_REQUEST_FLAG" Collapsed="true">
+    <Position X="160.5" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="SIMCONNECT_CLIENT_DATA_SET_FLAG" Collapsed="true">
+    <Position X="162.25" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="SIMCONNECT_VIEW_SYSTEM_EVENT_DATA" Collapsed="true">
+    <Position X="158.75" Y="12" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="SIMCONNECT_SOUND_SYSTEM_EVENT_DATA" Collapsed="true">
+    <Position X="167.5" Y="11.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="SIMCONNECT_EXTERNAL_SIM_CALLBACK_FLAG" Collapsed="true">
+    <Position X="167.5" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="SIMCONNECT_GROUND_INFO_SOURCE_FLAG" Collapsed="true">
+    <Position X="158.75" Y="11.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="SIMCONNECT_SHADOW_FLAGS" Collapsed="true">
+    <Position X="165.75" Y="11.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="SIMCONNECT_NOTIFICATION_GROUP_ID" Collapsed="true">
+    <Position X="162.25" Y="11.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="SIMCONNECT_INPUT_GROUP_ID" Collapsed="true">
+    <Position X="160.5" Y="11.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="SIMCONNECT_DATA_DEFINITION_ID" Collapsed="true">
+    <Position X="167.5" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="SIMCONNECT_DATA_REQUEST_ID" Collapsed="true">
+    <Position X="160.5" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="SIMCONNECT_CLIENT_EVENT_ID" Collapsed="true">
+    <Position X="164" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="SIMCONNECT_CLIENT_DATA_ID" Collapsed="true">
+    <Position X="158.75" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="SIMCONNECT_CLIENT_DATA_DEFINITION_ID" Collapsed="true">
+    <Position X="167.5" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="SIMCONNECT_CAMERA_COMMAND" Collapsed="true">
+    <Position X="165.75" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="DispatchProc" Collapsed="true">
+    <Position X="160.5" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Enum Name="GROUP_ID" Collapsed="true">
+    <Position X="162.25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\P3d.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="INPUT_ID" Collapsed="true">
+    <Position X="164" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\P3d.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="EVENT_ID" Collapsed="true">
+    <Position X="160.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\P3d.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="DEFINE_ENUM" Collapsed="true">
+    <Position X="158.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAAAAAIAAAAAAAAACAAAAAAAAIgAAAAAAA=</HashCode>
+      <FileName>Resources\inc\QueueClass.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="SIMCONNECT_RECV_ID" Collapsed="true">
+    <Position X="164" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>FURYISTgEDgIQAGMQgDIjQEIIKNgAIKEQAgwwwQDiAo=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="SIMCONNECT_DATATYPE" Collapsed="true">
+    <Position X="160.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAiAACMCABUQEEBACUAETAAEAAgAKggAAI=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="SIMCONNECT_EXCEPTION" Collapsed="true">
+    <Position X="164" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAgAAWgBBAEBgQggKmgJAAAQCIAQQoANAQIAHAAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="SIMCONNECT_SIMOBJECT_TYPE" Collapsed="true">
+    <Position X="167.5" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAAAAQAACAAAAAAAAAAgAAAAAAABAAQYAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="SIMCONNECT_STATE" Collapsed="true">
+    <Position X="158.75" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="SIMCONNECT_PERIOD" Collapsed="true">
+    <Position X="162.25" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIABAAAAAAAAAAAAAAAAAAAEAAAABAAAAAAAAAgAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="SIMCONNECT_CLIENT_DATA_PERIOD" Collapsed="true">
+    <Position X="158.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAIAAQAAAAAAAAAAAAAAAAAEAAAQAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="SIMCONNECT_MISSION_END" Collapsed="true">
+    <Position X="167.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAACAAEAAAAAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="SIMCONNECT_TEXT_ORIGIN" Collapsed="true">
+    <Position X="160.5" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="SIMCONNECT_TEXT_TYPE" Collapsed="true">
+    <Position X="164" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAgwAAAAAAAEAAAAAgABACAAAUqAAAgCEAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="SIMCONNECT_TEXT_RESULT" Collapsed="true">
+    <Position X="162.25" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAQIAAAAEABAAAAAAAAAAAACAAQAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="SIMCONNECT_WEATHER_MODE" Collapsed="true">
+    <Position X="165.75" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAAAAACABAAAAAAAAAAAQAAAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="SIMCONNECT_FACILITY_LIST_TYPE" Collapsed="true">
+    <Position X="165.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAKAAAAAAEAAAAAAAAAAAAAAAAACQA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="SIMCONNECT_CAMERA_TYPE" Collapsed="true">
+    <Position X="167.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAAAAgAAAAACAgAAAAAQCAAAAGAAAACA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="SIMCONNECT_GROUND_INFO_LATLON_FORMAT" Collapsed="true">
+    <Position X="162.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="SIMCONNECT_GROUND_INFO_ALT_FORMAT" Collapsed="true">
+    <Position X="160.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAIA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="SIMCONNECT_CAMERA_SENSOR_MODE" Collapsed="true">
+    <Position X="165.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAACAAAAAAAEAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="SIMCONNECT_LICENSE_TYPE" Collapsed="true">
+    <Position X="165.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAQAAAABAAAAAAAAAAAAAAAkAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="SIMCONNECT_SCENERY_COMPLEXITY" Collapsed="true">
+    <Position X="165.75" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAAAAAAAAQAAgAAgCAAAAAAEAAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="SIMCONNECT_DYNAMIC_FREQUENCY" Collapsed="true">
+    <Position X="162.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAIAABAAAAAAAAABAAAAAAAAAAAAAAAAAAgQAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="SIMCONNECT_GOAL_STATE" Collapsed="true">
+    <Position X="158.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAIAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="SIMCONNECT_GOAL_RESOLUTION" Collapsed="true">
+    <Position X="167.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAIAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="SIMCONNECT_MISSION_OBJECTIVE_STATUS" Collapsed="true">
+    <Position X="160.5" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAAAAAQAAAQAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="SIMCONNECT_MISSION_OBJECT_TYPE" Collapsed="true">
+    <Position X="158.75" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAAABAAAAAAAAAAAAAAAAAACAAAAEAAAAAAAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="SIMCONNECT_LANDING_TYPE" Collapsed="true">
+    <Position X="164" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAgAA=</HashCode>
+      <FileName>Resources\inc\SimConnect.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

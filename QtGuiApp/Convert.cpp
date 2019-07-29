@@ -1,5 +1,8 @@
 #include "Convert.h"
 
+void UsbCan::start() {
+
+}
 
 void UsbCan::UsbCanConnect() {
 	// initialize USB-CANmodul
@@ -50,6 +53,15 @@ void UsbCan::SetHSpeed(double HSpeed) {
 	memcpy(Tram1.HSpeed, &tmp, sizeof(fixed_point_t));
 }
 
+void UsbCan::CanSend1(BYTE Id, double altitude, double cap, double vspeed, double hspeed)
+{
+	SetAlt(altitude);
+	SetCap(cap);
+	SetVSpeed(vspeed);
+	SetHSpeed(hspeed);
+	CanSend1(Id);
+}
+
 void UsbCan::ResetData()
 {
 	for (int i = 0; i < 2; i++)
@@ -59,4 +71,9 @@ void UsbCan::ResetData()
 		Tram1.VSpeed[i] = 0x0;
 		Tram1.HSpeed[i] = 0x0;
 	}
+}
+
+void UsbCan::receive1(int Id, DataTram1 Data)
+{
+
 }

@@ -127,8 +127,8 @@
     <ClCompile Include="Resources\src\QueueClass.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Convert.h" />
-    <ClInclude Include="Resources\inc\P3d.h" />
+    <QtMoc Include="Convert.h" />
+    <QtMoc Include="Resources\inc\P3d.h" />
     <ClInclude Include="Resources\inc\Usbcan32.h" />
     <ClInclude Include="Resources\inc\UsbCanLs.h" />
     <ClInclude Include="Resources\inc\UsbCanUp.h" />
@@ -141,6 +141,9 @@
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="Resources\QtGuiApp.ui" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

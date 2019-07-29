@@ -62,7 +62,8 @@ public:
 public slots:
 	void start();
 	void P3dStart();
-
+	void AddElement(int id);
+	void DelateElement(int id);
 
 signals:
 	void P3dPrintAltitude(double value);

@@ -174,3 +174,11 @@ void P3d::P3dRequestData() {
 			SimConnect_RequestDataOnSimObjectType(hSimConnect, tmp->Id, tmp->Id, 0, SIMCONNECT_SIMOBJECT_TYPE_USER);
 	} while (tmp != NULL);
 }
+
+void P3d::AddElement(int id) {
+	Queue.QueueAddElement(id);
+}
+
+void P3d::DelateElement(int id) {
+	Queue.QueueDelateElement(id);
+}

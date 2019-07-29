@@ -19,18 +19,18 @@ void QtGuiApp::printData()
 	//p3d.P3dStart();
 	
 	//p3d.P3dPrintData('2');
-	//ui.textEditFirst->setText(QString::fromStdString(p3d.Queue.QueuePrintData(DEF_ALTITUDE)));
-	//ui.textEditSecond->setText(QString::fromStdString(p3d.Queue.QueuePrintData(DEF_THROTTLE)));
+	//ui.textEditFirst->setText(QString::fromStdString(emit PrintData(DEF_ALTITUDE)));
+	//ui.textEditSecond->setText(QString::fromStdString(emit PrintData(DEF_THROTTLE)));
 }
 
 void QtGuiApp::on_CheckAltitude_stateChanged(int arg1)
 {
 	if (arg1) {
-		//p3d.Queue.QueueAddElement(DEF_ALTITUDE);
+		//emit AddElement(DEF_ALTITUDE);
 		ui.LcdAltitude->setEnabled(true);
 	}
 	else {
-		//p3d.Queue.QueueDelateElement(DEF_ALTITUDE);
+		//emit DelateElement(DEF_ALTITUDE);
 		ui.LcdAltitude->setEnabled(false);
 	}
 }
@@ -39,11 +39,11 @@ void QtGuiApp::on_CheckAltitude_stateChanged(int arg1)
 void QtGuiApp::on_CheckCap_stateChanged(int arg1)
 {
 	if (arg1) {
-		p3d.Queue.QueueAddElement(DEF_CAP);
+		emit AddElement(DEF_CAP);
 		ui.LcdCap->setEnabled(true);
 	}
 	else {
-		p3d.Queue.QueueDelateElement(DEF_CAP);
+		emit DelateElement(DEF_CAP);
 		ui.LcdCap->setEnabled(false);
 	}
 }
@@ -51,11 +51,11 @@ void QtGuiApp::on_CheckCap_stateChanged(int arg1)
 void QtGuiApp::on_CheckVSpeed_stateChanged(int arg1)
 {
 	if (arg1) {
-		p3d.Queue.QueueAddElement(DEF_VSpeed);
+		emit AddElement(DEF_VSpeed);
 		ui.LcdVSpeed->setEnabled(true);
 	}
 	else {
-		p3d.Queue.QueueDelateElement(DEF_VSpeed);
+		emit DelateElement(DEF_VSpeed);
 		ui.LcdVSpeed->setEnabled(false);
 	}
 }
@@ -63,11 +63,11 @@ void QtGuiApp::on_CheckVSpeed_stateChanged(int arg1)
 void QtGuiApp::on_CheckHSpeed_stateChanged(int arg1)
 {
 	if (arg1) {
-		p3d.Queue.QueueAddElement(DEF_HSpeed);
+		emit AddElement(DEF_HSpeed);
 		ui.LcdHSpeed->setEnabled(true);
 	}
 	else {
-		p3d.Queue.QueueDelateElement(DEF_HSpeed);
+		emit DelateElement(DEF_HSpeed);
 		ui.LcdHSpeed->setEnabled(false);
 	}
 }
@@ -75,11 +75,11 @@ void QtGuiApp::on_CheckHSpeed_stateChanged(int arg1)
 void QtGuiApp::on_CheckThrottle_stateChanged(int arg1)
 {
 	if (arg1) {
-		p3d.Queue.QueueAddElement(DEF_THROTTLE);
+		emit AddElement(DEF_THROTTLE);
 		ui.LcdThrottle->setEnabled(true);
 	}
 	else {
-		p3d.Queue.QueueDelateElement(DEF_THROTTLE);
+		emit DelateElement(DEF_THROTTLE);
 		ui.LcdThrottle->setEnabled(false);
 	}
 }

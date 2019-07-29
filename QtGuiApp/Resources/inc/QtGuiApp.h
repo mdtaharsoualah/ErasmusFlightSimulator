@@ -14,6 +14,10 @@ class QtGuiApp : public QMainWindow
 
 public:
 	QtGuiApp(QWidget *parent = Q_NULLPTR);
+
+signals:
+	void AddElement(int id);
+	void DelateElement(int id);
 private slots:
 	void printData();
 	void on_CheckAltitude_stateChanged(int arg1);
@@ -23,6 +27,13 @@ private slots:
 	void on_CheckThrottle_stateChanged(int arg1);
 	void on_ControlThrottle_valueChanged(int value);
 	void on_MbedReadButton_clicked();
+
+	void PrintAltitude(double value);
+	void PrintCap(double value);
+	void PrintVSpeed(double value);
+	void PrintHSpeed(double value);
+	void PrintThrottle(double value); 
+
 private:
 	Ui::QtGuiAppClass ui;
 	int i = 0;

@@ -9,6 +9,8 @@
 #include <cstdint>
 #include <cmath>
 
+#include <qobject.h>
+
 
 #define ALTSHIFT 1500
 #define VSPEEDSHIFT 2048
@@ -23,10 +25,13 @@ struct DataTram1
 	BYTE cap[2];
 	BYTE VSpeed[2];
 	BYTE HSpeed[2];
+	DWORD Time;
 };
 
-class UsbCan
+class UsbCan : public QObject
 {
+	Q_OBJECT
+
 public:
 	void UsbCanConnect();
 	void UsbCanDisconnect();
@@ -40,7 +45,13 @@ public:
 
 	void SetHSpeed(double HSpeed);
 
+	void CanSend1(BYTE Id, double altitude, double cap, double vspeed, double hspeed);
+
 	void ResetData();
+
+public slots:
+	void start();
+	void receive1(int Id, DataTram1 Data);
 
 private:
 	UCANRET bRet;
@@ -49,6 +60,8 @@ private:
 	_TCHAR szDeviceNr[24];
 	tCanMsgStruct CanMsg;
 	DataTram1 Tram1;
+
+	Q
 
 };
 
