@@ -1,19 +1,53 @@
 #include "Convert.h"
 
 void UsbCan::start() {
+	UsbCanConnect();
+	while (1) {
+		if (receiveBool1) {
 
+		}
+	}
 }
 
 void UsbCan::UsbCanConnect() {
 	// initialize USB-CANmodul
-	bRet = UcanInitHardware(&UcanHandle, USBCAN_ANY_MODULE, NULL);
+	//bRet = UcanInitHardware(&UcanHandle, USBCAN_ANY_MODULE, NULL);
 
-	bRet = UcanInitCan(UcanHandle,
-		HIBYTE(USBCAN_BAUD_250kBit), // BTR0 for 1MBit/s 
-		LOBYTE(USBCAN_BAUD_250kBit), // BTR1 for 1MBit/s
-		0xFFFFFFFF, // AMR for all messages received
-		0x00000000); // ACR for all messages received
+
+	memset(&InitParam, 0, sizeof(InitParam));
+	InitParam.m_dwSize = sizeof(InitParam);
+	InitParam.m_bMode = kUcanModeNormal;
+	InitParam.m_bBTR0 = HIBYTE(USBCAN_BAUDEX_250kBit);
+	InitParam.m_bBTR1 = LOBYTE(USBCAN_BAUDEX_250kBit);
+	InitParam.m_bOCR = USBCAN_OCR_DEFAULT;
+	InitParam.m_dwAMR = USBCAN_AMR_ALL;
+	InitParam.m_dwACR = USBCAN_ACR_ALL;
+	InitParam.m_dwBaudrate = USBCAN_BAUDEX_250kBit;
+
+
+	bRet = UcanInitHardwareEx(&UcanHandle, USBCAN_ANY_MODULE,	AppEventCallbackEx, NULL);
+
+	bRet = UcanInitCanEx2(UcanHandle, USBCAN_CHANNEL_CH0, &InitParam);
+
+
 	ResetData();
+}
+
+void PUBLIC UsbCan::AppEventCallbackEx(tUcanHandle UcanHandle_p, DWORD dwEvent_p, BYTE bChannel_p, void* pArg_p){
+	
+	switch (dwEvent_p)
+	{
+
+	case USBCAN_EVENT_RECEIVE: // CAN message received
+		receiveBool1 = TRUE;
+		break;
+
+	case USBCAN_EVENT_STATUS: // changes error status
+	// signal that the CAN status can be read SetEvent(ahWaitHandles_g[STATUS]);
+		break;
+
+	}
+
 }
 
 void UsbCan::UsbCanDisconnect() {

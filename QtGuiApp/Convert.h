@@ -49,6 +49,8 @@ public:
 
 	void ResetData();
 
+	void static PUBLIC AppEventCallbackEx(tUcanHandle UcanHandle_p, DWORD dwEvent_p, BYTE bChannel_p, void* pArg_p);
+
 public slots:
 	void start();
 	void receive1(int Id, DataTram1 Data);
@@ -60,8 +62,8 @@ private:
 	_TCHAR szDeviceNr[24];
 	tCanMsgStruct CanMsg;
 	DataTram1 Tram1;
-
-	Q
+	tUcanInitCanParam InitParam;
+	bool receiveBool1 = false;
 
 };
 
