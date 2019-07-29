@@ -26,11 +26,11 @@ void QtGuiApp::printData()
 void QtGuiApp::on_CheckAltitude_stateChanged(int arg1)
 {
 	if (arg1) {
-		//emit AddElement(DEF_ALTITUDE);
+		emit AddElement(DEF_ALTITUDE);
 		ui.LcdAltitude->setEnabled(true);
 	}
 	else {
-		//emit DelateElement(DEF_ALTITUDE);
+		emit DelateElement(DEF_ALTITUDE);
 		ui.LcdAltitude->setEnabled(false);
 	}
 }

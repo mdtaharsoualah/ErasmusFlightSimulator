@@ -1,10 +1,15 @@
 #include "Convert.h"
 
+void UsbCan::setreceiveBool1(bool value) {
+	receiveBool1 = value;
+}
+
 void UsbCan::start() {
+	setreceiveBool1(false);
 	UsbCanConnect();
 	while (1) {
 		if (receiveBool1) {
-
+			setreceiveBool1(false);
 		}
 	}
 }
@@ -17,15 +22,15 @@ void UsbCan::UsbCanConnect() {
 	memset(&InitParam, 0, sizeof(InitParam));
 	InitParam.m_dwSize = sizeof(InitParam);
 	InitParam.m_bMode = kUcanModeNormal;
-	InitParam.m_bBTR0 = HIBYTE(USBCAN_BAUDEX_250kBit);
-	InitParam.m_bBTR1 = LOBYTE(USBCAN_BAUDEX_250kBit);
+	InitParam.m_bBTR0 = HIBYTE(USBCAN_BAUDEX_G4_125kBit);
+	InitParam.m_bBTR1 = LOBYTE(USBCAN_BAUDEX_G4_125kBit);
 	InitParam.m_bOCR = USBCAN_OCR_DEFAULT;
 	InitParam.m_dwAMR = USBCAN_AMR_ALL;
 	InitParam.m_dwACR = USBCAN_ACR_ALL;
-	InitParam.m_dwBaudrate = USBCAN_BAUDEX_250kBit;
+	InitParam.m_dwBaudrate = USBCAN_BAUDEX_G4_125kBit;
 
 
-	bRet = UcanInitHardwareEx(&UcanHandle, USBCAN_ANY_MODULE,	AppEventCallbackEx, NULL);
+	bRet = UcanInitHardwareEx(&UcanHandle, USBCAN_ANY_MODULE, AppEventCallbackEx, this);
 
 	bRet = UcanInitCanEx2(UcanHandle, USBCAN_CHANNEL_CH0, &InitParam);
 
@@ -35,11 +40,13 @@ void UsbCan::UsbCanConnect() {
 
 void PUBLIC UsbCan::AppEventCallbackEx(tUcanHandle UcanHandle_p, DWORD dwEvent_p, BYTE bChannel_p, void* pArg_p){
 	
+	UsbCan *pThis = reinterpret_cast<UsbCan*>(pArg_p);
+
 	switch (dwEvent_p)
 	{
 
 	case USBCAN_EVENT_RECEIVE: // CAN message received
-		receiveBool1 = TRUE;
+		pThis->setreceiveBool1(TRUE);
 		break;
 
 	case USBCAN_EVENT_STATUS: // changes error status
@@ -54,7 +61,7 @@ void UsbCan::UsbCanDisconnect() {
 
 }
 
-void UsbCan::CanSend1(BYTE Id) {
+void UsbCan::CanSend(BYTE Id, int type) {
 	tCanMsgStruct TxCanMsg;
 	TxCanMsg.m_dwID = Id;
 	TxCanMsg.m_bFF = 0;
@@ -93,7 +100,7 @@ void UsbCan::CanSend1(BYTE Id, double altitude, double cap, double vspeed, doubl
 	SetCap(cap);
 	SetVSpeed(vspeed);
 	SetHSpeed(hspeed);
-	CanSend1(Id);
+	CanSend(Id,1);
 }
 
 void UsbCan::ResetData()

@@ -35,7 +35,7 @@ class UsbCan : public QObject
 public:
 	void UsbCanConnect();
 	void UsbCanDisconnect();
-	void CanSend1(BYTE Id);
+	void CanSend(BYTE Id,int type);
 
 	void SetAlt(double altitude);
 
@@ -47,9 +47,13 @@ public:
 
 	void CanSend1(BYTE Id, double altitude, double cap, double vspeed, double hspeed);
 
+	void CanSend2(BYTE Id, double altitude, double cap, double vspeed, double hspeed);
+
 	void ResetData();
 
 	void static PUBLIC AppEventCallbackEx(tUcanHandle UcanHandle_p, DWORD dwEvent_p, BYTE bChannel_p, void* pArg_p);
+
+	void setreceiveBool1(bool);
 
 public slots:
 	void start();
@@ -63,7 +67,7 @@ private:
 	tCanMsgStruct CanMsg;
 	DataTram1 Tram1;
 	tUcanInitCanParam InitParam;
-	bool receiveBool1 = false;
+	bool receiveBool1;
 
 };
 

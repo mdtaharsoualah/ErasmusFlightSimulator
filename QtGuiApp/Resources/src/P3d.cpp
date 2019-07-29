@@ -4,7 +4,6 @@
 void P3d::start() {
 	P3dConnect();
 	P3dConfig();
-	Queue.QueueAddElement(DEF_ALTITUDE);
 	QTimer *timer = new QTimer(this);
 	connect(timer, SIGNAL(timeout()), this, SLOT(P3dStart()));
 	timer->start(5);
@@ -56,7 +55,7 @@ void CALLBACK P3d::DispatchCallback(SIMCONNECT_RECV *pData, DWORD cbData, void *
 {
 	P3d *pThis = reinterpret_cast<P3d*>(pContext);
 	pThis->Process(pData, cbData);
-	pThis->usbcan.CanSend1(0x55);
+	pThis->usbcan.CanSend(0x05,1);
 }
 
 
@@ -159,7 +158,7 @@ void P3d::SetThrottle(double value)
 {
 	HRESULT hr;
 	throttlePercent = value;
-	hr = SimConnect_SetDataOnSimObject(hSimConnect, DEF_THROTTLE, SIMCONNECT_OBJECT_ID_USER, 0, 0, sizeof(throttlePercent), &throttlePercent);
+	hr = SimConnect_SetDataOnSimObject(hSimConnect, DEF_THROTTLE, SIMCONNECT_OBJECT_ID_USER, 0, 0, sizeof(value), &value);
 }
 
 
