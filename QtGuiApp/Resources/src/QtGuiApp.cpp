@@ -95,6 +95,7 @@ void QtGuiApp::on_MbedReadButton_clicked() {
 
 
 void QtGuiApp::PrintAltitude(double value) {
+	emit SetAltitude(value);
 	ui.LcdAltitude->display(value);
 }
 

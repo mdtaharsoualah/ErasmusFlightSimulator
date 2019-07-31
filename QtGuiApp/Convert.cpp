@@ -1,42 +1,91 @@
 #include "Convert.h"
 
-void UsbCan::setreceiveBool1(bool value) {
-	receiveBool1 = value;
+void UsbCan::run() {
+	QTimer *timer = new QTimer(this);
+	connect(timer, SIGNAL(timeout()), this, SLOT(timeout10()), Qt::QueuedConnection);
+	timer->start(5);
+	exec();
+}
+
+void UsbCan::setreceiveBool(bool value) {
+	receiveBool = value;
 }
 
 void UsbCan::start() {
-	setreceiveBool1(false);
-	UsbCanConnect();
+	QTimer *timer = new QTimer(this);
+	connect(timer, SIGNAL(timeout()), this, SLOT(timeout10()),Qt::QueuedConnection);
+	timer->start(5);
+	//UsbCanConnect();
+	timeout150 = false;
 	while (1) {
-		if (receiveBool1) {
-			setreceiveBool1(false);
+		if (receiveBool) {
+			setreceiveBool(false);
+		}
+		if (timeout150) {
+			timeout150 = false;
+			CanSend(0x55, 1);
 		}
 	}
+	
+	
+}
+
+
+void UsbCan::timeout10() {
+	qDebug("hello");
+		timeout150 = true;
+}
+
+UsbCan::UsbCan(QObject *parent) : QThread(parent){
+	qDebug("%d",QThread::currentThreadId());
+	start();
 }
 
 void UsbCan::UsbCanConnect() {
+	
 	// initialize USB-CANmodul
 	//bRet = UcanInitHardware(&UcanHandle, USBCAN_ANY_MODULE, NULL);
 
 
+	setreceiveBool(false);
+
 	memset(&InitParam, 0, sizeof(InitParam));
 	InitParam.m_dwSize = sizeof(InitParam);
 	InitParam.m_bMode = kUcanModeNormal;
-	InitParam.m_bBTR0 = HIBYTE(USBCAN_BAUDEX_G4_125kBit);
-	InitParam.m_bBTR1 = LOBYTE(USBCAN_BAUDEX_G4_125kBit);
+	InitParam.m_bBTR0 = HIBYTE(USBCAN_BAUDEX_250kBit);
+	InitParam.m_bBTR1 = LOBYTE(USBCAN_BAUDEX_250kBit);
 	InitParam.m_bOCR = USBCAN_OCR_DEFAULT;
 	InitParam.m_dwAMR = USBCAN_AMR_ALL;
 	InitParam.m_dwACR = USBCAN_ACR_ALL;
-	InitParam.m_dwBaudrate = USBCAN_BAUDEX_G4_125kBit;
-
-
-	bRet = UcanInitHardwareEx(&UcanHandle, USBCAN_ANY_MODULE, AppEventCallbackEx, this);
-
-	bRet = UcanInitCanEx2(UcanHandle, USBCAN_CHANNEL_CH0, &InitParam);
-
+	InitParam.m_dwBaudrate = USBCAN_BAUDEX_250kBit;
 
 	ResetData();
+
+	bRet = UcanInitHwConnectControlEx(AppConnectControlCallbackEx, NULL);
+
+	if (bRet == USBCAN_SUCCESSFUL)
+	{
+		bRet = UcanInitHardwareEx(&UcanHandle, USBCAN_ANY_MODULE,
+			AppEventCallbackEx, this);
+
+		bRet = UcanInitCanEx2(UcanHandle, USBCAN_CHANNEL_CH0,
+			&InitParam);
+	}
 }
+
+void PUBLIC UsbCan::AppConnectControlCallbackEx(DWORD dwEvent_p, DWORD dwParam_p, void* pArg_p)
+{
+	switch (dwEvent_p)
+	{
+	case USBCAN_EVENT_CONNECT:
+		qDebug("connect!!");
+		break;
+	case USBCAN_EVENT_DISCONNECT:
+		qDebug("disconnect!!");
+		break;
+	}
+}
+
 
 void PUBLIC UsbCan::AppEventCallbackEx(tUcanHandle UcanHandle_p, DWORD dwEvent_p, BYTE bChannel_p, void* pArg_p){
 	
@@ -46,7 +95,7 @@ void PUBLIC UsbCan::AppEventCallbackEx(tUcanHandle UcanHandle_p, DWORD dwEvent_p
 	{
 
 	case USBCAN_EVENT_RECEIVE: // CAN message received
-		pThis->setreceiveBool1(TRUE);
+		pThis->setreceiveBool(true);
 		break;
 
 	case USBCAN_EVENT_STATUS: // changes error status

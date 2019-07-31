@@ -5,6 +5,7 @@
 #include <qtimer.h>
 #include "P3d.h"
 #include "QueueClass.h"
+#include "convert.h"
 
 
 
@@ -18,6 +19,7 @@ public:
 signals:
 	void AddElement(int id);
 	void DelateElement(int id);
+	void SetAltitude(double value);
 private slots:
 	void printData();
 	void on_CheckAltitude_stateChanged(int arg1);

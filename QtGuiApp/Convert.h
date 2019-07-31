@@ -9,7 +9,8 @@
 #include <cstdint>
 #include <cmath>
 
-#include <qobject.h>
+#include <qthread.h>
+#include <qtimer.h>
 
 
 #define ALTSHIFT 1500
@@ -28,14 +29,43 @@ struct DataTram1
 	DWORD Time;
 };
 
-class UsbCan : public QObject
+class UsbCan : public QThread
 {
-	Q_OBJECT
+
+protected:
+	void run();
 
 public:
+
+	UsbCan(QObject *parent=0);
+
 	void UsbCanConnect();
 	void UsbCanDisconnect();
 	void CanSend(BYTE Id,int type);
+
+
+
+	void CanSend1(BYTE Id, double altitude, double cap, double vspeed, double hspeed);
+
+	void CanSend2(BYTE Id, double altitude, double cap, double vspeed, double hspeed);
+
+	void ResetData();
+
+	void static PUBLIC AppConnectControlCallbackEx(DWORD dwEvent_p, DWORD dwParam_p, void * pArg_p);
+
+	
+
+	void static PUBLIC AppEventCallbackEx(tUcanHandle UcanHandle_p, DWORD dwEvent_p, BYTE bChannel_p, void* pArg_p);
+
+	void setreceiveBool(bool);
+
+
+
+public slots:
+	void start();
+	void receive1(int Id, DataTram1 Data);
+
+	void timeout10();
 
 	void SetAlt(double altitude);
 
@@ -45,20 +75,6 @@ public:
 
 	void SetHSpeed(double HSpeed);
 
-	void CanSend1(BYTE Id, double altitude, double cap, double vspeed, double hspeed);
-
-	void CanSend2(BYTE Id, double altitude, double cap, double vspeed, double hspeed);
-
-	void ResetData();
-
-	void static PUBLIC AppEventCallbackEx(tUcanHandle UcanHandle_p, DWORD dwEvent_p, BYTE bChannel_p, void* pArg_p);
-
-	void setreceiveBool1(bool);
-
-public slots:
-	void start();
-	void receive1(int Id, DataTram1 Data);
-
 private:
 	UCANRET bRet;
 	tUcanHandle UcanHandle;
@@ -67,7 +83,11 @@ private:
 	tCanMsgStruct CanMsg;
 	DataTram1 Tram1;
 	tUcanInitCanParam InitParam;
-	bool receiveBool1;
+	bool receiveBool;
+	bool timeout150;
+	int timeCount = 0;
+
+	QTimer* timer10;
 
 };
 

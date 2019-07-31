@@ -67,16 +67,18 @@ public slots:
 
 signals:
 	void P3dPrintAltitude(double value);
+	void P3dSetAltitude(double value);
 	void P3dPrintCap(double value);
 	void P3dPrintVSpeed(double value);
 	void P3dPrintHSpeed(double value);
 	void P3dPrintThrottle(double value);
+	void P3dSetHSpeed(double value);
+	void P3dSetThrottle(double value);
 
 
 private:
 	int quit = 0;
 	HANDLE hSimConnect = NULL;
 	double throttlePercent = 0;
-	UsbCan usbcan;
 
 };

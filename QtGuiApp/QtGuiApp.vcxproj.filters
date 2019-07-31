@@ -62,6 +62,9 @@
     <ClInclude Include="Resources\inc\UsbCanUp.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Convert.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="Resources\QtGuiApp.qrc">
@@ -78,9 +81,6 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="Resources\inc\P3d.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <QtMoc Include="Convert.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

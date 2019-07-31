@@ -35,7 +35,8 @@ void P3d::P3dDisconnect()
 
 void P3d::P3dStart()
 {
-		SimConnect_CallDispatch(this->hSimConnect, &P3d::DispatchCallback, this);
+	emit P3dSetAltitude(10.5);
+	SimConnect_CallDispatch(this->hSimConnect, &P3d::DispatchCallback, this);
 }
 
 void P3d::P3dConfig()
@@ -47,7 +48,7 @@ void P3d::P3dConfig()
 	//hr = SimConnect_AddToDataDefinition(hSimConnect, DEF_THROTTLE, "GENERAL ENG THROTTLE LEVER POSITION:1", "percent");
 	
 	hr = SimConnect_SubscribeToSystemEvent(hSimConnect, EVENT_SIM_START, "6Hz");
-	usbcan.UsbCanConnect();
+	//usbcan.UsbCanConnect();
 
 }
 
@@ -55,7 +56,7 @@ void CALLBACK P3d::DispatchCallback(SIMCONNECT_RECV *pData, DWORD cbData, void *
 {
 	P3d *pThis = reinterpret_cast<P3d*>(pContext);
 	pThis->Process(pData, cbData);
-	pThis->usbcan.CanSend(0x05,1);
+	//pThis->usbcan.CanSend(0x05,1);
 }
 
 
@@ -78,6 +79,7 @@ void P3d::Process(SIMCONNECT_RECV * pData, DWORD cbData)
 			DWORD ObjectID = pObjData->dwObjectID;
 			double *pS = (double*)&pObjData->dwData;
 			//usbcan.SetAlt(*pS);
+			emit P3dSetAltitude(*pS);
 			emit P3dPrintAltitude(*pS);
 			break;
 		}
@@ -103,6 +105,7 @@ void P3d::Process(SIMCONNECT_RECV * pData, DWORD cbData)
 			double *pS = (double*)&pObjData->dwData;
 			//usbcan.SetHSpeed(*pS);
 			emit P3dPrintHSpeed(*pS);
+			emit P3dSetHSpeed(*pS);
 			break;
 		}
 		case DEF_THROTTLE:
@@ -110,6 +113,7 @@ void P3d::Process(SIMCONNECT_RECV * pData, DWORD cbData)
 			DWORD ObjectID = pObjData->dwObjectID;
 			double *pS = (double*)&pObjData->dwData;
 			emit P3dPrintThrottle(*pS);
+			emit P3dSetThrottle(*pS);
 			break;
 		}
 
