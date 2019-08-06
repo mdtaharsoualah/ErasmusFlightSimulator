@@ -31,13 +31,10 @@ struct DataTram1
 
 class UsbCan : public QThread
 {
-
+	Q_OBJECT
 protected:
-	void run();
 
 public:
-
-	UsbCan(QObject *parent=0);
 
 	void UsbCanConnect();
 	void UsbCanDisconnect();
@@ -49,6 +46,8 @@ public:
 
 	void CanSend2(BYTE Id, double altitude, double cap, double vspeed, double hspeed);
 
+	void CanReceive();
+
 	void ResetData();
 
 	void static PUBLIC AppConnectControlCallbackEx(DWORD dwEvent_p, DWORD dwParam_p, void * pArg_p);
@@ -59,13 +58,20 @@ public:
 
 	void setreceiveBool(bool);
 
+protected:
+	void run();
+	int exec();
 
+signals:
+	void CanThrottle(double);
+	void CanYoke(double, double);
 
 public slots:
-	void start();
+	
+
 	void receive1(int Id, DataTram1 Data);
 
-	void timeout10();
+	void tmout();
 
 	void SetAlt(double altitude);
 
@@ -80,16 +86,16 @@ private:
 	tUcanHandle UcanHandle;
 	tUcanHardwareInfo HwInfo;
 	_TCHAR szDeviceNr[24];
-	tCanMsgStruct CanMsg;
+	tCanMsgStruct CanTxMsg, CanRxMsg;
 	DataTram1 Tram1;
 	tUcanInitCanParam InitParam;
 	bool receiveBool;
 	bool timeout150;
+	bool timeout301;
 	int timeCount = 0;
+
+	DWORD dwRxCount;
 
 	QTimer* timer10;
 
 };
-
-
-

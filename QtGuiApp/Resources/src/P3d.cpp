@@ -5,8 +5,24 @@ void P3d::start() {
 	P3dConnect();
 	P3dConfig();
 	QTimer *timer = new QTimer(this);
-	connect(timer, SIGNAL(timeout()), this, SLOT(P3dStart()));
-	timer->start(5);
+
+
+	usbcan = new UsbCan;
+
+	QObject::connect(timer, SIGNAL(timeout()), usbcan, SLOT(tmout()));
+	connect(this, SIGNAL(P3dSetAltitude(double)), usbcan, SLOT(SetAlt(double)));
+	connect(this, SIGNAL(P3dSetCap(double)), usbcan, SLOT(SetCap(double)));
+	connect(this, SIGNAL(P3dSetVSpeed(double)), usbcan, SLOT(SetVSpeed(double)));
+	connect(this, SIGNAL(P3dSetHSpeed(double)), usbcan, SLOT(SetHSpeed(double)));
+
+	connect(usbcan, SIGNAL(CanThrottle(double)), this, SLOT(P3dSetThrottle(double)));
+	connect(usbcan, SIGNAL(CanYoke(double,double)), this, SLOT(P3dSetYoke(double,double)));
+	usbcan->start();
+
+	
+	connect(timer, SIGNAL(timeout()), this, SLOT(P3dStart()),Qt::QueuedConnection);
+
+	timer->start(10);
 }
 
 bool P3d::P3dConnect()
@@ -35,7 +51,6 @@ void P3d::P3dDisconnect()
 
 void P3d::P3dStart()
 {
-	emit P3dSetAltitude(10.5);
 	SimConnect_CallDispatch(this->hSimConnect, &P3d::DispatchCallback, this);
 }
 
@@ -87,7 +102,7 @@ void P3d::Process(SIMCONNECT_RECV * pData, DWORD cbData)
 		{
 			DWORD ObjectID = pObjData->dwObjectID;
 			double *pS = (double*)&pObjData->dwData;
-			//usbcan.SetCap((*pS)*((double)180 / (double)3.14));
+			emit P3dSetCap((*pS)*((double)180 / (double)3.14));
 			emit P3dPrintCap((*pS)*((double)180 / (double)3.14));
 			break;
 		}
@@ -95,7 +110,7 @@ void P3d::Process(SIMCONNECT_RECV * pData, DWORD cbData)
 		{
 			DWORD ObjectID = pObjData->dwObjectID;
 			double *pS = (double*)&pObjData->dwData;
-			//usbcan.SetVSpeed((*pS)*60.0);
+			emit P3dSetVSpeed((*pS)*60.0);
 			emit P3dPrintVSpeed((*pS)*60.0);
 			break;
 		}
@@ -184,4 +199,18 @@ void P3d::AddElement(int id) {
 
 void P3d::DelateElement(int id) {
 	Queue.QueueDelateElement(id);
+}
+
+void P3d::P3dSetThrottle(double value)
+{
+	HRESULT hr;
+	throttlePercent = value;
+	hr = SimConnect_SetDataOnSimObject(hSimConnect, DEF_THROTTLE, SIMCONNECT_OBJECT_ID_USER, 0, 0, sizeof(value), &value);
+}
+
+void P3d::P3dSetYoke(double valueX, double valueY)
+{
+	HRESULT hr;
+	hr = SimConnect_SetDataOnSimObject(hSimConnect, DEF_XYOKE, SIMCONNECT_OBJECT_ID_USER, 0, 0, sizeof(valueX), &valueX);
+	hr = SimConnect_SetDataOnSimObject(hSimConnect, DEF_YYOKE, SIMCONNECT_OBJECT_ID_USER, 0, 0, sizeof(valueY), &valueY);
 }

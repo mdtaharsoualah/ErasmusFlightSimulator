@@ -1,45 +1,50 @@
 #include "Convert.h"
 
-void UsbCan::run() {
-	QTimer *timer = new QTimer(this);
-	connect(timer, SIGNAL(timeout()), this, SLOT(timeout10()), Qt::QueuedConnection);
-	timer->start(5);
-	exec();
-}
-
 void UsbCan::setreceiveBool(bool value) {
 	receiveBool = value;
 }
 
-void UsbCan::start() {
-	QTimer *timer = new QTimer(this);
-	connect(timer, SIGNAL(timeout()), this, SLOT(timeout10()),Qt::QueuedConnection);
-	timer->start(5);
-	//UsbCanConnect();
+void UsbCan::run() {
+	timeCount = 0;
+	timeout301 = false;
 	timeout150 = false;
+	UsbCanConnect();
+
+	exec();
+	
+	
+}
+
+int UsbCan::exec()
+{
 	while (1) {
 		if (receiveBool) {
 			setreceiveBool(false);
+			CanReceive();
 		}
 		if (timeout150) {
 			timeout150 = false;
 			CanSend(0x55, 1);
 		}
+		if (timeout301) {
+			timeout301 = false;
+			CanSend(0x56, 1);
+		}
 	}
-	
-	
+	return 0;
 }
 
-
-void UsbCan::timeout10() {
-	qDebug("hello");
+void UsbCan::tmout() {
+	timeCount++;
+	if (timeCount == 5) {
 		timeout150 = true;
+		timeCount = 0;
+	}
+	if (timeCount == 3) {
+		timeout301 = true;
+	}
 }
 
-UsbCan::UsbCan(QObject *parent) : QThread(parent){
-	qDebug("%d",QThread::currentThreadId());
-	start();
-}
 
 void UsbCan::UsbCanConnect() {
 	
@@ -60,6 +65,9 @@ void UsbCan::UsbCanConnect() {
 	InitParam.m_dwBaudrate = USBCAN_BAUDEX_250kBit;
 
 	ResetData();
+
+	CanTxMsg.m_bFF = 0;
+	CanTxMsg.m_bDLC = 8;
 
 	bRet = UcanInitHwConnectControlEx(AppConnectControlCallbackEx, NULL);
 
@@ -111,13 +119,12 @@ void UsbCan::UsbCanDisconnect() {
 }
 
 void UsbCan::CanSend(BYTE Id, int type) {
-	tCanMsgStruct TxCanMsg;
-	TxCanMsg.m_dwID = Id;
-	TxCanMsg.m_bFF = 0;
-	TxCanMsg.m_bDLC = 8;
+	
+	CanTxMsg.m_dwID = Id;
+	
 	BYTE TmpData[8] = { Tram1.altitude[0],Tram1.altitude[1], Tram1.cap[0], Tram1.cap[1], Tram1.VSpeed[0], Tram1.VSpeed[1], Tram1.HSpeed[0], Tram1.HSpeed[1] };
-	memcpy(TxCanMsg.m_bData,TmpData, 8);
-	UcanWriteCanMsg(UcanHandle, &TxCanMsg);
+	memcpy(CanTxMsg.m_bData,TmpData, 8);
+	UcanWriteCanMsg(UcanHandle, &CanTxMsg);
 }
 
 
@@ -163,7 +170,26 @@ void UsbCan::ResetData()
 	}
 }
 
-void UsbCan::receive1(int Id, DataTram1 Data)
+void UsbCan::CanReceive()
 {
+	dwRxCount = 100;
+	bRet = UcanReadCanMsg(UcanHandle, &CanRxMsg);
+	if (CanRxMsg.m_dwID == 0x57)
+		emit CanThrottle(CanRxMsg.m_bData[0]);
+	if (CanRxMsg.m_dwID == 0x58) {
+		UINT16 tmpx;
+		UINT16 tmpy;
+		memcpy(&tmpx, CanRxMsg.m_bData, 2);
+		memcpy(&tmpy, CanRxMsg.m_bData+2, 2);
+		float yokex;
+		float yokey;
+		float in_min = 0.0, in_max = 65535.0, out_min = -1.0, out_max = +1.0;
+		yokex= (float) ((float)tmpx - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
+		yokey = (float) ((float)tmpy - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
+		emit CanYoke(yokex, yokey);
+	}
+}
+
+void UsbCan::receive1(int Id, DataTram1 Data) {
 
 }

@@ -127,7 +127,7 @@
     <ClCompile Include="Resources\src\QueueClass.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Convert.h" />
+    <QtMoc Include="Convert.h" />
     <QtMoc Include="Resources\inc\P3d.h" />
     <ClInclude Include="Resources\inc\Usbcan32.h" />
     <ClInclude Include="Resources\inc\UsbCanLs.h" />
