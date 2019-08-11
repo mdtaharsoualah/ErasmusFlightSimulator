@@ -20,6 +20,10 @@
 #include <qlcdnumber.h>
 #include<QDebug>
 
+#include <mutex>
+
+#include <vector>
+
 #include "Convert.h"
 
 
@@ -58,7 +62,7 @@ public:
 
 	void P3dRequestData();
 
-	QueueClass Queue;
+	
 
 public slots:
 	void start();
@@ -94,9 +98,14 @@ signals:
 
 
 private:
-	int quit = 0;
+	int quit = 0; // INUTILE
 	HANDLE hSimConnect = NULL;
-	double throttlePercent = 0;
-	QThread* ThreadCan;
+	double throttlePercent = 0; // INUTILE
+	QThread* ThreadCan; // INUTILE
 	UsbCan* usbcan;
+
+   //QueueClass Queue; INUTILE
+
+   std::vector<int> m_ObjectTypesToProcess;
+   std::mutex m_ObjectTypeMutex;
 };

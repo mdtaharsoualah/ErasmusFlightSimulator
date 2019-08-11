@@ -7,7 +7,8 @@ void P3d::start() {
 	QTimer *timer = new QTimer(this);
 
 
-	usbcan = new UsbCan;
+	usbcan = new UsbCan; // ATTENTION IL FAUT LIBERER LA MÉMOIRE.
+  
 
 	QObject::connect(timer, SIGNAL(timeout()), usbcan, SLOT(tmout()));
 	connect(this, SIGNAL(P3dSetAltitude(double)), usbcan, SLOT(SetAlt(double)));
@@ -61,11 +62,31 @@ void P3d::P3dStart()
 
 void P3d::P3dConfig()
 {
-	HRESULT hr;
-	for (int i = 0; i < (sizeof(MyDef) / sizeof(GeneralDefine)); i++) {
-		hr = SimConnect_AddToDataDefinition(hSimConnect, MyDef[i].Id, MyDef[i].Name.c_str(), MyDef[i].Type.c_str());
-	}
-	hr = SimConnect_AddToDataDefinition(hSimConnect, 25,"GENERAL ENG THROTTLE LEVER POSITION:1", "percent");
+HRESULT hr;
+// Pas besoin de garder le tableau statique. 
+std::array<GeneralDefine, DEFINE_ENUM_COUNT>  MyDef = 
+                                 {{DEF_ALTITUDE,"Plane Altitude","feet"}, 
+                                 {DEF_CAP,"PLANE HEADING DEGREES MAGNETIC","Radians"}, 
+                                 {DEF_VSpeed,"VERTICAL SPEED", "Feet per second"}, 
+                                 {DEF_HSpeed,"AIRSPEED TRUE","Knots"}, 
+                                 {DEF_THROTTLE,"GENERAL ENG THROTTLE LEVER POSITION:1","percent"}, 
+                                 {DEF_XYOKE, "YOKE X POSITION", "Position"},
+                                 {DEF_YYOKE, "YOKE Y POSITION", "Position"}, 
+                                 {DEF_CAP,"PLANE HEADING DEGREES MAGNETIC","Radians"}, 
+                                 {DEF_VSpeed,"VERTICAL SPEED", "Feet per second"}, 
+                                 {DEF_HSpeed,"AIRSPEED TRUE","Knots"}, 
+                                 {DEF_THROTTLE,"GENERAL ENG THROTTLE LEVER POSITION:1","percent"}, 
+                                 {DEF_XYOKE, "YOKE X POSITION", "Position"}, 
+                                 {DEF_PitchDeg, "PLANE PITCH DEGREES", "Radians"}, 
+                                 {DEF_PitchRate, "ROTATION VELOCITY BODY X", "Radians per second"}, 
+                                 {DEF_RollDeg, "PLANE BANK DEGREES", "Radians"}, 
+                                 {DEF_RollRate, "ROTATION VELOCITY BODY Z", "Radians per second"} };
+   for (auto& def : MyDef)
+      {
+      hr = SimConnect_AddToDataDefinition(hSimConnect, def.Id, def.Name.c_str(), def.Type.c_str());
+      }
+
+	//hr = SimConnect_AddToDataDefinition(hSimConnect, 25,"GENERAL ENG THROTTLE LEVER POSITION:1", "percent");
 	
 	hr = SimConnect_SubscribeToSystemEvent(hSimConnect, EVENT_SIM_START, "6Hz");
 	//usbcan.UsbCanConnect();
@@ -227,21 +248,51 @@ void P3d::SetThrottle(double value)
 
 
 void P3d::P3dRequestData() {
-	Queue.QueueReset();
+
+
+   m_ObjectTypeMutex.lock();
+   auto ObjectTypes = m_ObjectTypesToProcess; // Copy the vector (ça reste quand mpeme performant, car ce ne sont que des ID (Int). 
+                                              // ça sera plus lent si on doit à chaque fois interrompre le thread. 
+   m_ObjectTypeMutex.unlock(); // NE SURTOUT PAS L'OUBLIER. SINON L'AUTRE THREAD RESTE BLOQUÉ.
+
+   // 
+   // MUTEX to request data
+   // std::vector<int> ObjectTypes = m_ObjectTypesToProcess;
+   // Librer le mutex
+   // 
+   for (auto ObjectTypeId : ObjectTypes)
+      {
+      SimConnect_RequestDataOnSimObjectType(hSimConnect, ObjectTypeId, ObjectTypeId, 0, SIMCONNECT_SIMOBJECT_TYPE_USER);
+      }
+	/*Queue.QueueReset();
 	GeneralDefine* tmp = NULL;
 	do {
 		Queue.QueueNext(&tmp);
 		if (tmp != NULL)
 			SimConnect_RequestDataOnSimObjectType(hSimConnect, tmp->Id, tmp->Id, 0, SIMCONNECT_SIMOBJECT_TYPE_USER);
-	} while (tmp != NULL);
+	} while (tmp != NULL);*/
 }
 
 void P3d::AddElement(int id) {
-	Queue.QueueAddElement(id);
+
+   // MUTEX pour blocker l'acces à m_ObjectTypesToProcess
+
+   std::lock_guard<std::mutex> guard(m_ObjectTypeMutex);
+   m_ObjectTypesToProcess.emplace_back(id);
+//	Queue.QueueAddElement(id);
 }
 
 void P3d::DelateElement(int id) {
-	Queue.QueueDelateElement(id);
+   // MUTEX pour blocker l'acces. 
+
+      std::lock_guard<std::mutex> guard(m_ObjectTypeMutex);
+
+      // Chercher le ID à supprimer. 
+
+       m_ObjectTypesToProcess.erase(std::remove(m_ObjectTypesToProcess.begin(), m_ObjectTypesToProcess.end(), id),
+                                    m_ObjectTypesToProcess.end());
+
+   //	Queue.QueueDelateElement(id);
 }
 
 void P3d::P3dSetThrottle(double value)
