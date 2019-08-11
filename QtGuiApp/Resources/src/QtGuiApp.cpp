@@ -5,7 +5,7 @@ QtGuiApp::QtGuiApp(QWidget *parent)
 {
 	ui.setupUi(this);
 
-	
+	emit AddElement(DEF_THROTTLE);
 	QTimer *timer = new QTimer(this);
 	connect(timer, SIGNAL(timeout()), this, SLOT(printData()));
 	timer->start(5);
@@ -72,25 +72,47 @@ void QtGuiApp::on_CheckHSpeed_stateChanged(int arg1)
 	}
 }
 
-void QtGuiApp::on_CheckThrottle_stateChanged(int arg1)
-{
+
+
+void QtGuiApp::on_CheckPitchDeg_stateChanged(int arg1) {
 	if (arg1) {
-		emit AddElement(DEF_THROTTLE);
-		ui.LcdThrottle->setEnabled(true);
+		emit AddElement(DEF_PitchDeg);
+		ui.LcdPitchDeg->setEnabled(true);
 	}
 	else {
-		emit DelateElement(DEF_THROTTLE);
-		ui.LcdThrottle->setEnabled(false);
+		emit DelateElement(DEF_PitchDeg);
+		ui.LcdPitchDeg->setEnabled(false);
 	}
 }
-
-
-void QtGuiApp::on_ControlThrottle_valueChanged(int value)
-{
-	p3d.SetThrottle((double)value);
+void QtGuiApp::on_CheckPitchRate_stateChanged(int arg1) {
+	if (arg1) {
+		emit AddElement(DEF_PitchRate);
+		ui.LcdPitchRate->setEnabled(true);
+	}
+	else {
+		emit DelateElement(DEF_PitchRate);
+		ui.LcdPitchRate->setEnabled(false);
+	}
 }
-
-void QtGuiApp::on_MbedReadButton_clicked() {
+void QtGuiApp::on_CheckRollDeg_stateChanged(int arg1) {
+	if (arg1) {
+		emit AddElement(DEF_RollDeg);
+		ui.LcdRollDeg->setEnabled(true);
+	}
+	else {
+		emit DelateElement(DEF_RollDeg);
+		ui.LcdRollDeg->setEnabled(false);
+	}
+}
+void QtGuiApp::on_CheckRollRate_stateChanged(int arg1) {
+	if (arg1) {
+		emit AddElement(DEF_RollRate);
+		ui.LcdRollRate->setEnabled(true);
+	}
+	else {
+		emit DelateElement(DEF_RollRate);
+		ui.LcdRollRate->setEnabled(false);
+	}
 }
 
 
@@ -103,14 +125,26 @@ void QtGuiApp::PrintCap(double value) {
 	ui.LcdCap->display(value);
 }
 
-void QtGuiApp::PrintVSpeed(double value) {
-	ui.LcdVSpeed->display(value);
-}
-
 void QtGuiApp::PrintHSpeed(double value) {
 	ui.LcdHSpeed->display(value);
 }
 
-void QtGuiApp::PrintThrottle(double value) {
-	ui.LcdThrottle->display(value);
+void QtGuiApp::PrintVSpeed(double value) {
+	ui.LcdVSpeed->display(value);
+}
+
+void QtGuiApp::PrintPitchDeg(double value) {
+	ui.LcdPitchDeg->display(value);
+}
+
+void QtGuiApp::PrintPitchRate(double value) {
+	ui.LcdPitchRate->display(value);
+}
+
+void QtGuiApp::PrintRollDeg(double value) {
+	ui.LcdRollDeg->display(value);
+}
+
+void QtGuiApp::PrintRollRate(double value) {
+	ui.LcdRollRate->display(value);
 }

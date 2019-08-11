@@ -13,11 +13,11 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QCheckBox>
 #include <QtWidgets/QGroupBox>
+#include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLCDNumber>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
-#include <QtWidgets/QSlider>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QTabWidget>
 #include <QtWidgets/QTextEdit>
@@ -50,9 +50,21 @@ public:
     QWidget *tab_2;
     QVBoxLayout *verticalLayout_3;
     QGroupBox *groupBox_2;
-    QLCDNumber *LcdThrottle;
-    QCheckBox *CheckThrottle;
-    QSlider *ControlThrottle;
+    QHBoxLayout *horizontalLayout;
+    QCheckBox *CheckPitchDeg;
+    QLCDNumber *LcdPitchDeg;
+    QGroupBox *groupBox_6;
+    QHBoxLayout *horizontalLayout_2;
+    QCheckBox *CheckPitchRate;
+    QLCDNumber *LcdPitchRate;
+    QGroupBox *groupBox_7;
+    QHBoxLayout *horizontalLayout_3;
+    QCheckBox *CheckRollDeg;
+    QLCDNumber *LcdRollDeg;
+    QGroupBox *groupBox_8;
+    QHBoxLayout *horizontalLayout_4;
+    QCheckBox *CheckRollRate;
+    QLCDNumber *LcdRollRate;
     QWidget *tab_3;
     QPushButton *MbedReadButton;
     QTextEdit *TextEdit;
@@ -133,20 +145,79 @@ public:
         verticalLayout_3->setObjectName(QString::fromUtf8("verticalLayout_3"));
         groupBox_2 = new QGroupBox(tab_2);
         groupBox_2->setObjectName(QString::fromUtf8("groupBox_2"));
-        LcdThrottle = new QLCDNumber(groupBox_2);
-        LcdThrottle->setObjectName(QString::fromUtf8("LcdThrottle"));
-        LcdThrottle->setGeometry(QRect(270, 20, 320, 30));
-        CheckThrottle = new QCheckBox(groupBox_2);
-        CheckThrottle->setObjectName(QString::fromUtf8("CheckThrottle"));
-        CheckThrottle->setGeometry(QRect(10, 25, 200, 20));
-        ControlThrottle = new QSlider(groupBox_2);
-        ControlThrottle->setObjectName(QString::fromUtf8("ControlThrottle"));
-        ControlThrottle->setGeometry(QRect(10, 60, 580, 25));
-        ControlThrottle->setMaximum(100);
-        ControlThrottle->setSingleStep(1);
-        ControlThrottle->setOrientation(Qt::Horizontal);
+        horizontalLayout = new QHBoxLayout(groupBox_2);
+        horizontalLayout->setSpacing(6);
+        horizontalLayout->setContentsMargins(11, 11, 11, 11);
+        horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
+        CheckPitchDeg = new QCheckBox(groupBox_2);
+        CheckPitchDeg->setObjectName(QString::fromUtf8("CheckPitchDeg"));
+
+        horizontalLayout->addWidget(CheckPitchDeg);
+
+        LcdPitchDeg = new QLCDNumber(groupBox_2);
+        LcdPitchDeg->setObjectName(QString::fromUtf8("LcdPitchDeg"));
+
+        horizontalLayout->addWidget(LcdPitchDeg);
+
 
         verticalLayout_3->addWidget(groupBox_2);
+
+        groupBox_6 = new QGroupBox(tab_2);
+        groupBox_6->setObjectName(QString::fromUtf8("groupBox_6"));
+        horizontalLayout_2 = new QHBoxLayout(groupBox_6);
+        horizontalLayout_2->setSpacing(6);
+        horizontalLayout_2->setContentsMargins(11, 11, 11, 11);
+        horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
+        CheckPitchRate = new QCheckBox(groupBox_6);
+        CheckPitchRate->setObjectName(QString::fromUtf8("CheckPitchRate"));
+
+        horizontalLayout_2->addWidget(CheckPitchRate);
+
+        LcdPitchRate = new QLCDNumber(groupBox_6);
+        LcdPitchRate->setObjectName(QString::fromUtf8("LcdPitchRate"));
+
+        horizontalLayout_2->addWidget(LcdPitchRate);
+
+
+        verticalLayout_3->addWidget(groupBox_6);
+
+        groupBox_7 = new QGroupBox(tab_2);
+        groupBox_7->setObjectName(QString::fromUtf8("groupBox_7"));
+        horizontalLayout_3 = new QHBoxLayout(groupBox_7);
+        horizontalLayout_3->setSpacing(6);
+        horizontalLayout_3->setContentsMargins(11, 11, 11, 11);
+        horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
+        CheckRollDeg = new QCheckBox(groupBox_7);
+        CheckRollDeg->setObjectName(QString::fromUtf8("CheckRollDeg"));
+
+        horizontalLayout_3->addWidget(CheckRollDeg);
+
+        LcdRollDeg = new QLCDNumber(groupBox_7);
+        LcdRollDeg->setObjectName(QString::fromUtf8("LcdRollDeg"));
+
+        horizontalLayout_3->addWidget(LcdRollDeg);
+
+
+        verticalLayout_3->addWidget(groupBox_7);
+
+        groupBox_8 = new QGroupBox(tab_2);
+        groupBox_8->setObjectName(QString::fromUtf8("groupBox_8"));
+        horizontalLayout_4 = new QHBoxLayout(groupBox_8);
+        horizontalLayout_4->setSpacing(6);
+        horizontalLayout_4->setContentsMargins(11, 11, 11, 11);
+        horizontalLayout_4->setObjectName(QString::fromUtf8("horizontalLayout_4"));
+        CheckRollRate = new QCheckBox(groupBox_8);
+        CheckRollRate->setObjectName(QString::fromUtf8("CheckRollRate"));
+
+        horizontalLayout_4->addWidget(CheckRollRate);
+
+        LcdRollRate = new QLCDNumber(groupBox_8);
+        LcdRollRate->setObjectName(QString::fromUtf8("LcdRollRate"));
+
+        horizontalLayout_4->addWidget(LcdRollRate);
+
+
+        verticalLayout_3->addWidget(groupBox_8);
 
         tabWidget->addTab(tab_2, QString());
         tab_3 = new QWidget();
@@ -176,7 +247,7 @@ public:
 
         retranslateUi(QtGuiAppClass);
 
-        tabWidget->setCurrentIndex(0);
+        tabWidget->setCurrentIndex(1);
 
 
         QMetaObject::connectSlotsByName(QtGuiAppClass);
@@ -194,8 +265,14 @@ public:
         groupBox_5->setTitle(QCoreApplication::translate("QtGuiAppClass", "H-Speed", nullptr));
         CheckHSpeed->setText(QCoreApplication::translate("QtGuiAppClass", "H Speed", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab), QCoreApplication::translate("QtGuiAppClass", "Tab 1", nullptr));
-        groupBox_2->setTitle(QCoreApplication::translate("QtGuiAppClass", "Throttle", nullptr));
-        CheckThrottle->setText(QCoreApplication::translate("QtGuiAppClass", "Throttle", nullptr));
+        groupBox_2->setTitle(QCoreApplication::translate("QtGuiAppClass", "Pitch Deg", nullptr));
+        CheckPitchDeg->setText(QCoreApplication::translate("QtGuiAppClass", "Pitch Deg", nullptr));
+        groupBox_6->setTitle(QCoreApplication::translate("QtGuiAppClass", "Pitch Rate", nullptr));
+        CheckPitchRate->setText(QCoreApplication::translate("QtGuiAppClass", "Pitch Rate", nullptr));
+        groupBox_7->setTitle(QCoreApplication::translate("QtGuiAppClass", "Roll Deg", nullptr));
+        CheckRollDeg->setText(QCoreApplication::translate("QtGuiAppClass", "Roll Deg", nullptr));
+        groupBox_8->setTitle(QCoreApplication::translate("QtGuiAppClass", "Roll Rate", nullptr));
+        CheckRollRate->setText(QCoreApplication::translate("QtGuiAppClass", "Roll Rate", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab_2), QCoreApplication::translate("QtGuiAppClass", "Tab 2", nullptr));
         MbedReadButton->setText(QCoreApplication::translate("QtGuiAppClass", "Mbed Read", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab_3), QCoreApplication::translate("QtGuiAppClass", "Page", nullptr));

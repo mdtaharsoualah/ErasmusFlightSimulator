@@ -18,6 +18,11 @@
 #define FIWED_POINT_FRACTIONAL_BITS_CAP 7
 #define FIWED_POINT_FRACTIONAL_BITS_SPEED 4
 
+#define FIWED_POINT_FRACTIONAL_BITS_DEG 13
+#define FIWED_POINT_FRACTIONAL_BITS_RATE 9
+#define DEGSHIFT 4
+#define RATESHIFT 64
+
 typedef uint16_t fixed_point_t;
 
 struct DataTram1
@@ -26,6 +31,15 @@ struct DataTram1
 	BYTE cap[2];
 	BYTE VSpeed[2];
 	BYTE HSpeed[2];
+	DWORD Time;
+};
+
+struct DataTram2
+{
+	BYTE PitchDeg[2];
+	BYTE PitchRate[2];
+	BYTE RollDeg[2];
+	BYTE RollRate[2];
 	DWORD Time;
 };
 
@@ -44,7 +58,7 @@ public:
 
 	void CanSend1(BYTE Id, double altitude, double cap, double vspeed, double hspeed);
 
-	void CanSend2(BYTE Id, double altitude, double cap, double vspeed, double hspeed);
+	void CanSend2(BYTE Id, double PitchDeg, double PitchRat, double RollDeg, double RollRat);
 
 	void CanReceive();
 
@@ -80,6 +94,11 @@ public slots:
 	void SetVSpeed(double VSpeed);
 
 	void SetHSpeed(double HSpeed);
+	
+	void SetPitchDeg(double value);
+	void SetPitchRate(double value);
+	void SetRollDeg(double value);
+	void SetRollRate(double value);
 
 private:
 	UCANRET bRet;
@@ -88,6 +107,7 @@ private:
 	_TCHAR szDeviceNr[24];
 	tCanMsgStruct CanTxMsg, CanRxMsg;
 	DataTram1 Tram1;
+	DataTram2 Tram2;
 	tUcanInitCanParam InitParam;
 	bool receiveBool;
 	bool timeout150;

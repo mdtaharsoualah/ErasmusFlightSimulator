@@ -26,15 +26,20 @@ private slots:
 	void on_CheckCap_stateChanged(int arg1);
 	void on_CheckVSpeed_stateChanged(int arg1);
 	void on_CheckHSpeed_stateChanged(int arg1);
-	void on_CheckThrottle_stateChanged(int arg1);
-	void on_ControlThrottle_valueChanged(int value);
-	void on_MbedReadButton_clicked();
+	
+	void on_CheckPitchDeg_stateChanged(int arg1);
+	void on_CheckPitchRate_stateChanged(int arg1);
+	void on_CheckRollDeg_stateChanged(int arg1);
+	void on_CheckRollRate_stateChanged(int arg1);
 
 	void PrintAltitude(double value);
 	void PrintCap(double value);
 	void PrintVSpeed(double value);
 	void PrintHSpeed(double value);
-	void PrintThrottle(double value); 
+	void PrintPitchDeg(double value);
+	void PrintPitchRate(double value);
+	void PrintRollDeg(double value);
+	void PrintRollRate(double value);
 
 private:
 	Ui::QtGuiAppClass ui;

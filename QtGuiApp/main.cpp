@@ -27,6 +27,12 @@ int main(int argc, char *argv[])
 	QObject::connect(p3d, SIGNAL(P3dPrintCap(double)), w, SLOT(PrintCap(double)));
 	QObject::connect(p3d, SIGNAL(P3dPrintVSpeed(double)), w, SLOT(PrintVSpeed(double)));
 	QObject::connect(p3d, SIGNAL(P3dPrintHSpeed(double)), w, SLOT(PrintHSpeed(double)));
+
+	QObject::connect(p3d, SIGNAL(P3dPrintPitchDeg(double)), w, SLOT(PrintPitchDeg(double)));
+	QObject::connect(p3d, SIGNAL(P3dPrintPitchRate(double)), w, SLOT(PrintPitchRate(double)));
+	QObject::connect(p3d, SIGNAL(P3dPrintRollDeg(double)), w, SLOT(PrintRollDeg(double)));
+	QObject::connect(p3d, SIGNAL(P3dPrintRollRate(double)), w, SLOT(PrintRollRate(double)));
+
 	QObject::connect(w, SIGNAL(AddElement(int)), p3d, SLOT(AddElement(int)));
 	QObject::connect(w, SIGNAL(DelateElement(int)), p3d, SLOT(DelateElement(int)));
 	

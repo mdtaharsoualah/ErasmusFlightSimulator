@@ -24,11 +24,11 @@ int UsbCan::exec()
 		}
 		if (timeout150) {
 			timeout150 = false;
-			CanSend(0x55, 1);
+			CanSend(0x1, 1);
 		}
 		if (timeout301) {
 			timeout301 = false;
-			CanSend(0x56, 1);
+			CanSend(0x2, 2);
 		}
 	}
 	return 0;
@@ -121,8 +121,17 @@ void UsbCan::UsbCanDisconnect() {
 void UsbCan::CanSend(BYTE Id, int type) {
 	
 	CanTxMsg.m_dwID = Id;
+	BYTE *TmpData;
 	
-	BYTE TmpData[8] = { Tram1.altitude[0],Tram1.altitude[1], Tram1.cap[0], Tram1.cap[1], Tram1.VSpeed[0], Tram1.VSpeed[1], Tram1.HSpeed[0], Tram1.HSpeed[1] };
+	if (type == 1) {
+		BYTE Tmp[8] = { Tram1.altitude[0],Tram1.altitude[1], Tram1.cap[0], Tram1.cap[1], Tram1.VSpeed[0], Tram1.VSpeed[1], Tram1.HSpeed[0], Tram1.HSpeed[1] };
+		TmpData = Tmp;
+	}
+	else if (type == 2) {
+		BYTE Tmp2[8] = { Tram2.PitchDeg[0],Tram2.PitchDeg[1], Tram2.PitchRate[0], Tram2.PitchRate[1], Tram2.RollDeg[0], Tram2.RollDeg[1], Tram2.RollRate[0], Tram2.RollRate[1] };
+		TmpData = Tmp2;
+	}
+	
 	memcpy(CanTxMsg.m_bData,TmpData, 8);
 	UcanWriteCanMsg(UcanHandle, &CanTxMsg);
 }
@@ -150,6 +159,32 @@ void UsbCan::SetHSpeed(double HSpeed) {
 	memcpy(Tram1.HSpeed, &tmp, sizeof(fixed_point_t));
 }
 
+
+void UsbCan::SetPitchDeg(double VSpeed) {
+	double tmpVal = VSpeed + DEGSHIFT;
+	fixed_point_t tmp = (fixed_point_t)round(tmpVal * (1 << FIWED_POINT_FRACTIONAL_BITS_DEG));
+	memcpy(Tram2.PitchDeg, &tmp, sizeof(fixed_point_t));
+}
+
+void UsbCan::SetPitchRate(double HSpeed) {
+	double tmpVal = HSpeed + 64;
+	fixed_point_t tmp = (fixed_point_t)round(tmpVal * (1 << FIWED_POINT_FRACTIONAL_BITS_RATE));
+	memcpy(Tram2.PitchRate, &tmp, sizeof(fixed_point_t));
+}
+
+void UsbCan::SetRollDeg(double VSpeed) {
+	double tmpVal = VSpeed + DEGSHIFT;
+	fixed_point_t tmp = (fixed_point_t)round(tmpVal * (1 << FIWED_POINT_FRACTIONAL_BITS_DEG));
+	memcpy(Tram2.RollDeg, &tmp, sizeof(fixed_point_t));
+}
+
+void UsbCan::SetRollRate(double HSpeed) {
+	double tmpVal = HSpeed + 64;
+	fixed_point_t tmp = (fixed_point_t)round(tmpVal * (1 << FIWED_POINT_FRACTIONAL_BITS_RATE));
+	memcpy(Tram2.RollRate, &tmp, sizeof(fixed_point_t));
+}
+
+
 void UsbCan::CanSend1(BYTE Id, double altitude, double cap, double vspeed, double hspeed)
 {
 	SetAlt(altitude);
@@ -157,6 +192,15 @@ void UsbCan::CanSend1(BYTE Id, double altitude, double cap, double vspeed, doubl
 	SetVSpeed(vspeed);
 	SetHSpeed(hspeed);
 	CanSend(Id,1);
+}
+
+void UsbCan::CanSend2(BYTE Id, double PitchDeg, double PitchRat, double RollDeg, double RollRat)
+{
+	SetPitchDeg(PitchDeg);
+	SetPitchRate(PitchRat);
+	SetRollDeg(RollDeg);
+	SetRollRate(RollRat);
+	CanSend(Id, 2);
 }
 
 void UsbCan::ResetData()
@@ -167,6 +211,10 @@ void UsbCan::ResetData()
 		Tram1.cap[i] = 0x00;
 		Tram1.VSpeed[i] = 0x0;
 		Tram1.HSpeed[i] = 0x0;
+		Tram2.PitchDeg[i] = 0x0;
+		Tram2.PitchRate[i] = 0x0;
+		Tram2.RollDeg[i] = 0x0;
+		Tram2.RollRate[i] = 0x0;
 	}
 }
 
@@ -174,18 +222,13 @@ void UsbCan::CanReceive()
 {
 	dwRxCount = 100;
 	bRet = UcanReadCanMsg(UcanHandle, &CanRxMsg);
-	if (CanRxMsg.m_dwID == 0x57)
+	if (CanRxMsg.m_dwID == 0x11)
 		emit CanThrottle(CanRxMsg.m_bData[0]);
-	if (CanRxMsg.m_dwID == 0x58) {
-		UINT16 tmpx;
-		UINT16 tmpy;
-		memcpy(&tmpx, CanRxMsg.m_bData, 2);
-		memcpy(&tmpy, CanRxMsg.m_bData+2, 2);
+	if (CanRxMsg.m_dwID == 0x12) {
 		float yokex;
 		float yokey;
-		float in_min = 0.0, in_max = 65535.0, out_min = -1.0, out_max = +1.0;
-		yokex= (float) ((float)tmpx - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
-		yokey = (float) ((float)tmpy - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
+		memcpy(&yokex, CanRxMsg.m_bData, 4);
+		memcpy(&yokey, (&CanRxMsg.m_bData)[4], 4);
 		emit CanYoke(yokex, yokey);
 	}
 }
