@@ -4,50 +4,35 @@ void UsbCan::setreceiveBool(bool value) {
 	receiveBool = value;
 }
 
-void UsbCan::run() {
+void UsbCan::usbCanStart() {
 	timeCount = 0;
 	timeout301 = false;
 	timeout150 = false;
-	UsbCanConnect();
-
-	exec();
-	
-	
+	QObject::connect(timer10, SIGNAL(timeout()), this, SLOT(tmout()), Qt::QueuedConnection);
 }
 
-int UsbCan::exec()
-{
-	while (1) {
-		if (receiveBool) {
-			setreceiveBool(false);
-			CanReceive();
-		}
-		if (timeout150) {
-			timeout150 = false;
-			CanSend(0x1, 1);
-		}
-		if (timeout301) {
-			timeout301 = false;
-			CanSend(0x2, 2);
-		}
-	}
-	return 0;
-}
 
 void UsbCan::tmout() {
 	timeCount++;
-	if (timeCount == 5) {
-		timeout150 = true;
+	switch (timeCount)
+	{
+	case 1:
+		CanSend(0x1, 1);
+		break;
+	case 2:
+		CanSend(0x2, 2);
+		break;
+	case 3:
 		timeCount = 0;
-	}
-	if (timeCount == 3) {
-		timeout301 = true;
+		break;
+	default:
+		break;
 	}
 }
 
 
-void UsbCan::UsbCanConnect() {
-	
+void UsbCan::CanConnect() {
+	qDebug("CanConnect\n");
 	// initialize USB-CANmodul
 	//bRet = UcanInitHardware(&UcanHandle, USBCAN_ANY_MODULE, NULL);
 
@@ -69,27 +54,33 @@ void UsbCan::UsbCanConnect() {
 	CanTxMsg.m_bFF = 0;
 	CanTxMsg.m_bDLC = 8;
 
-	bRet = UcanInitHwConnectControlEx(AppConnectControlCallbackEx, NULL);
+	bRet = UcanInitHwConnectControlEx(AppConnectControlCallbackEx, this);
 
 	if (bRet == USBCAN_SUCCESSFUL)
 	{
-		bRet = UcanInitHardwareEx(&UcanHandle, USBCAN_ANY_MODULE,
-			AppEventCallbackEx, this);
+		if(UcanInitHardwareEx(&UcanHandle, USBCAN_ANY_MODULE,
+			AppEventCallbackEx, this)) emit CanConnected(false);
 
-		bRet = UcanInitCanEx2(UcanHandle, USBCAN_CHANNEL_CH0,
-			&InitParam);
+		if(UcanInitCanEx2(UcanHandle, USBCAN_CHANNEL_CH0,
+			&InitParam)) emit CanConnected(false);
+	}
+	else {
+		emit CanConnected(false);
 	}
 }
 
 void PUBLIC UsbCan::AppConnectControlCallbackEx(DWORD dwEvent_p, DWORD dwParam_p, void* pArg_p)
 {
+	UsbCan* AAA = (UsbCan*)pArg_p;
 	switch (dwEvent_p)
 	{
 	case USBCAN_EVENT_CONNECT:
-		qDebug("connect!!");
+		emit AAA->CanConnected(true);
+		AAA->timer10->start(25);
 		break;
 	case USBCAN_EVENT_DISCONNECT:
-		qDebug("disconnect!!");
+		emit AAA->CanDisconnected(true);
+		AAA->timer10->stop();
 		break;
 	}
 }
@@ -103,7 +94,7 @@ void PUBLIC UsbCan::AppEventCallbackEx(tUcanHandle UcanHandle_p, DWORD dwEvent_p
 	{
 
 	case USBCAN_EVENT_RECEIVE: // CAN message received
-		pThis->setreceiveBool(true);
+		pThis->CanReceive();
 		break;
 
 	case USBCAN_EVENT_STATUS: // changes error status
@@ -114,74 +105,70 @@ void PUBLIC UsbCan::AppEventCallbackEx(tUcanHandle UcanHandle_p, DWORD dwEvent_p
 
 }
 
-void UsbCan::UsbCanDisconnect() {
+void UsbCan::CanDisconnect() {
 
 }
 
 void UsbCan::CanSend(BYTE Id, int type) {
 	
 	CanTxMsg.m_dwID = Id;
-	BYTE *TmpData;
 	
 	if (type == 1) {
-		BYTE Tmp[8] = { Tram1.altitude[0],Tram1.altitude[1], Tram1.cap[0], Tram1.cap[1], Tram1.VSpeed[0], Tram1.VSpeed[1], Tram1.HSpeed[0], Tram1.HSpeed[1] };
-		TmpData = Tmp;
+		memcpy(CanTxMsg.m_bData, Tram1, 8);
 	}
 	else if (type == 2) {
-		BYTE Tmp2[8] = { Tram2.PitchDeg[0],Tram2.PitchDeg[1], Tram2.PitchRate[0], Tram2.PitchRate[1], Tram2.RollDeg[0], Tram2.RollDeg[1], Tram2.RollRate[0], Tram2.RollRate[1] };
-		TmpData = Tmp2;
+		memcpy(CanTxMsg.m_bData, Tram2, 8);
 	}
-	
-	memcpy(CanTxMsg.m_bData,TmpData, 8);
 	UcanWriteCanMsg(UcanHandle, &CanTxMsg);
 }
 
 
 void UsbCan::SetAlt(double altitude) {
 	unsigned int alt = (unsigned int)(altitude + ALTSHIFT);
-	memcpy(Tram1.altitude, &alt, sizeof(int));
+	memcpy(Tram1, &alt, sizeof(int));
 }
 
 void UsbCan::SetCap(double cap)
 {
-	fixed_point_t tmp = (fixed_point_t) round(cap * (1 << FIWED_POINT_FRACTIONAL_BITS_CAP));
-	memcpy(Tram1.cap, &tmp, sizeof(fixed_point_t));
+	float cp = (float)cap;
+	fixed_point_t tmp = (fixed_point_t) round(cp * (1 << FIWED_POINT_FRACTIONAL_BITS_CAP));
+	memcpy(Tram1+2, &tmp, sizeof(fixed_point_t));
 }
 
 void UsbCan::SetVSpeed(double VSpeed) {
 	double tmpVal = VSpeed + VSPEEDSHIFT;
 	fixed_point_t tmp = (fixed_point_t)round(tmpVal * (1 << FIWED_POINT_FRACTIONAL_BITS_SPEED));
-	memcpy(Tram1.VSpeed, &tmp, sizeof(fixed_point_t));
+	memcpy(Tram1+4, &tmp, sizeof(fixed_point_t));
 }
 
 void UsbCan::SetHSpeed(double HSpeed) {
 	fixed_point_t tmp = (fixed_point_t)round(HSpeed * (1 << FIWED_POINT_FRACTIONAL_BITS_SPEED));
-	memcpy(Tram1.HSpeed, &tmp, sizeof(fixed_point_t));
+	memcpy(Tram1+6, &tmp, sizeof(fixed_point_t));
 }
 
 
 void UsbCan::SetPitchDeg(double VSpeed) {
 	double tmpVal = VSpeed + DEGSHIFT;
 	fixed_point_t tmp = (fixed_point_t)round(tmpVal * (1 << FIWED_POINT_FRACTIONAL_BITS_DEG));
-	memcpy(Tram2.PitchDeg, &tmp, sizeof(fixed_point_t));
+	memcpy(Tram2, &tmp, sizeof(fixed_point_t));
 }
 
 void UsbCan::SetPitchRate(double HSpeed) {
 	double tmpVal = HSpeed + 64;
 	fixed_point_t tmp = (fixed_point_t)round(tmpVal * (1 << FIWED_POINT_FRACTIONAL_BITS_RATE));
-	memcpy(Tram2.PitchRate, &tmp, sizeof(fixed_point_t));
+	memcpy(Tram2+2, &tmp, sizeof(fixed_point_t));
 }
 
 void UsbCan::SetRollDeg(double VSpeed) {
 	double tmpVal = VSpeed + DEGSHIFT;
 	fixed_point_t tmp = (fixed_point_t)round(tmpVal * (1 << FIWED_POINT_FRACTIONAL_BITS_DEG));
-	memcpy(Tram2.RollDeg, &tmp, sizeof(fixed_point_t));
+	memcpy(Tram2+4, &tmp, sizeof(fixed_point_t));
 }
 
 void UsbCan::SetRollRate(double HSpeed) {
 	double tmpVal = HSpeed + 64;
 	fixed_point_t tmp = (fixed_point_t)round(tmpVal * (1 << FIWED_POINT_FRACTIONAL_BITS_RATE));
-	memcpy(Tram2.RollRate, &tmp, sizeof(fixed_point_t));
+	memcpy(Tram2+6, &tmp, sizeof(fixed_point_t));
 }
 
 
@@ -205,16 +192,10 @@ void UsbCan::CanSend2(BYTE Id, double PitchDeg, double PitchRat, double RollDeg,
 
 void UsbCan::ResetData()
 {
-	for (int i = 0; i < 2; i++)
+	for (int i = 0; i < 8; i++)
 	{
-		Tram1.altitude[i] = 0x0;
-		Tram1.cap[i] = 0x00;
-		Tram1.VSpeed[i] = 0x0;
-		Tram1.HSpeed[i] = 0x0;
-		Tram2.PitchDeg[i] = 0x0;
-		Tram2.PitchRate[i] = 0x0;
-		Tram2.RollDeg[i] = 0x0;
-		Tram2.RollRate[i] = 0x0;
+		Tram1[i] = 0;
+		Tram2[i] = 0;
 	}
 }
 
@@ -222,17 +203,13 @@ void UsbCan::CanReceive()
 {
 	dwRxCount = 100;
 	bRet = UcanReadCanMsg(UcanHandle, &CanRxMsg);
-	if (CanRxMsg.m_dwID == 0x11)
-		emit CanThrottle(CanRxMsg.m_bData[0]);
+	if (CanRxMsg.m_dwID == 0x11) {
+		memcpy(&throttleCan, CanRxMsg.m_bData, 4);
+		emit CanThrottle(throttleCan);
+	}
 	if (CanRxMsg.m_dwID == 0x12) {
-		float yokex;
-		float yokey;
 		memcpy(&yokex, CanRxMsg.m_bData, 4);
-		memcpy(&yokey, (&CanRxMsg.m_bData)[4], 4);
+		memcpy(&yokey, CanRxMsg.m_bData+4, 4);
 		emit CanYoke(yokex, yokey);
 	}
-}
-
-void UsbCan::receive1(int Id, DataTram1 Data) {
-
 }

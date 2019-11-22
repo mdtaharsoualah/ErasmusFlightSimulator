@@ -18,7 +18,7 @@ bool QueueClass::QueueAddElement(int Id)
 	return true;
 }
 
-bool QueueClass::QueueDelateElement(int Id)
+bool QueueClass::QueueDeleteElement(int Id)
 {
 	QueueReset();
 	if (Top->Var->Id == Id) {

@@ -11,7 +11,7 @@ QtGuiApp::QtGuiApp(QWidget *parent)
 	timer->start(5);
 }
 
-void QtGuiApp::printData()
+/*void QtGuiApp::printData()
 {
 
 	//p3d.P3dRequestData();
@@ -21,99 +21,113 @@ void QtGuiApp::printData()
 	//p3d.P3dPrintData('2');
 	//ui.textEditFirst->setText(QString::fromStdString(emit PrintData(DEF_ALTITUDE)));
 	//ui.textEditSecond->setText(QString::fromStdString(emit PrintData(DEF_THROTTLE)));
+}*/
+
+void QtGuiApp::on_P3dConnectButton_clicked() {
+	if (P3dConnectStat) {
+		emit P3dDisconnect();
+	}
+	else {
+		emit P3dConnect();
+	}
 }
 
-void QtGuiApp::on_CheckAltitude_stateChanged(int arg1)
+void QtGuiApp::on_CanConnectButton_clicked() {
+	if (CanConnectStat) {
+		emit CanDisconnect();
+	}
+	else {
+		emit CanConnect();
+	}
+}
+
+void QtGuiApp::P3dConnected(bool arg) {
+	if (arg) {
+		P3dConnectStat = true;
+		ui.P3dConnectButton->setText("P3d Disconnect");
+	}
+	else {
+		ui.TextEdit->setText("Error P3d Connection!!");
+	}
+}
+void QtGuiApp::P3dDisconnected(bool arg) {
+	if (arg) {
+		P3dConnectStat = false;
+		ui.P3dConnectButton->setText("P3d Connect");
+	}
+	else {
+		ui.TextEdit->setText("Error P3d Disconnection!!");
+	}
+}
+
+void QtGuiApp::CanConnected(bool arg) {
+	if (arg) {
+		CanConnectStat = true;
+		ui.CanConnectButton->setText("Usb-Can Disconnect");
+	}
+	else {
+		ui.TextEdit->setText("Error Usb-Can Connection!!");
+	}
+}
+void QtGuiApp::CanDisconnected(bool arg) {
+	if (arg) {
+		CanConnectStat = false;
+		ui.CanConnectButton->setText("Usb-Can Connect");
+	}
+	else {
+		ui.TextEdit->setText("Error Usb-Can Disconnection!!");
+	}
+}
+
+void QtGuiApp::on_Tram1Check_stateChanged(int arg)
 {
-	if (arg1) {
+	if (arg) {
 		emit AddElement(DEF_ALTITUDE);
 		ui.LcdAltitude->setEnabled(true);
-	}
-	else {
-		emit DelateElement(DEF_ALTITUDE);
-		ui.LcdAltitude->setEnabled(false);
-	}
-}
-
-
-void QtGuiApp::on_CheckCap_stateChanged(int arg1)
-{
-	if (arg1) {
 		emit AddElement(DEF_CAP);
 		ui.LcdCap->setEnabled(true);
-	}
-	else {
-		emit DelateElement(DEF_CAP);
-		ui.LcdCap->setEnabled(false);
-	}
-}
-
-void QtGuiApp::on_CheckVSpeed_stateChanged(int arg1)
-{
-	if (arg1) {
 		emit AddElement(DEF_VSpeed);
 		ui.LcdVSpeed->setEnabled(true);
-	}
-	else {
-		emit DelateElement(DEF_VSpeed);
-		ui.LcdVSpeed->setEnabled(false);
-	}
-}
-
-void QtGuiApp::on_CheckHSpeed_stateChanged(int arg1)
-{
-	if (arg1) {
 		emit AddElement(DEF_HSpeed);
 		ui.LcdHSpeed->setEnabled(true);
 	}
 	else {
-		emit DelateElement(DEF_HSpeed);
+		emit DeleteElement(DEF_ALTITUDE);
+		ui.LcdAltitude->setEnabled(false);
+		emit DeleteElement(DEF_CAP);
+		ui.LcdCap->setEnabled(false);
+		emit DeleteElement(DEF_VSpeed);
+		ui.LcdVSpeed->setEnabled(false);
+		emit DeleteElement(DEF_HSpeed);
 		ui.LcdHSpeed->setEnabled(false);
 	}
 }
 
 
-
-void QtGuiApp::on_CheckPitchDeg_stateChanged(int arg1) {
-	if (arg1) {
+void QtGuiApp::on_Tram2Check_stateChanged(int arg)
+{
+	if (arg) {
 		emit AddElement(DEF_PitchDeg);
 		ui.LcdPitchDeg->setEnabled(true);
-	}
-	else {
-		emit DelateElement(DEF_PitchDeg);
-		ui.LcdPitchDeg->setEnabled(false);
-	}
-}
-void QtGuiApp::on_CheckPitchRate_stateChanged(int arg1) {
-	if (arg1) {
 		emit AddElement(DEF_PitchRate);
 		ui.LcdPitchRate->setEnabled(true);
-	}
-	else {
-		emit DelateElement(DEF_PitchRate);
-		ui.LcdPitchRate->setEnabled(false);
-	}
-}
-void QtGuiApp::on_CheckRollDeg_stateChanged(int arg1) {
-	if (arg1) {
 		emit AddElement(DEF_RollDeg);
 		ui.LcdRollDeg->setEnabled(true);
-	}
-	else {
-		emit DelateElement(DEF_RollDeg);
-		ui.LcdRollDeg->setEnabled(false);
-	}
-}
-void QtGuiApp::on_CheckRollRate_stateChanged(int arg1) {
-	if (arg1) {
 		emit AddElement(DEF_RollRate);
 		ui.LcdRollRate->setEnabled(true);
 	}
 	else {
-		emit DelateElement(DEF_RollRate);
+		emit DeleteElement(DEF_PitchDeg);
+		ui.LcdPitchDeg->setEnabled(false);
+		emit DeleteElement(DEF_PitchRate);
+		ui.LcdPitchRate->setEnabled(false);
+		emit DeleteElement(DEF_RollDeg);
+		ui.LcdRollDeg->setEnabled(false);
+		emit DeleteElement(DEF_RollRate);
 		ui.LcdRollRate->setEnabled(false);
 	}
 }
+
 
 
 void QtGuiApp::PrintAltitude(double value) {

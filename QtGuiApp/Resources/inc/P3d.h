@@ -43,60 +43,51 @@ class P3d : public QObject {
 
 public:
 
-
-
-	bool P3dConnect();
-	void P3dDisconnect();
+	
 	
 	void P3dConfig();
 
-
-
 	static void DispatchCallback(SIMCONNECT_RECV *pData, DWORD cbData, void *pContext);
 	void Process(SIMCONNECT_RECV *pData, DWORD cbData);
-	void SetThrottle(double);
 
 	void P3dRequestData();
-
-	QueueClass Queue;
+	
 
 public slots:
-	void start();
-	void P3dStart();
+	void P3dConnect();
+	void P3dDisconnect();
+	void P3dBoucle();
+	void P3dstart();
 	void AddElement(int id);
-	void DelateElement(int id);
+	void DeleteElement(int id);
 	void P3dSetThrottle(double value);
 	void P3dSetYoke(double valueX,double valueY);
 
 signals:
-	void P3dPrintAltitude(double value);
-	void P3dPrintCap(double value);
-	void P3dPrintVSpeed(double value);
-	void P3dPrintHSpeed(double value);
+	void P3dConnected(bool);
+	void P3dDisconnected(bool);
+	void P3dAltitude(double value);
+	void P3dCap(double value);
+	void P3dVSpeed(double value);
+	void P3dHSpeed(double value);
 
-	void P3dPrintPitchDeg(double value);
-	void P3dPrintPitchRate(double value);
-	void P3dPrintRollDeg(double value);
-	void P3dPrintRollRate(double value);
-	
-
-	void P3dSetAltitude(double value);
-	void P3dSetCap(double value);
-	void P3dSetVSpeed(double value);
-	void P3dSetHSpeed(double value);
-
-	void P3dSetPitchDeg(double value);
-	void P3dSetPitchRate(double value);
-	void P3dSetRollDeg(double value);
-	void P3dSetRollRate(double value);
-
-	//void P3dSetThrottle(double value);
+	void P3dPitchDeg(double value);
+	void P3dPitchRate(double value);
+	void P3dRollDeg(double value);
+	void P3dRollRate(double value);
 
 
 private:
-	int quit = 0;
-	HANDLE hSimConnect = NULL;
-	double throttlePercent = 0;
-	QThread* ThreadCan;
-	UsbCan* usbcan;
+	HANDLE m_hSimConnect = NULL;
+
+	double m_throttle;
+	double m_yokeX;
+	double m_yokeY;
+
+	UsbCan *usbcan;
+
+	std::vector<int> m_IdDefinition;
+	std::mutex m_IdDefinitionMutex;
+
+	QTimer *timer = new QTimer(this);
 };

@@ -36,13 +36,16 @@
     <ClCompile Include="Resources\src\P3d.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Resources\src\QueueClass.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Resources\src\QtGuiApp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Convert.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Resources\src\Matlab.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Resources\src\MatlabRcv.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -83,8 +86,15 @@
     <QtMoc Include="Convert.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+    <QtMoc Include="Resources\inc\MatlabRcv.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="Resources\inc\Matlab.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
+    <None Include="cpp.hint" />
   </ItemGroup>
 </Project>

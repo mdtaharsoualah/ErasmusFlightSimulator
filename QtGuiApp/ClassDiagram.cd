@@ -3,14 +3,14 @@
   <Class Name="UsbCan" Collapsed="true">
     <Position X="164" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAIAAAIgAAAgQAAGBAAAQEAAAACAAAgEAAAAAAAAAAA=</HashCode>
+      <HashCode>gA4BEAIgCAAAYAEGQGFAQGAAAECAAQsEAhgAAAAAEAA=</HashCode>
       <FileName>Convert.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="P3d" Collapsed="true">
-    <Position X="158.75" Y="0.5" Width="1.5" />
+  <Class Name="P3d">
+    <Position X="143" Y="4" Width="6" />
     <TypeIdentifier>
-      <HashCode>AAAAAEABAAEBgABABsAgAgAAQAAAAABAAABBAAGAAEA=</HashCode>
+      <HashCode>QAAACEAwAAAJAACABqIAQAAGAAAEAAAkAAAAIQGACAA=</HashCode>
       <FileName>Resources\inc\P3d.h</FileName>
     </TypeIdentifier>
   </Class>
@@ -21,17 +21,17 @@
       <FileName>Resources\inc\QueueClass.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="QtGuiApp" Collapsed="true">
-    <Position X="160.5" Y="0.5" Width="1.5" />
+  <Class Name="QtGuiApp">
+    <Position X="157.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>CAAAEAAAAAAAEAAgAkAAAAAAAAAAAAABIAAAAEAAAAA=</HashCode>
+      <HashCode>gAAAEAAIAAABEAEAEgKAAAAgACAAAAAAIAAAwBAABAA=</HashCode>
       <FileName>Resources\inc\QtGuiApp.h</FileName>
     </TypeIdentifier>
   </Class>
   <Struct Name="DataTram1" Collapsed="true">
     <Position X="158.75" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAABAAAAAAAAAAAAAAAAAAIAIAAAAAAAAAAAgAAAAA=</HashCode>
+      <HashCode>AAAABAAAAAAAAAAAAAAAAAAIAIAAAAAAAAAAAgAAAQA=</HashCode>
       <FileName>Convert.h</FileName>
     </TypeIdentifier>
   </Struct>
@@ -113,7 +113,7 @@
     </TypeIdentifier>
   </Struct>
   <Struct Name="_tUcanSdCardStatus" Collapsed="true">
-    <Position X="6.5" Y="4.5" Width="1.5" />
+    <Position X="6.5" Y="4.5" Width="2.75" />
     <TypeIdentifier>
       <HashCode>AgAACCAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Resources\inc\Usbcan32.h</FileName>
@@ -155,7 +155,7 @@
     </TypeIdentifier>
   </Struct>
   <Struct Name="SIMCONNECT_RECV" Collapsed="true">
-    <Position X="82" Y="0.5" Width="1.5" />
+    <Position X="82" Y="0.5" Width="2.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAABAAAAgAAAAQAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Resources\inc\SimConnect.h</FileName>
@@ -589,14 +589,14 @@
     </TypeIdentifier>
   </Struct>
   <Struct Name="SIMCONNECT_RECV_FACILITIES_LIST" Collapsed="true">
-    <Position X="79.75" Y="1.75" Width="1.5" />
+    <Position X="79.75" Y="1.75" Width="3" />
     <TypeIdentifier>
       <HashCode>ABAAAAAAAAAEAAAAAAAAAAAAAAAgAAEAAAAAAAAAAAA=</HashCode>
       <FileName>Resources\inc\SimConnect.h</FileName>
     </TypeIdentifier>
   </Struct>
   <Struct Name="SIMCONNECT_DATA_FACILITY_AIRPORT" Collapsed="true">
-    <Position X="1.75" Y="0.5" Width="1.5" />
+    <Position X="1.75" Y="0.5" Width="3" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAEAAAAAAAAAIgAAAAAAAAAAAAAAAgAAAAAA=</HashCode>
       <FileName>Resources\inc\SimConnect.h</FileName>
@@ -610,7 +610,7 @@
     </TypeIdentifier>
   </Struct>
   <Struct Name="SIMCONNECT_DATA_FACILITY_WAYPOINT" Collapsed="true">
-    <Position X="1.75" Y="1.75" Width="1.5" />
+    <Position X="1.75" Y="1.75" Width="3" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAA=</HashCode>
       <FileName>Resources\inc\SimConnect.h</FileName>
@@ -652,7 +652,7 @@
     </TypeIdentifier>
   </Struct>
   <Struct Name="SIMCONNECT_DATA_FACILITY_VOR" Collapsed="true">
-    <Position X="0.5" Y="4.75" Width="1.5" />
+    <Position X="0.5" Y="4.75" Width="3" />
     <TypeIdentifier>
       <HashCode>AAAABAAAAEACACAAAAAAAAAAAAAABAAAAAAAAAAgAAA=</HashCode>
       <FileName>Resources\inc\SimConnect.h</FileName>
@@ -781,7 +781,7 @@
     <Position X="158.75" Y="9" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>C:\Windows Kits\10\Include\10.0.17134.0\ucrt\tchar.h</FileName>
+      <FileName>Resources\inc\Usbcan32.h</FileName>
     </TypeIdentifier>
   </Typedef>
   <Typedef Name="tUcanHandle" Collapsed="true">
@@ -911,7 +911,7 @@
     </TypeIdentifier>
   </Typedef>
   <Typedef Name="tUcanSdCardStatus" Collapsed="true">
-    <Position X="6.5" Y="6.5" Width="1.5" />
+    <Position X="6.5" Y="6.5" Width="2.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Resources\inc\Usbcan32.h</FileName>
@@ -1044,7 +1044,7 @@
     </TypeIdentifier>
   </Typedef>
   <Typedef Name="SIMCONNECT_DATA_DEFINITION_ID" Collapsed="true">
-    <Position X="167.5" Y="9.75" Width="1.5" />
+    <Position X="167.5" Y="9.75" Width="3.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Resources\inc\SimConnect.h</FileName>
@@ -1072,14 +1072,14 @@
     </TypeIdentifier>
   </Typedef>
   <Typedef Name="SIMCONNECT_CLIENT_DATA_DEFINITION_ID" Collapsed="true">
-    <Position X="167.5" Y="9" Width="1.5" />
+    <Position X="167.5" Y="9" Width="3" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Resources\inc\SimConnect.h</FileName>
     </TypeIdentifier>
   </Typedef>
   <Typedef Name="SIMCONNECT_CAMERA_COMMAND" Collapsed="true">
-    <Position X="165.75" Y="9" Width="1.5" />
+    <Position X="165.75" Y="9" Width="3" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Resources\inc\SimConnect.h</FileName>
@@ -1116,7 +1116,7 @@
   <Enum Name="DEFINE_ENUM" Collapsed="true">
     <Position X="158.75" Y="5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAIAAAAAAAIAAAAAAAAACAAAAAAAAIgAAAAAAA=</HashCode>
+      <HashCode>AAAAABAIAAAAABAIAAAAAAAAACgAAAAQAAIhEAAIgAA=</HashCode>
       <FileName>Resources\inc\QueueClass.h</FileName>
     </TypeIdentifier>
   </Enum>

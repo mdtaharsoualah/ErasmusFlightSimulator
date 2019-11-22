@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>620</width>
-    <height>400</height>
+    <width>471</width>
+    <height>337</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -21,265 +21,230 @@
     <item>
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
+      <widget class="QWidget" name="tab_1">
+       <attribute name="title">
+        <string>Acceuil</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_4">
+        <item>
+         <widget class="QPushButton" name="P3dConnectButton">
+          <property name="text">
+           <string>P3d Connect</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="CanConnectButton">
+          <property name="text">
+           <string>Usb-Can Connect</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QTextEdit" name="TextEdit">
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>150</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
       <widget class="QWidget" name="tab">
        <attribute name="title">
-        <string>Tab 1</string>
+        <string>Tram1</string>
        </attribute>
-       <layout class="QVBoxLayout" name="verticalLayout_2">
-        <item>
-         <widget class="QGroupBox" name="groupBox">
-          <property name="title">
+       <layout class="QFormLayout" name="formLayout">
+        <item row="2" column="0">
+         <widget class="QLabel" name="label">
+          <property name="minimumSize">
+           <size>
+            <width>150</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>25</pointsize>
+           </font>
+          </property>
+          <property name="text">
            <string>Altitude</string>
           </property>
-          <widget class="QLCDNumber" name="LcdAltitude">
-           <property name="geometry">
-            <rect>
-             <x>270</x>
-             <y>20</y>
-             <width>320</width>
-             <height>30</height>
-            </rect>
-           </property>
-          </widget>
-          <widget class="QCheckBox" name="CheckAltitude">
-           <property name="geometry">
-            <rect>
-             <x>10</x>
-             <y>25</y>
-             <width>200</width>
-             <height>20</height>
-            </rect>
-           </property>
-           <property name="text">
-            <string>Altitude</string>
-           </property>
-          </widget>
          </widget>
         </item>
-        <item>
-         <widget class="QGroupBox" name="groupBox_3">
-          <property name="title">
-           <string>Cap</string>
+        <item row="2" column="1">
+         <widget class="QLCDNumber" name="LcdAltitude"/>
+        </item>
+        <item row="3" column="0">
+         <widget class="QLabel" name="label_2">
+          <property name="font">
+           <font>
+            <pointsize>25</pointsize>
+           </font>
           </property>
-          <widget class="QLCDNumber" name="LcdCap">
-           <property name="geometry">
-            <rect>
-             <x>270</x>
-             <y>20</y>
-             <width>320</width>
-             <height>30</height>
-            </rect>
-           </property>
-          </widget>
-          <widget class="QCheckBox" name="CheckCap">
-           <property name="geometry">
-            <rect>
-             <x>10</x>
-             <y>25</y>
-             <width>200</width>
-             <height>20</height>
-            </rect>
-           </property>
-           <property name="text">
-            <string>Cap</string>
-           </property>
-          </widget>
+          <property name="text">
+           <string>CAP</string>
+          </property>
          </widget>
         </item>
-        <item>
-         <widget class="QGroupBox" name="groupBox_4">
-          <property name="title">
-           <string>V-Speed</string>
+        <item row="3" column="1">
+         <widget class="QLCDNumber" name="LcdCap"/>
+        </item>
+        <item row="4" column="0">
+         <widget class="QLabel" name="label_3">
+          <property name="font">
+           <font>
+            <pointsize>25</pointsize>
+           </font>
           </property>
-          <widget class="QLCDNumber" name="LcdVSpeed">
-           <property name="geometry">
-            <rect>
-             <x>270</x>
-             <y>20</y>
-             <width>320</width>
-             <height>30</height>
-            </rect>
-           </property>
-          </widget>
-          <widget class="QCheckBox" name="CheckVSpeed">
-           <property name="geometry">
-            <rect>
-             <x>10</x>
-             <y>25</y>
-             <width>200</width>
-             <height>20</height>
-            </rect>
-           </property>
-           <property name="text">
-            <string>V Speed</string>
-           </property>
-          </widget>
+          <property name="text">
+           <string>VSpeed</string>
+          </property>
          </widget>
         </item>
-        <item>
-         <widget class="QGroupBox" name="groupBox_5">
-          <property name="title">
-           <string>H-Speed</string>
+        <item row="4" column="1">
+         <widget class="QLCDNumber" name="LcdVSpeed"/>
+        </item>
+        <item row="5" column="0">
+         <widget class="QLabel" name="label_4">
+          <property name="font">
+           <font>
+            <pointsize>25</pointsize>
+           </font>
           </property>
-          <widget class="QLCDNumber" name="LcdHSpeed">
-           <property name="geometry">
-            <rect>
-             <x>270</x>
-             <y>20</y>
-             <width>320</width>
-             <height>30</height>
-            </rect>
-           </property>
-          </widget>
-          <widget class="QCheckBox" name="CheckHSpeed">
-           <property name="geometry">
-            <rect>
-             <x>10</x>
-             <y>25</y>
-             <width>200</width>
-             <height>20</height>
-            </rect>
-           </property>
-           <property name="text">
-            <string>H Speed</string>
-           </property>
-          </widget>
+          <property name="text">
+           <string>HSpeed</string>
+          </property>
+         </widget>
+        </item>
+        <item row="5" column="1">
+         <widget class="QLCDNumber" name="LcdHSpeed"/>
+        </item>
+        <item row="0" column="1">
+         <widget class="QCheckBox" name="Tram1Check">
+          <property name="font">
+           <font>
+            <pointsize>16</pointsize>
+           </font>
+          </property>
+          <property name="text">
+           <string>Tram1</string>
+          </property>
          </widget>
         </item>
        </layout>
       </widget>
       <widget class="QWidget" name="tab_2">
        <attribute name="title">
-        <string>Tab 2</string>
+        <string>Tram2</string>
        </attribute>
-       <layout class="QVBoxLayout" name="verticalLayout_3">
-        <item>
-         <widget class="QGroupBox" name="groupBox_2">
-          <property name="title">
+       <layout class="QFormLayout" name="formLayout_2">
+        <item row="2" column="1">
+         <widget class="QLCDNumber" name="LcdPitchDeg"/>
+        </item>
+        <item row="3" column="1">
+         <widget class="QLCDNumber" name="LcdPitchRate"/>
+        </item>
+        <item row="4" column="1">
+         <widget class="QLCDNumber" name="LcdRollDeg"/>
+        </item>
+        <item row="5" column="1">
+         <widget class="QLCDNumber" name="LcdRollRate"/>
+        </item>
+        <item row="2" column="0">
+         <widget class="QLabel" name="label_5">
+          <property name="minimumSize">
+           <size>
+            <width>150</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>25</pointsize>
+           </font>
+          </property>
+          <property name="text">
            <string>Pitch Deg</string>
           </property>
-          <layout class="QHBoxLayout" name="horizontalLayout">
-           <item>
-            <widget class="QCheckBox" name="CheckPitchDeg">
-             <property name="text">
-              <string>Pitch Deg</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLCDNumber" name="LcdPitchDeg"/>
-           </item>
-          </layout>
          </widget>
         </item>
-        <item>
-         <widget class="QGroupBox" name="groupBox_6">
-          <property name="title">
+        <item row="3" column="0">
+         <widget class="QLabel" name="label_6">
+          <property name="minimumSize">
+           <size>
+            <width>150</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>25</pointsize>
+           </font>
+          </property>
+          <property name="text">
            <string>Pitch Rate</string>
           </property>
-          <layout class="QHBoxLayout" name="horizontalLayout_2">
-           <item>
-            <widget class="QCheckBox" name="CheckPitchRate">
-             <property name="text">
-              <string>Pitch Rate</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLCDNumber" name="LcdPitchRate"/>
-           </item>
-          </layout>
          </widget>
         </item>
-        <item>
-         <widget class="QGroupBox" name="groupBox_7">
-          <property name="title">
+        <item row="4" column="0">
+         <widget class="QLabel" name="label_7">
+          <property name="minimumSize">
+           <size>
+            <width>150</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>25</pointsize>
+           </font>
+          </property>
+          <property name="text">
            <string>Roll Deg</string>
           </property>
-          <layout class="QHBoxLayout" name="horizontalLayout_3">
-           <item>
-            <widget class="QCheckBox" name="CheckRollDeg">
-             <property name="text">
-              <string>Roll Deg</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLCDNumber" name="LcdRollDeg"/>
-           </item>
-          </layout>
          </widget>
         </item>
-        <item>
-         <widget class="QGroupBox" name="groupBox_8">
-          <property name="title">
+        <item row="5" column="0">
+         <widget class="QLabel" name="label_8">
+          <property name="minimumSize">
+           <size>
+            <width>150</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>25</pointsize>
+           </font>
+          </property>
+          <property name="text">
            <string>Roll Rate</string>
           </property>
-          <layout class="QHBoxLayout" name="horizontalLayout_4">
-           <item>
-            <widget class="QCheckBox" name="CheckRollRate">
-             <property name="text">
-              <string>Roll Rate</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLCDNumber" name="LcdRollRate"/>
-           </item>
-          </layout>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QCheckBox" name="Tram2Check">
+          <property name="font">
+           <font>
+            <pointsize>16</pointsize>
+           </font>
+          </property>
+          <property name="text">
+           <string>Tram2</string>
+          </property>
          </widget>
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="tab_3">
-       <attribute name="title">
-        <string>Page</string>
-       </attribute>
-       <widget class="QPushButton" name="MbedReadButton">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>10</y>
-          <width>602</width>
-          <height>23</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Mbed Read</string>
-        </property>
-       </widget>
-       <widget class="QTextEdit" name="TextEdit">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>40</y>
-          <width>602</width>
-          <height>150</height>
-         </rect>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>16777215</width>
-          <height>150</height>
-         </size>
-        </property>
-       </widget>
-      </widget>
      </widget>
     </item>
    </layout>
-  </widget>
-  <widget class="QMenuBar" name="menuBar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>620</width>
-     <height>21</height>
-    </rect>
-   </property>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">

@@ -14,9 +14,9 @@
 
 
 #define ALTSHIFT 1500
-#define VSPEEDSHIFT 2048
+#define VSPEEDSHIFT 4096
 #define FIWED_POINT_FRACTIONAL_BITS_CAP 7
-#define FIWED_POINT_FRACTIONAL_BITS_SPEED 4
+#define FIWED_POINT_FRACTIONAL_BITS_SPEED 3
 
 #define FIWED_POINT_FRACTIONAL_BITS_DEG 13
 #define FIWED_POINT_FRACTIONAL_BITS_RATE 9
@@ -25,33 +25,14 @@
 
 typedef uint16_t fixed_point_t;
 
-struct DataTram1
-{
-	BYTE altitude[2];
-	BYTE cap[2];
-	BYTE VSpeed[2];
-	BYTE HSpeed[2];
-	DWORD Time;
-};
 
-struct DataTram2
-{
-	BYTE PitchDeg[2];
-	BYTE PitchRate[2];
-	BYTE RollDeg[2];
-	BYTE RollRate[2];
-	DWORD Time;
-};
-
-class UsbCan : public QThread
+class UsbCan : public QObject
 {
 	Q_OBJECT
-protected:
 
 public:
 
-	void UsbCanConnect();
-	void UsbCanDisconnect();
+	
 	void CanSend(BYTE Id,int type);
 
 
@@ -72,18 +53,17 @@ public:
 
 	void setreceiveBool(bool);
 
-protected:
-	void run();
-	int exec();
-
 signals:
 	void CanThrottle(double);
 	void CanYoke(double, double);
+	void CanConnected(bool);
+	void CanDisconnected(bool);
 
 public slots:
-	
+	void CanConnect();
+	void CanDisconnect();
 
-	void receive1(int Id, DataTram1 Data);
+	void usbCanStart();
 
 	void tmout();
 
@@ -106,16 +86,19 @@ private:
 	tUcanHardwareInfo HwInfo;
 	_TCHAR szDeviceNr[24];
 	tCanMsgStruct CanTxMsg, CanRxMsg;
-	DataTram1 Tram1;
-	DataTram2 Tram2;
+	BYTE Tram1[8];
+	BYTE Tram2[8];
 	tUcanInitCanParam InitParam;
 	bool receiveBool;
 	bool timeout150;
 	bool timeout301;
 	int timeCount = 0;
+	float throttleCan;
+	float yokex;
+	float yokey;
 
 	DWORD dwRxCount;
 
-	QTimer* timer10;
+	QTimer *timer10 = new QTimer(this);
 
 };

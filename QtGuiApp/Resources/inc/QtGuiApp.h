@@ -18,19 +18,26 @@ public:
 
 signals:
 	void AddElement(int id);
-	void DelateElement(int id);
+	void DeleteElement(int id);
 	void SetAltitude(double value);
-private slots:
-	void printData();
-	void on_CheckAltitude_stateChanged(int arg1);
-	void on_CheckCap_stateChanged(int arg1);
-	void on_CheckVSpeed_stateChanged(int arg1);
-	void on_CheckHSpeed_stateChanged(int arg1);
+	void P3dConnect();
+	void P3dDisconnect();
+	void CanConnect();
+	void CanDisconnect();
+
+public slots:
+	void on_P3dConnectButton_clicked();
+	void on_CanConnectButton_clicked();
+
+	void P3dConnected(bool);
+	void P3dDisconnected(bool);
+
+	void CanConnected(bool);
+	void CanDisconnected(bool);
+
+	void on_Tram1Check_stateChanged(int arg);
 	
-	void on_CheckPitchDeg_stateChanged(int arg1);
-	void on_CheckPitchRate_stateChanged(int arg1);
-	void on_CheckRollDeg_stateChanged(int arg1);
-	void on_CheckRollRate_stateChanged(int arg1);
+	void on_Tram2Check_stateChanged(int arg1);
 
 	void PrintAltitude(double value);
 	void PrintCap(double value);
@@ -44,5 +51,6 @@ private slots:
 private:
 	Ui::QtGuiAppClass ui;
 	int i = 0;
-	P3d p3d;
+	bool P3dConnectStat = false;
+	bool CanConnectStat = false;
 };
